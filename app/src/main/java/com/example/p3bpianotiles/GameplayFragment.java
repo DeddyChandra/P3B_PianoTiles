@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
+
 public class GameplayFragment extends Fragment {
     //binding here
+    private GameplayFragmentBinding binding;
     public GameplayFragment(){
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
-        return null;
+        binding = GameplayFragmentBinding.inflate(inflater);
+        return binding.getRoot();
     }
 }
