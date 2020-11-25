@@ -19,7 +19,7 @@
 
             <Button
                 android:id="@+id/pause_btn"
-                android:layout_width="59dp"
+                android:layout_width="57dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_baseline_pause_24"
                 android:padding="16dp" />
@@ -41,19 +41,20 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="Score: " />
 
             <TextView
+                android:id="@+id/score_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="0"
                 android:padding="16dp" />
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/iv_1"
         android:layout_width="match_parent"
