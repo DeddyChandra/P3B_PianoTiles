@@ -10,6 +10,40 @@
         android:layout_height="match_parent"
         android:background="@drawable/background"></ImageView>
 
+    <LinearLayout
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_green_button"
+            android:text="@string/Easy"
+            android:textColor="@color/green">
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_yellow_button"
+            android:text="@string/Normal"
+            android:textColor="@color/yellow">
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_red_button"
+            android:text="@string/Hard"
+            android:textColor="@color/red">
+        </Button>
+
+    </LinearLayout>
+    
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -17,7 +51,7 @@
         android:textColor="@color/white"
         android:background="@drawable/round_button"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_below="@+id/level">
     </Button>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

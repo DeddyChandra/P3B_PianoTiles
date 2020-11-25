@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Piano Tiles</string>
     <string name="Start">Start</string>
+    <string name="Easy">Easy</string>
+    <string name="Normal">Normal</string>
+    <string name="Hard">Hard</string>
 </resources>
