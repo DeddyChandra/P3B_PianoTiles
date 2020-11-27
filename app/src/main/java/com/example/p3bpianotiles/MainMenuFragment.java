@@ -40,7 +40,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setDuration(1000);
+        rotateAnimation.setDuration(1500);
         rotateAnimation.setRepeatCount(Animation.INFINITE);
         this.binding.vinylIv.startAnimation(rotateAnimation);
     }
