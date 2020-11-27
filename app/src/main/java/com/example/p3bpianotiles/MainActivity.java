@@ -24,17 +24,17 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         changePage(1);
     }
 
-//    @Override
-//    protected void onPause(){
-//        super.onPause();
-//        this.mainMenuFragment.pauseSound();
-//    }
-//
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//        this.mainMenuFragment.resumeSound();
-//    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        this.mainMenuFragment.pauseSound();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        this.mainMenuFragment.resumeSound();
+    }
 
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();

@@ -57,7 +57,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     }
 
     public void resumeSound(){
-        this.mediaPlayer.pause();
+        this.mediaPlayer.start();
     }
 
     @Override
