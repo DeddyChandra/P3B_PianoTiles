@@ -1,5 +1,6 @@
 package com.example.p3bpianotiles;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     //binding here
     private MainMenuFragmentBinding binding;
     private MainMenuPresenter presenter;
+    private MediaPlayer mediaPlayer;
+
     public MainMenuFragment(){
 
     }
@@ -28,6 +31,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.rotateVinyl();
         this.presenter = new MainMenuPresenter();
         this.setLevel(this.presenter.getLevel());
+        this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
+        this.mediaPlayer.start();
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
