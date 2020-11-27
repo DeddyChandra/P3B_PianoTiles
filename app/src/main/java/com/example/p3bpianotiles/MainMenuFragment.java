@@ -117,9 +117,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void mute(){
         if(this.presenter.isMute()){
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_off));
+            this.mediaPlayer.setVolume(0,0);
         }
         else{
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_on));
+            this.mediaPlayer.setVolume(1,1);
         }
     }
 }
