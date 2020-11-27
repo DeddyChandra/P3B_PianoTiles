@@ -44,7 +44,9 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                         draw(new Tiles(2*width/4,2*height/4,width/4,height/4));
                     }
                 }
+
         );
+
 
 
 
