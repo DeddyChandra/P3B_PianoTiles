@@ -2,47 +2,47 @@ package com.example.p3bpianotiles;
 
 public class Tiles {
     int column;//buat columnnya
-    double x;
-    double y;
-    double width;
-    double height;
+    float x;
+    float y;
+    float width;
+    float height;
 
     public Tiles(int column,int height){
         this.column = column;
         this.height = height;
     }
-    public Tiles(double x,double y,int width,int height){
+    public Tiles(float x,float y,float width,float height){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    public void setX(double x){
+    public void setX(float x){
         this.x=x;
     }
-    public void setY(double y){
+    public void setY(float y){
         this.y=y;
     }
-    public void setWidth(double width){
+    public void setWidth(float width){
         this.width=width;
     }
-    public void setHeight(double height){
+    public void setHeight(float height){
         this.height=height;
     }
     public void setColumn(int column){
         this.column= column;
     }
 
-    public double getX(){
+    public float getX(){
         return this.x;
     }
-    public double getY(){
+    public float getY(){
         return this.y;
     }
-    public double getWidth(){
+    public float getWidth(){
         return this.width;
     }
-    public double getHeight(){
+    public float getHeight(){
         return this.height;
     }
     public int getColumn(){

@@ -37,13 +37,14 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
 
     @Override
     public void draw(Tiles tiles) {
+
         int width = iv_canvas.getWidth();
         int height = iv_canvas.getHeight();
 
-        double widthTiles = tiles.getWidth();
-        double heightTiles = tiles.getHeight();
-        double x = tiles.getX();
-        double y = tiles.getY();
+        float widthTiles = tiles.getWidth();
+        float heightTiles = tiles.getHeight();
+        float x = tiles.getX();
+        float y = tiles.getY();
 
         this.bitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
         this.iv_canvas.setImageBitmap(bitmap);
@@ -57,6 +58,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         paint.setColor(mColorText);
 
         tiles = new Tiles(x,y,width,height);
+        canvas.drawRect(tiles.x,tiles.y,tiles.width,tiles.height,paint);
         this.iv_canvas.invalidate();
     }
 }
