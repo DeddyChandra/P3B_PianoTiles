@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.example.p3bpianotiles.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentListener {
     private ActivityMainBinding binding;
     private FragmentManager fragmentManager;
     MainMenuFragment mainMenuFragment;
@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         gameplayFragment=new GameplayFragment();
     }
     //testMike
-    void changePage(int page){
+    @Override
+    public void changePage(int page){
         if(page==0){
 
         }
