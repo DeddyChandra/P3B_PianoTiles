@@ -13,9 +13,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.MainMenuFragmentBinding;
 
-public class MainMenuFragment extends Fragment implements View.OnClickListener {
+public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI{
     //binding here
     private MainMenuFragmentBinding binding;
+    private MainMenuPresenter presenter;
     public MainMenuFragment(){
 
     }
@@ -23,6 +24,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         this.binding = MainMenuFragmentBinding.inflate(inflater);
         this.rotateVinyl();
+        this.presenter = new MainMenuPresenter();
+        this.setLevel(this.presenter.getLevel());
         return binding.getRoot();
     }
 
@@ -30,7 +33,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
-
         rotateAnimation.setInterpolator(new LinearInterpolator());
         rotateAnimation.setDuration(500);
         rotateAnimation.setRepeatCount(Animation.INFINITE);
@@ -41,5 +43,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+    }
+
+    public void setLevel(int level){
+        if(level == 0){
+            this.binding.
+        }
     }
 }

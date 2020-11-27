@@ -51,6 +51,7 @@
         android:layout_margin="10dp">
 
         <Button
+            android:id="@+id/easy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_gray_button"
@@ -59,6 +60,7 @@
         </Button>
 
         <Button
+            android:id="@+id/normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_gray_button"
@@ -67,6 +69,7 @@
         </Button>
 
         <Button
+            android:id="@+id/hard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_gray_button"
