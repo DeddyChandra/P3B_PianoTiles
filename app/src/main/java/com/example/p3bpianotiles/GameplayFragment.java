@@ -12,6 +12,8 @@ import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 public class GameplayFragment extends Fragment {
     //binding here
     private GameplayFragmentBinding binding;
+
+
     public GameplayFragment(){
 
     }
@@ -19,5 +21,6 @@ public class GameplayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
         return binding.getRoot();
+
     }
 }
