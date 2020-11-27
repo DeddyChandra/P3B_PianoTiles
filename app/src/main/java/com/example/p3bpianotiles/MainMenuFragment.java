@@ -33,6 +33,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.setLevel(this.presenter.getLevel());
         this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
         this.mediaPlayer.start();
+        this.mediaPlayer.setLooping(true);
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);

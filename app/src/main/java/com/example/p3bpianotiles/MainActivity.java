@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         mainMenuFragment=new MainMenuFragment();
         gameplayFragment=new GameplayFragment();
         fragmentManager = this.getSupportFragmentManager();
-        changePage(2);
+        changePage(1);
     }
 
     public void changePage(int page){
