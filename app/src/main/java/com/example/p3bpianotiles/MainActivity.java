@@ -15,5 +15,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(this.binding.getRoot());
         
     }
-    //testMike
 }

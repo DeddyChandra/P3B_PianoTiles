@@ -19,5 +19,6 @@ public class GameplayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
         return binding.getRoot();
+
     }
 }
