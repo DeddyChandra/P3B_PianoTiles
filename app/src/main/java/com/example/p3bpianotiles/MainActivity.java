@@ -32,6 +32,5 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             ft.replace(R.id.fragment_container, this.gameplayFragment).addToBackStack(null);
         }
         ft.commit();
-
     }
 }
