@@ -11,14 +11,14 @@
         android:background="@drawable/background">
     </ImageView>
 
-    <ImageView
-        android:id="@+id/vinyl_iv"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/vinyl"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/song_name_tv">
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:id="@+id/vinyl_iv"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:background="@drawable/vinyl"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@+id/song_name_tv">-->
+<!--    </ImageView>-->
 
 <!--    <ImageView-->
 <!--        android:id="@+id/stick_iv"-->
