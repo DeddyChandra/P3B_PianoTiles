@@ -11,9 +11,9 @@ public class Tiles {
         this.column = column;
         this.height = height;
     }
-    public Tiles(int x,int y,int width,int height){
-        this.x=x;
-        this.y=y;
+    public Tiles(double x,double y,int width,int height){
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
     }
