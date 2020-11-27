@@ -12,6 +12,8 @@ import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 public class GameplayFragment extends Fragment {
     //binding here
     private GameplayFragmentBinding binding;
+
+
     public GameplayFragment(){
 
     }
