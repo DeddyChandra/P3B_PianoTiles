@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         changePage(1);
     }
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+    }
+
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page == 1){
