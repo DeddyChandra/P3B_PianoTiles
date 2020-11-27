@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.MainMenuFragmentBinding;
 
-public class MainMenuFragment extends Fragment {
+public class MainMenuFragment extends Fragment implements View.OnClickListener {
     //binding here
     private MainMenuFragmentBinding binding;
     public MainMenuFragment(){
@@ -22,7 +22,7 @@ public class MainMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         this.binding = MainMenuFragmentBinding.inflate(inflater);
-//        this.rotateVinyl();
+        this.rotateVinyl();
         return binding.getRoot();
     }
 
@@ -34,7 +34,12 @@ public class MainMenuFragment extends Fragment {
         rotateAnimation.setInterpolator(new LinearInterpolator());
         rotateAnimation.setDuration(500);
         rotateAnimation.setRepeatCount(Animation.INFINITE);
-
 //        this.binding.vinylIv.startAnimation(rotateAnimation);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
