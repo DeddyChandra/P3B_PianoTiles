@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private FragmentManager fragmentManager;
     MainMenuFragment mainMenuFragment;
     GameplayFragment gameplayFragment;
-    private List<Music> musicList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         mainMenuFragment=new MainMenuFragment();
         gameplayFragment=new GameplayFragment();
         fragmentManager = this.getSupportFragmentManager();
-        this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
         changePage(1);
     }
 

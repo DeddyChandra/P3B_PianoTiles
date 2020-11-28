@@ -8,7 +8,9 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -21,50 +23,35 @@ import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.MainMenuFragmentBinding;
 
-public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI{
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI, View.OnTouchListener{
     //binding here
     private MainMenuFragmentBinding binding;
     private MainMenuPresenter presenter;
     private MediaPlayer mediaPlayer;
     private FragmentListener fragmentListener;
-    private SoundPool soundPool;
-    private AudioAttributes audioAttr;
-    private int sound1;
-    private boolean loaded = false;
+    private List<Music> musicList;
+    private GestureDetector mDetector;
+    private int nowPlaying = 0;
     public MainMenuFragment(){
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         this.binding = MainMenuFragmentBinding.inflate(inflater);
         this.rotateVinyl();
         this.presenter = new MainMenuPresenter();
         this.setLevel(this.presenter.getLevel());
-
-        if (Build.VERSION.SDK_INT
-                >= Build.VERSION_CODES.LOLLIPOP) {
-            this.audioAttr = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
-            this.soundPool = new SoundPool.Builder().setMaxStreams(3).setAudioAttributes(audioAttr).build();
-        }
-        else{
-            soundPool
-                    = new SoundPool(
-                    3,
-                    AudioManager.STREAM_MUSIC,
-                    0);
-        }
-        sound1 = soundPool.load(getActivity(),R.raw.jinggle_bell_piano,1);
-
-
-        this.soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
-                loaded = true;
-            }
-        });
-//        this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
-//        this.mediaPlayer.start();
-//        this.mediaPlayer.setLooping(true);
-
+        this.mDetector = new GestureDetector(getContext(), new MyCustomGestureListener());
+        this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
+        this.mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).id);
+        binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+        this.mediaPlayer.start();
+        this.mediaPlayer.setLooping(true);
 
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
@@ -72,6 +59,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.volumeFab.setOnClickListener(this);
         this.binding.startBtn.setOnClickListener(this);
         this.binding.settingFab.setOnClickListener(this);
+        this.binding.vinylIv.setOnTouchListener(this);
         return binding.getRoot();
     }
 
@@ -86,13 +74,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     }
 
     public void pauseSound(){
-//        this.mediaPlayer.pause();
-        this.soundPool.pause(sound1);
+        this.mediaPlayer.pause();
     }
 
     public void resumeSound(){
-//        this.mediaPlayer.start();
-        this.soundPool.resume(sound1);
+        this.mediaPlayer.start();
     }
 
     @Override
@@ -132,7 +118,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.fragmentListener.changePage(2);
         }
         else if(v == this.binding.settingFab){
-            soundPool.play(sound1,1,1,0, 0, 1);
         }
     }
 
@@ -169,15 +154,35 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void mute(){
         if(this.presenter.isMute()){
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_off));
-//            this.mediaPlayer.setVolume(0,0);
-            this.soundPool.setVolume(sound1,0,0);
+            this.mediaPlayer.setVolume(0,0);
         }
         else{
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_on));
-//            this.mediaPlayer.setVolume(1,1);
-            this.soundPool.setVolume(sound1,1,1);
+            this.mediaPlayer.setVolume(1,1);
         }
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return this.mDetector.onTouchEvent(event);
+    }
 
+    private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            mediaPlayer.stop();
+            Log.d("index", nowPlaying+" " +musicList.size());
+            if(nowPlaying+1 > musicList.size()-1){
+                nowPlaying = 0;
+            }
+            else{
+                nowPlaying++;
+            }
+            mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).getId());
+            binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+            mediaPlayer.start();
+            mediaPlayer.setLooping(true);
+            return true;
+        }
+    }
 }
