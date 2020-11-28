@@ -22,6 +22,5 @@ public class TilesHandler extends Handler {
         msg.obj= tiles;
         this.sendMessage(msg);
         //Log.d("masuk","masuk")
-
     }
 }

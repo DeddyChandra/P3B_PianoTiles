@@ -2,8 +2,10 @@ package com.example.p3bpianotiles;
 
 import android.content.Context;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,26 +41,37 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.presenter = new MainMenuPresenter();
         this.setLevel(this.presenter.getLevel());
 
-        this.audioAttr = new AudioAttributes.Builder().setUsage(audioAttr.USAGE_ASSISTANCE_SONIFICATION).setContentType(audioAttr.CONTENT_TYPE_SONIFICATION).build();
-        this.soundPool = new SoundPool.Builder().setAudioAttributes(audioAttr).build();
-        sound1 = soundPool.load(this.getActivity(),R.raw.jinggle_bell_piano,1);
-        soundPool.play(sound1,1,1,1, 3, 1);
+        if (Build.VERSION.SDK_INT
+                >= Build.VERSION_CODES.LOLLIPOP) {
+            this.audioAttr = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
+            this.soundPool = new SoundPool.Builder().setMaxStreams(3).setAudioAttributes(audioAttr).build();
+        }
+        else{
+            soundPool
+                    = new SoundPool(
+                    3,
+                    AudioManager.STREAM_MUSIC,
+                    0);
+        }
+        sound1 = soundPool.load(getActivity(),R.raw.jinggle_bell_piano,1);
+
 
         this.soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
                 loaded = true;
             }
         });
-
 //        this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
 //        this.mediaPlayer.start();
 //        this.mediaPlayer.setLooping(true);
+
+
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
         this.binding.volumeFab.setOnClickListener(this);
-
         this.binding.startBtn.setOnClickListener(this);
+        this.binding.settingFab.setOnClickListener(this);
         return binding.getRoot();
     }
 
@@ -71,7 +84,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         rotateAnimation.setRepeatCount(Animation.INFINITE);
         this.binding.vinylIv.startAnimation(rotateAnimation);
     }
-
 
     public void pauseSound(){
 //        this.mediaPlayer.pause();
@@ -118,6 +130,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.startBtn){
             this.fragmentListener.changePage(2);
+        }
+        else if(v == this.binding.settingFab){
+            soundPool.play(sound1,1,1,0, 0, 1);
         }
     }
 
