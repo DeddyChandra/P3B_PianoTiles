@@ -63,8 +63,8 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         int nColorBackground = ResourcesCompat.getColor(getResources(),R.color.white,null);
         canvas.drawColor(nColorBackground);
         paint = new Paint();
-        int mColorText = ResourcesCompat.getColor(getResources(),R.color.black,null);
-        paint.setColor(mColorText);
+        int mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
+        paint.setColor(mColorTiles);
     }
 
 

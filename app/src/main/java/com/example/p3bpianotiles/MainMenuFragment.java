@@ -1,5 +1,6 @@
 package com.example.p3bpianotiles;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     private MainMenuFragmentBinding binding;
     private MainMenuPresenter presenter;
     private MediaPlayer mediaPlayer;
+    private FragmentListener fragmentListener;
 
     public MainMenuFragment(){
 
@@ -38,6 +40,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
         this.binding.volumeFab.setOnClickListener(this);
+
+        this.binding.startBtn.setOnClickListener(this);
         return binding.getRoot();
     }
 
@@ -61,6 +65,17 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(context instanceof FragmentListener){
+            this.fragmentListener = (FragmentListener) context;
+        }
+        else{
+            throw new ClassCastException(context.toString()+" must implement FragmentListener");
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         if(v == this.binding.easy){
             setLevel(0);
@@ -81,6 +96,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
                 this.presenter.setMute(true);
             }
             mute();
+        }
+        else if(v == this.binding.startBtn){
+            this.fragmentListener.changePage(2);
         }
     }
 
