@@ -37,30 +37,21 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         binding = GameplayFragmentBinding.inflate(inflater);
         ui = this;
         this.binding.ivCanvas.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        initCanvas();
-                        presenter = new GameplayPresenter();
-                        presenter.generateTiles(ui);
-                    }
+            new Runnable() {
+                @Override
+                public void run() {
+                    initCanvas();
                 }
-
+            }
         );
-
-
-
-
-
-
-
-
+        presenter = new GameplayPresenter();
+        presenter.generateTiles(ui);
         return binding.getRoot();
 
     }
     public void initCanvas(){
-        this.width=binding.ivCanvas.getWidth();
-        this.height=binding.ivCanvas.getHeight();
+        width=binding.ivCanvas.getWidth();
+        height=binding.ivCanvas.getHeight();
         this.bitmap = Bitmap.createBitmap(binding.ivCanvas.getWidth(),binding.ivCanvas.getHeight(), Bitmap.Config.ARGB_8888);
         binding.ivCanvas.setImageBitmap(bitmap);
         this.canvas = new Canvas(this.bitmap);
