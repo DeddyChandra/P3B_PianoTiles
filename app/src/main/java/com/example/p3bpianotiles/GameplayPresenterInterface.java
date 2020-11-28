@@ -5,6 +5,6 @@ public interface GameplayPresenterInterface {
         public void draw(Tiles tiles);
     }
     interface Presenter{
-
+        public void generateTiles(GameplayPresenterInterface.UI presenterUI);
     }
 }
