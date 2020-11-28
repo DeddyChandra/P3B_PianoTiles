@@ -1,7 +1,9 @@
 package com.example.p3bpianotiles;
 
 import android.content.Context;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +25,10 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     private MainMenuPresenter presenter;
     private MediaPlayer mediaPlayer;
     private FragmentListener fragmentListener;
-
+    private SoundPool soundPool;
+    private AudioAttributes audioAttr;
+    private int sound1;
+    private boolean loaded = false;
     public MainMenuFragment(){
 
     }
@@ -33,9 +38,21 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.rotateVinyl();
         this.presenter = new MainMenuPresenter();
         this.setLevel(this.presenter.getLevel());
-        this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
-        this.mediaPlayer.start();
-        this.mediaPlayer.setLooping(true);
+
+        this.audioAttr = new AudioAttributes.Builder().setUsage(audioAttr.USAGE_ASSISTANCE_SONIFICATION).setContentType(audioAttr.CONTENT_TYPE_SONIFICATION).build();
+        this.soundPool = new SoundPool.Builder().setAudioAttributes(audioAttr).build();
+        sound1 = soundPool.load(this.getActivity(),R.raw.jinggle_bell_piano,1);
+        soundPool.play(sound1,1,1,1, 3, 1);
+
+        this.soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
+                loaded = true;
+            }
+        });
+
+//        this.mediaPlayer = MediaPlayer.create(getActivity(),R.raw.jinggle_bell_piano);
+//        this.mediaPlayer.start();
+//        this.mediaPlayer.setLooping(true);
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
@@ -57,11 +74,13 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
 
     public void pauseSound(){
-        this.mediaPlayer.pause();
+//        this.mediaPlayer.pause();
+        this.soundPool.pause(sound1);
     }
 
     public void resumeSound(){
-        this.mediaPlayer.start();
+//        this.mediaPlayer.start();
+        this.soundPool.resume(sound1);
     }
 
     @Override
@@ -135,11 +154,15 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void mute(){
         if(this.presenter.isMute()){
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_off));
-            this.mediaPlayer.setVolume(0,0);
+//            this.mediaPlayer.setVolume(0,0);
+            this.soundPool.setVolume(sound1,0,0);
         }
         else{
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_on));
-            this.mediaPlayer.setVolume(1,1);
+//            this.mediaPlayer.setVolume(1,1);
+            this.soundPool.setVolume(sound1,1,1);
         }
     }
+
+
 }
