@@ -20,6 +20,8 @@ import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI {
     //binding here
     private GameplayFragmentBinding binding;
+    private GameplayPresenterInterface.Presenter presenter;
+    private GameplayPresenterInterface.UI ui;
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;
@@ -33,19 +35,21 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
+        ui = this;
         this.binding.ivCanvas.post(
                 new Runnable() {
                     @Override
                     public void run() {
                         initCanvas();
-                        draw(new Tiles(0,0,width/4,height/4));
-                        draw(new Tiles(width/4,height/4,width/4,height/4));
-                        draw(new Tiles(3*width/4,3*height/4,width/4,height/4));
-                        draw(new Tiles(2*width/4,2*height/4,width/4,height/4));
+                        presenter = new GameplayPresenter();
+                        presenter.generateTiles(ui);
                     }
                 }
 
         );
+
+
+
 
 
 
