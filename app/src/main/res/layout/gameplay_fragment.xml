@@ -4,7 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:background="@drawable/play_background">
+    </ImageView>
 
         <Button
             android:id="@+id/pause_btn"
@@ -13,39 +19,22 @@
             android:background="@drawable/ic_baseline_pause_24"
             android:layout_alignParentLeft="true"
             android:padding="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             >
         </Button>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/pause_btn"
-            android:layout_alignParentRight="true"
-
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_alignParentLeft="true"
-                android:text="Score:"
-                android:gravity="right"
-                android:layout_toLeftOf="@+id/score_tv"
-                android:layout_centerVertical="true"
-             ></TextView>
-
-            <TextView
-                android:id="@+id/score_tv"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="0"
-                android:padding="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                ></TextView>
-        </RelativeLayout>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/red"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:text="777"
+        >
+    </TextView>
 
     <ImageView
         android:id="@+id/iv_canvas"
