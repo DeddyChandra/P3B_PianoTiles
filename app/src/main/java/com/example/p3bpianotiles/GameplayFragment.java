@@ -29,6 +29,8 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private ImageView iv_canvas;
     private int width;
     private int height;
+    private int mColorBackground;
+    private int mColorTiles;
     public GameplayFragment(){
 
     }
@@ -41,30 +43,44 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                 @Override
                 public void run() {
                     initCanvas();
+                    presenter = new GameplayPresenter();
+                    presenter.generateTiles(ui);
                 }
             }
         );
-        presenter = new GameplayPresenter();
-        presenter.generateTiles(ui);
+
+
         return binding.getRoot();
 
     }
     public void initCanvas(){
+
         width=binding.ivCanvas.getWidth();
         height=binding.ivCanvas.getHeight();
         this.bitmap = Bitmap.createBitmap(binding.ivCanvas.getWidth(),binding.ivCanvas.getHeight(), Bitmap.Config.ARGB_8888);
         binding.ivCanvas.setImageBitmap(bitmap);
         this.canvas = new Canvas(this.bitmap);
-        int nColorBackground = ResourcesCompat.getColor(getResources(),R.color.white,null);
-        canvas.drawColor(nColorBackground);
+        mColorBackground = ResourcesCompat.getColor(getResources(),R.color.white,null);
+        canvas.drawColor(mColorBackground);
         paint = new Paint();
-        int mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
-        paint.setColor(mColorTiles);
+        mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
+
     }
 
 
     @Override
     public void draw(Tiles tiles) {
+        paint.setColor(mColorTiles);
+        float widthTiles = tiles.getWidth();
+        float heightTiles = tiles.getHeight();
+        float x = tiles.getX();
+        float y = tiles.getY();
+        canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
+        binding.ivCanvas.invalidate();
+    }
+    @Override
+    public void delete(Tiles tiles) {
+        paint.setColor(mColorBackground);
         float widthTiles = tiles.getWidth();
         float heightTiles = tiles.getHeight();
         float x = tiles.getX();
