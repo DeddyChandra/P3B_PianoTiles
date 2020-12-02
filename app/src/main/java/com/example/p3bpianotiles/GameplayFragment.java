@@ -7,10 +7,12 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,8 +23,9 @@ import androidx.fragment.app.Fragment;
 import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 
 import java.util.LinkedList;
+import java.util.Random;
 
-public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI, View.OnClickListener {
+public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI, View.OnClickListener,View.OnTouchListener {
     //binding here
     private GameplayFragmentBinding binding;
     private GameplayPresenterInterface.Presenter presenter;
@@ -34,6 +37,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private int width;
     private int height;
     private int mColorTiles;
+    private GestureDetector mDetector;
     private Paint transparentPaint;
     private ThreadTiles threadTiles;
     private TilesHandler tilesHandler;
@@ -49,8 +53,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
         ui = this;
-
-
+        this.mDetector = new GestureDetector(getContext(), new GameplayFragment.MyCustomGestureListener());
         this.binding.ivCanvas.post(
             new Runnable() {
                 @Override
@@ -68,6 +71,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
 
         this.binding.tv.bringToFront();
         this.binding.tv.invalidate();
+        this.binding.ivCanvas.setOnTouchListener(this);
         return binding.getRoot();
 
     }
@@ -123,6 +127,18 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     public void addScore(){
         this.score += 1;
         this.binding.tv.setText(Integer.toString(this.score));
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+        return this.mDetector.onTouchEvent(event);
+    }
+    private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            Log.d("e",e.toString());
+            return false;
+        }
     }
 
 }

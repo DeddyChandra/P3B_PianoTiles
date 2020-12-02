@@ -6,6 +6,8 @@ public class Tiles {
     float y;
     float width;
     float height;
+    int note;
+    int duration;
 
 
     public Tiles(float x,float y,float width,float height){
