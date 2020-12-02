@@ -62,6 +62,9 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                     initCanvas();
                     presenter = new GameplayPresenter(ui);
                     presenter.generateTiles(0,width,height/4);
+                    presenter.generateTiles(1,width,height/4);
+                    presenter.generateTiles(2,width,height/4);
+                    presenter.generateTiles(3,width,height/4);
 //                    presenter.generateTiles(width/4,100,width,height/4);
 //                    presenter.generateTiles(width*2/4,400,width,height/4);
 //                    presenter.generateTiles(width*3/4,500,width,height/4);
