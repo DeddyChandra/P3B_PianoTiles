@@ -33,14 +33,15 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private ImageView iv_canvas;
     private int width;
     private int height;
-    private int mColorBackground;
     private int mColorTiles;
-
+    private Paint transparentPaint;
     private ThreadTiles threadTiles;
     private TilesHandler tilesHandler;
-    LinkedList<ThreadTiles> threadList;
+    private LinkedList<ThreadTiles> threadList;
 
-    Paint transparentPaint;
+    private int score = 0;
+
+
     public GameplayFragment(){
 
     }
@@ -56,10 +57,10 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                 public void run() {
                     initCanvas();
                     presenter = new GameplayPresenter(ui);
-                    presenter.generateTiles(0,0,width/4,height/4);
-                    presenter.generateTiles(width/4,100,width/4,height/4);
-                    presenter.generateTiles(width*2/4,400,width/4,height/4);
-                    presenter.generateTiles(width*3/4,500,width/4,height/4);
+                    presenter.generateTiles(0,0,width,height/4);
+                    presenter.generateTiles(width/4,100,width,height/4);
+                    presenter.generateTiles(width*2/4,400,width,height/4);
+                    presenter.generateTiles(width*3/4,500,width,height/4);
                 }
             }
         );
@@ -117,6 +118,11 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         if(v == this.binding.pauseBtn){
 
         }
+    }
+
+    public void addScore(){
+        this.score += 1;
+        this.binding.tv.setText(Integer.toString(this.score));
     }
 
 }

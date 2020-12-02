@@ -10,9 +10,9 @@ public class ThreadTiles implements Runnable {
     private Tiles tiles;
     protected boolean stopped = false;
 
-    ThreadTiles(TilesHandler handler,int x,int y,int width,int height){
+    ThreadTiles(TilesHandler handler,Tiles tiles){
         thread = new Thread(this);
-        tiles = new Tiles(x,y,width,height);
+        this.tiles =tiles  ;
         this.handler=handler;
     }
     public void startingthread(){
