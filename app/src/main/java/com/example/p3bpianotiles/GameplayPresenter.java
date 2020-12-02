@@ -14,9 +14,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     GameplayPresenter(GameplayPresenterInterface.UI presenterUI){
         this.presenterUI=presenterUI;
     }
-    public void generateTiles(int x,int y,int width,int height){
+    public void generateTiles(int column,int width,int height){
         handler= new TilesHandler(this);
-        ThreadTiles thread = new ThreadTiles(handler,new Tiles(1,width,height));
+        ThreadTiles thread = new ThreadTiles(handler,new Tiles(column,width,height));
         thread.startingthread();
         this.presenterUI=presenterUI;
 

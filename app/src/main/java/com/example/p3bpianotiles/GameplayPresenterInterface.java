@@ -9,7 +9,7 @@ public interface GameplayPresenterInterface {
 
     }
     interface Presenter{
-        public void generateTiles(int x,int y,int width,int height);
+        public void generateTiles(int column, int width,int height);
         public void drawRedrawTiles(Tiles tiles);
         public void setTouchPoint(PointF pointf);
         public PointF getTouchPoint();
