@@ -7,7 +7,11 @@ import androidx.fragment.app.FragmentActivity;
 
 public class TilesHandler extends Handler {
     GameplayPresenterInterface.Presenter presenter;
+    protected GameplayFragment gameplayFragment;
+
     private static int MSG_DRAW=0;
+    protected final static int ADD_SCORE=0;
+
     public TilesHandler(GameplayPresenterInterface.Presenter presenter){
         this.presenter= presenter;
     }
@@ -15,7 +19,9 @@ public class TilesHandler extends Handler {
         if(msg.what==MSG_DRAW){
             presenter.drawRedrawTiles((Tiles)msg.obj);
         }
-
+        else if(msg.what == TilesHandler.ADD_SCORE) {
+            this.gameplayFragment.addScore();
+        }
     }
     public void setMessage(Tiles tiles,int i){
         Message msg= new Message();
@@ -23,5 +29,10 @@ public class TilesHandler extends Handler {
         msg.obj= tiles;
         this.sendMessage(msg);
         //Log.d("masuk","masuk")
+    }
+    public void addScore(){
+        Message msg = new Message();
+        msg.what = ADD_SCORE;
+        this.sendMessage(msg);
     }
 }

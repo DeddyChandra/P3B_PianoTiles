@@ -6,6 +6,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     ArrayList<Tiles> tiles;
     TilesHandler handler;
     GameplayPresenterInterface.UI presenterUI;
+
+
+
     GameplayPresenter(GameplayPresenterInterface.UI presenterUI){
         this.presenterUI=presenterUI;
     }
@@ -21,4 +24,5 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         tiles.setY(tiles.getY()+1);
         presenterUI.draw(tiles);
     }
+
 }
