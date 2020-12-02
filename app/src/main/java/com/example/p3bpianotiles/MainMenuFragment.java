@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI, View.OnTouchListener{
+public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI, View.OnTouchListener, MediaPlayer.OnCompletionListener{
     //binding here
     private MainMenuFragmentBinding binding;
     private MainMenuPresenter presenter;
@@ -61,6 +61,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.startBtn.setOnClickListener(this);
         this.binding.settingFab.setOnClickListener(this);
         this.binding.vinylIv.setOnTouchListener(this);
+        this.mediaPlayer.setOnCompletionListener(this);
         return binding.getRoot();
     }
 
@@ -170,11 +171,25 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         return this.mDetector.onTouchEvent(event);
     }
 
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        if(nowPlaying+1 > musicList.size()-1){
+            nowPlaying = 0;
+        }
+        else{
+            nowPlaying++;
+        }
+        mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).getId());
+        binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+        mediaPlayer.start();
+        mediaPlayer.setVolume(volume,volume);
+    }
+
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {
             mediaPlayer.stop();
-            Log.d("index", nowPlaying+" " +musicList.size());
+//            Log.d("index", nowPlaying+" " +musicList.size());
             if(nowPlaying+1 > musicList.size()-1){
                 nowPlaying = 0;
             }
@@ -185,7 +200,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
             mediaPlayer.start();
             mediaPlayer.setVolume(volume,volume);
-            mediaPlayer.setLooping(true);
+//            mediaPlayer.setLooping(true);
             return true;
         }
     }
@@ -202,7 +217,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.binding.songNameTv.setText(musicList.get(nowPlaying).getName());
             this.mediaPlayer.start();
             this.mediaPlayer.setVolume(volume,volume);
-            this.mediaPlayer.setLooping(true);
+//            this.mediaPlayer.setLooping(true);
             this.musicStarted = true;
         }
     }
