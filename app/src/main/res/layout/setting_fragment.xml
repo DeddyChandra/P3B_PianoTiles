@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/background_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:background="@drawable/background">
+        </ImageView>
+
         <LinearLayout
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -16,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Volume"
+            android:textColor="@color/black"
             android:textSize="20dp">
         </TextView>
         <SeekBar
@@ -26,10 +36,29 @@
             android:max="100"
             android:progress="100"/>
         <Button
+            android:id="@+id/changeBg_btn"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_fill_button"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:text="@string/ChangeBg"
+            android:layout_margin="5dp">
+        </Button>
+        <Button
+            android:id="@+id/reset_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Default"
+            android:backgroundTint="#F44336">
+        </Button>
+        <Button
             android:id="@+id/done_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="@string/Done">
+            android:text="@string/Done"
+            android:backgroundTint="#4CAF50">
         </Button>
     </LinearLayout>
 </RelativeLayout>

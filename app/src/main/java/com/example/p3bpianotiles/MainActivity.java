@@ -15,9 +15,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements FragmentListener{
     private ActivityMainBinding binding;
     private FragmentManager fragmentManager;
-    MainMenuFragment mainMenuFragment;
-    GameplayFragment gameplayFragment;
-    SettingFragment settingFragment;
+    private MainMenuFragment mainMenuFragment;
+    private GameplayFragment gameplayFragment;
+    private SettingFragment settingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,4 +62,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.mainMenuFragment.changeVolume(vol);
     }
 
+    public void changeBackground(int id){
+        this.mainMenuFragment.changeBackground(id);
+    }
 }

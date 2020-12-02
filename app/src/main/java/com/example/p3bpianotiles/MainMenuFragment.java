@@ -36,10 +36,12 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     private MediaPlayer mediaPlayer;
     private FragmentListener fragmentListener;
     private List<Music> musicList;
+
     private GestureDetector mDetector;
     private boolean musicStarted = false;
     private int nowPlaying;
     private float volume = 1;
+    private int backgroundId = 0;
     public MainMenuFragment(){
 
 
@@ -53,6 +55,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.setLevel(this.presenter.getLevel());
         this.mDetector = new GestureDetector(getContext(), new MyCustomGestureListener());
         this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
+
         startRandomMusic();
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
@@ -62,6 +65,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.settingFab.setOnClickListener(this);
         this.binding.vinylIv.setOnTouchListener(this);
         this.mediaPlayer.setOnCompletionListener(this);
+        if(backgroundId != 0) {
+            this.binding.backgroundIv.setImageResource(backgroundId);
+        }
         return binding.getRoot();
     }
 
@@ -234,5 +240,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             volume = 1;
         }
         this.mediaPlayer.setVolume(volume, volume);
+    }
+
+    public void changeBackground(int id){
+        this.backgroundId = id;
+        this.binding.backgroundIv.setImageResource(id);
+        Log.d("change", "changeBackground: "+id);
     }
 }
