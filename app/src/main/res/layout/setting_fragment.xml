@@ -38,11 +38,11 @@
         <Button
             android:id="@+id/changeBg_btn"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_fill_button"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:backgroundTint="@color/white"
             android:text="@string/ChangeBg"
             android:layout_margin="5dp">
         </Button>

@@ -42,6 +42,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     private int nowPlaying;
     private float volume = 1;
     private int backgroundId = 0;
+    public boolean mute = false;
     public MainMenuFragment(){
 
 
@@ -55,7 +56,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.setLevel(this.presenter.getLevel());
         this.mDetector = new GestureDetector(getContext(), new MyCustomGestureListener());
         this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
-
         startRandomMusic();
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
@@ -64,6 +64,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.startBtn.setOnClickListener(this);
         this.binding.settingFab.setOnClickListener(this);
         this.binding.vinylIv.setOnTouchListener(this);
+        if(mute){
+            this.presenter.setMute(true);
+            this.mute();
+        }
+        this.mediaPlayer.setOnCompletionListener(this);
         if(backgroundId != 0) {
             this.binding.backgroundIv.setImageResource(backgroundId);
         }
@@ -86,6 +91,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     public void resumeSound(){
         this.mediaPlayer.start();
+        this.mediaPlayer.setOnCompletionListener(this);
     }
 
     @Override
@@ -114,11 +120,14 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             if(this.presenter.isMute()){
                 Log.d("volume", "muted");
                 this.presenter.setMute(false);
+                mute = false;
             }
             else{
                 Log.d("volume", "unmuted");
                 this.presenter.setMute(true);
+                mute = true;
             }
+            this.mediaPlayer.setOnCompletionListener(this);
             mute();
         }
         else if(v == this.binding.startBtn){
@@ -126,7 +135,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.settingFab){
             this.fragmentListener.changePage(3);
-
         }
     }
 
@@ -194,6 +202,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         else {
             mediaPlayer.setVolume(volume, volume);
         }
+        this.mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.start();
     }
 
@@ -218,7 +227,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
                 mediaPlayer.setVolume(volume,volume);
             }
 //            mediaPlayer.setLooping(true);
-
             return true;
         }
     }
@@ -226,7 +234,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void startRandomMusic(){
         if(musicStarted){
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
-            this.mediaPlayer.setOnCompletionListener(this);
+            Log.d("music", "musicstarted ");
         }
         else {
             int max = musicList.size();
@@ -243,8 +251,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             }
 //            this.mediaPlayer.setLooping(true);
             this.musicStarted = true;
-            this.mediaPlayer.setOnCompletionListener(this);
+            Log.d("music", "musicrandom ");
         }
+        this.mediaPlayer.setOnCompletionListener(this);
     }
 
     public void changeVolume(int vol){
@@ -257,7 +266,14 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     public void changeBackground(int id){
         this.backgroundId = id;
-        this.binding.backgroundIv.setImageResource(id);
-        Log.d("change", "changeBackground: "+id);
+//        this.binding.backgroundIv.setImageResource(id);
+    }
+
+    public void setDefault(){
+        this.presenter.setMute(false);
+        this.mute = false;
+        this.mute();
+        this.mediaPlayer.setVolume(100,100);
+
     }
 }

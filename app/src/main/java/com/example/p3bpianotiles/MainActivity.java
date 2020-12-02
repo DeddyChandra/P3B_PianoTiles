@@ -62,7 +62,13 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.mainMenuFragment.changeVolume(vol);
     }
 
+    @Override
     public void changeBackground(int id){
         this.mainMenuFragment.changeBackground(id);
+    }
+
+    @Override
+    public void setDefault(){
+        this.mainMenuFragment.setDefault();
     }
 }

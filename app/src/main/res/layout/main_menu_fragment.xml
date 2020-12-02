@@ -19,7 +19,8 @@
         android:layout_height="200dp"
         android:background="@drawable/vinyl"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/song_name_tv">
+        android:layout_above="@+id/song_name_container"
+        android:layout_marginBottom="10dp">
     </ImageView>
 
 <!--    <ImageView-->
@@ -32,78 +33,83 @@
 <!--        android:layout_marginBottom="100dp">-->
 <!--    </ImageView>-->
 
-    <TextView
-        android:id="@+id/song_name_tv"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/song_name_container"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:text=""
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:divider="#7A7A7A"
-        android:dividerHeight="2px">
-    </TextView>
-
-    <View
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/song_name_tv"
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"/>
-
-    <LinearLayout
-        android:id="@+id/level"
-        android:layout_below="@+id/song_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp">
-
-        <Button
-            android:id="@+id/easy"
+        android:background="@drawable/container_background"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/song_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_gray_button"
-            android:text="@string/Easy"
-            android:textStyle="bold"
-            android:textColor="@color/gray">
-        </Button>
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:textColor="@color/black">
+        </TextView>
+        <View
 
-        <Button
-            android:id="@+id/normal"
+            android:layout_below="@+id/song_name_tv"
+            android:id="@+id/line_view"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:background="#000000"
+           />
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/level"
+            android:layout_below="@+id/line_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_gray_button"
-            android:text="@string/Normal"
-            android:textStyle="bold"
-            android:textColor="@color/gray">
-        </Button>
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
 
+            <Button
+                android:id="@+id/easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_gray_button"
+                android:text="@string/Easy"
+                android:textStyle="bold"
+                android:textColor="@color/gray">
+            </Button>
+
+            <Button
+                android:id="@+id/normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_gray_button"
+                android:text="@string/Normal"
+                android:textStyle="bold"
+                android:textColor="@color/gray">
+            </Button>
+
+            <Button
+                android:id="@+id/hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_gray_button"
+                android:text="@string/Hard"
+                android:textStyle="bold"
+                android:textColor="@color/gray">
+            </Button>
+        </LinearLayout>
+    </RelativeLayout>
         <Button
-            android:id="@+id/hard"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/start_btn"
+            android:layout_below="@+id/song_name_container"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_gray_button"
-            android:text="@string/Hard"
-            android:textStyle="bold"
-            android:textColor="@color/gray">
+            android:text="@string/Start"
+            android:textColor="@color/black"
+            android:background="@drawable/round_fill_button"
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp">
         </Button>
-
-    </LinearLayout>
-    <Button
-        android:id="@+id/start_btn"
-        android:layout_below="@+id/level"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/Start"
-        android:textColor="@color/white"
-        android:background="@drawable/round_button"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textSize="18dp">
-    </Button>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/setting_fab"
