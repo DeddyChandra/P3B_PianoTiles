@@ -27,20 +27,20 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     }
     public void drawRedrawTiles(Tiles tiles){
         presenterUI.delete(tiles);
-        if(getTouchPoint()!=null) {
-            if (getTouchPoint().x <= tiles.x + tiles.getWidth() &&
-                    getTouchPoint().x >= tiles.x &&
-                    getTouchPoint().x <= tiles.x+tiles.getWidth() &&
-                    getTouchPoint().y >=tiles.y &&
-                    getTouchPoint().y <=tiles.getY() + tiles.getHeight()) {
-                    tiles.setStop(true);
+
+            if (getTouchPoint()!=null&&
+                getTouchPoint().x <= tiles.x + tiles.getWidth() &&
+                getTouchPoint().x >= tiles.x &&
+                getTouchPoint().x <= tiles.x+tiles.getWidth() &&
+                getTouchPoint().y >=tiles.y &&
+                getTouchPoint().y <=tiles.getY() + tiles.getHeight())
+            {
+                tiles.setStop(true);
             }
-        }else {
-
+            else {
             tiles.setY(tiles.getY() + getAy(tiles));
-
             presenterUI.draw(tiles);
-        }
+            }
     }
     public PointF getTouchPoint(){
         return this.point;
