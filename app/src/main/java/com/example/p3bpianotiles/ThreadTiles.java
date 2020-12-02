@@ -6,9 +6,9 @@ public class ThreadTiles implements Runnable {
     private Thread thread;
     private TilesHandler handler;
     private Tiles tiles;
-    ThreadTiles(TilesHandler handler){
+    ThreadTiles(TilesHandler handler,int x,int y,int width,int height){
         thread = new Thread(this);
-        tiles = new Tiles(10,10,100,100);
+        tiles = new Tiles(x,y,width,height);
         this.handler=handler;
     }
     public void startingthread(){
