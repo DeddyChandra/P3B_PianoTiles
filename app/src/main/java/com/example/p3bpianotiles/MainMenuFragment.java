@@ -199,7 +199,12 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).getId());
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
             mediaPlayer.start();
-            mediaPlayer.setVolume(volume,volume);
+            if(presenter.isMute()) {
+                mediaPlayer.setVolume(0, 0);
+            }
+            else{
+                mediaPlayer.setVolume(volume,volume);
+            }
 //            mediaPlayer.setLooping(true);
             return true;
         }
