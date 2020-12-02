@@ -31,7 +31,7 @@ public class ThreadTiles implements Runnable {
             handler.setMessage(tiles,0);
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

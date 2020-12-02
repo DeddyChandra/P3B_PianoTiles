@@ -50,7 +50,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public float getAy(Tiles tiles){
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
-
+        tiles.setTimestamp(System.currentTimeMillis());
         float deltatime = (curtime-prevtime)/100.0f;
 
 
