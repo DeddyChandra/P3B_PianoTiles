@@ -1,6 +1,7 @@
 package com.example.p3bpianotiles;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,17 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import com.example.p3bpianotiles.databinding.SettingFragmentBinding;
 
-public class SettingFragment extends Fragment implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+public class SettingFragment extends Fragment implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private SettingFragmentBinding binding;
     private FragmentListener fragmentListener;
     private SettingPresenter presenter;
+
     public SettingFragment(){
 
     }
@@ -25,6 +33,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         this.binding.doneBtn.setOnClickListener(this);
         this.presenter = new SettingPresenter();
         this.binding.seekBar.setOnSeekBarChangeListener(this);
+
         return this.binding.getRoot();
     }
 
@@ -42,8 +51,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onClick(View v){
         if(v == this.binding.doneBtn){
+            Toast.makeText(this.getContext(),"Setting Changed",Toast.LENGTH_SHORT).show();
             this.fragmentListener.changePage(1);
         }
+
     }
 
     @Override
@@ -60,4 +71,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     public void onStopTrackingTouch(SeekBar seekBar) {
 //        Toast.makeText(getContext(),"seekbar touch stopped!", Toast.LENGTH_SHORT).show();
     }
+
+
+
 }

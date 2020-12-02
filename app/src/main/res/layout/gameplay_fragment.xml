@@ -12,29 +12,30 @@
         android:background="@drawable/play_background">
     </ImageView>
 
-        <Button
-            android:id="@+id/pause_btn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_pause_24"
-            android:layout_alignParentLeft="true"
-            android:padding="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            >
-        </Button>
+    <Button
+        android:id="@+id/pause_btn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_pause_24"
+        android:padding="16dp"></Button>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:text="777"
         android:textColor="@color/red"
         android:textSize="50dp"
         android:textStyle="bold"
-        android:text="777"
-        >
-    </TextView>
+        android:id="@+id/tv"></TextView>
+
+
 
     <ImageView
         android:id="@+id/iv_canvas"
