@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -136,8 +137,13 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {
-            Log.d("e",e.toString());
-            return false;
+            if(presenter.getTouchPoint()==null){
+                presenter.setTouchPoint(new PointF(e.getX(),e.getY()));
+            }else{
+                presenter.getTouchPoint().set(e.getX(),e.getY());
+            }
+
+            return true;
         }
     }
 

@@ -6,6 +6,7 @@ public class Tiles {
     float y;
     float width;
     float height;
+    boolean stop;
     int note;
     int duration;
 
@@ -15,7 +16,9 @@ public class Tiles {
         this.y = y;
         this.width = width;
         this.height = height;
+
     }
+
     public Tiles(int column,float width,float length){
         this.column = column;
         this.height = height;
@@ -59,7 +62,12 @@ public class Tiles {
     public void setColumn(int column){
         this.column= column;
     }
-
+    public void setStop(boolean stop){
+        this.stop=stop;
+    }
+    public boolean getStop(){
+        return this.stop;
+    }
     public float getX(){
         return this.x;
     }
