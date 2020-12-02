@@ -6,41 +6,54 @@ public class Tiles {
     float y;
     float width;
     float height;
-
+    boolean stop;
+    int note;
+    long timestamp;
+//kecepatan = jarak / waktu
+    //System.currentTimeMillis();
+    //System.currentTimeMillis();
 
     public Tiles(float x,float y,float width,float height){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.timestamp = System.currentTimeMillis();
     }
+    public long getTimestamp(){
+        return timestamp;
+    }
+    public void setTimestamp(long timestamp){
+        this.timestamp=timestamp;
+    }
+
     public Tiles(int column,float width,float length){
         this.column = column;
-        this.height = height;
         if(column==0){
            setX(0);
-           setY(0);
+           setY(-length);
            setWidth(width/4);
            setHeight(length);
         }
         if(column==1){
             setX(width/4);
-            setY(0);
+            setY(-length);
             setWidth(width/4);
             setHeight(length);
         }
         if(column==2){
             setX(width/4);
-            setY(0);
+            setY(-length);
             setWidth(2*width/4);
             setHeight(length);
         }
         if(column==3){
             setX(3*width/4);
-            setY(0);
+            setY(-length);
             setWidth(width/4);
             setHeight(length);
         }
+        this.timestamp = System.currentTimeMillis();
     }
     public void setX(float x){
         this.x=x;
@@ -57,7 +70,12 @@ public class Tiles {
     public void setColumn(int column){
         this.column= column;
     }
-
+    public void setStop(boolean stop){
+        this.stop=stop;
+    }
+    public boolean getStop(){
+        return this.stop;
+    }
     public float getX(){
         return this.x;
     }
