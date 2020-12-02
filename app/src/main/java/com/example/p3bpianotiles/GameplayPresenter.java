@@ -17,7 +17,5 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         presenterUI.delete(tiles);
         tiles.setY(tiles.getY()+1);
         presenterUI.draw(tiles);
-
-
     }
 }

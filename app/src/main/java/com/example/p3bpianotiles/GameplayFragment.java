@@ -67,7 +67,6 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
 
     }
 
-
     @Override
     public void draw(Tiles tiles) {
         paint.setColor(mColorTiles);

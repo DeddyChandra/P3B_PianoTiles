@@ -17,14 +17,16 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private FragmentManager fragmentManager;
     MainMenuFragment mainMenuFragment;
     GameplayFragment gameplayFragment;
+    SettingFragment settingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
-        mainMenuFragment=new MainMenuFragment();
-        gameplayFragment=new GameplayFragment();
+        mainMenuFragment = new MainMenuFragment();
+        gameplayFragment = new GameplayFragment();
+        settingFragment = new SettingFragment();
         fragmentManager = this.getSupportFragmentManager();
         changePage(1);
     }
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.mainMenuFragment.resumeSound();
     }
 
+    @Override
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page == 1){
@@ -48,6 +51,14 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         } else if(page == 2){
             ft.replace(R.id.fragment_container, this.gameplayFragment).addToBackStack(null);
         }
+        else if(page == 3){
+            ft.replace(R.id.fragment_container,this.settingFragment).addToBackStack(null);
+        }
         ft.commit();
+    }
+
+    @Override
+    public void changeVolume(int vol){
+        this.mainMenuFragment.changeVolume(vol);
     }
 }

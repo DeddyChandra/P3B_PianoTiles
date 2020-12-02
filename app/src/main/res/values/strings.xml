@@ -4,4 +4,6 @@
     <string name="Easy">Easy</string>
     <string name="Normal">Normal</string>
     <string name="Hard">Hard</string>
+    <string name="Volume">Volume</string>
+    <string name="Done">Done</string>
 </resources>

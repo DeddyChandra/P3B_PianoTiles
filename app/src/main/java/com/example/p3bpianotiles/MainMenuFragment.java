@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ import com.example.p3bpianotiles.databinding.MainMenuFragmentBinding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class MainMenuFragment extends Fragment implements View.OnClickListener, MainMenuContract.UI, View.OnTouchListener{
     //binding here
@@ -35,8 +37,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     private FragmentListener fragmentListener;
     private List<Music> musicList;
     private GestureDetector mDetector;
-    private int nowPlaying = 0;
+    private boolean musicStarted = false;
+    private int nowPlaying;
+    private float volume = 1;
     public MainMenuFragment(){
+
 
     }
 
@@ -48,11 +53,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.setLevel(this.presenter.getLevel());
         this.mDetector = new GestureDetector(getContext(), new MyCustomGestureListener());
         this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
-        this.mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).id);
-        binding.songNameTv.setText(musicList.get(nowPlaying).getName());
-        this.mediaPlayer.start();
-        this.mediaPlayer.setLooping(true);
-
+        startRandomMusic();
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
@@ -118,6 +119,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.fragmentListener.changePage(2);
         }
         else if(v == this.binding.settingFab){
+            this.fragmentListener.changePage(3);
         }
     }
 
@@ -158,7 +160,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else{
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_on));
-            this.mediaPlayer.setVolume(1,1);
+            Log.d("vol", "changeVolume: "+volume);
+            this.mediaPlayer.setVolume(volume,volume);
         }
     }
 
@@ -181,8 +184,34 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).getId());
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
             mediaPlayer.start();
+            mediaPlayer.setVolume(volume,volume);
             mediaPlayer.setLooping(true);
             return true;
         }
+    }
+
+    public void startRandomMusic(){
+        if(musicStarted){
+            binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+        }
+        else {
+            int max = musicList.size();
+            Random random = new Random();
+            this.nowPlaying = random.nextInt(max);
+            this.mediaPlayer = MediaPlayer.create(getActivity(), musicList.get(nowPlaying).getId());
+            this.binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+            this.mediaPlayer.start();
+            this.mediaPlayer.setVolume(volume,volume);
+            this.mediaPlayer.setLooping(true);
+            this.musicStarted = true;
+        }
+    }
+
+    public void changeVolume(int vol){
+        this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
+        if(Double.isInfinite(volume)){
+            volume = 1;
+        }
+        this.mediaPlayer.setVolume(volume, volume);
     }
 }

@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:text="Sweet But Psycho"
+        android:text=""
         android:textSize="30sp"
         android:textColor="@color/white"
         android:divider="#7A7A7A"
