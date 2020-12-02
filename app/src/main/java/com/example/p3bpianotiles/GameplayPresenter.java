@@ -34,7 +34,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
                 getTouchPoint().y >=tiles.y &&
                 getTouchPoint().y <=tiles.getY() + tiles.getHeight())
             {
-                tiles.setStop(true);
+               /* Log.d("x:",getTouchPoint().x+"");
+                Log.d("y:",getTouchPoint().y+"");
+                tiles.setStop(true);*/
             }
             else {
             tiles.setY(tiles.getY() + getAy(tiles));

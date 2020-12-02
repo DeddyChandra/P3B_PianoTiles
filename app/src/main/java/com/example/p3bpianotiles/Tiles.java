@@ -42,9 +42,9 @@ public class Tiles {
             setHeight(length);
         }
         if(column==2){
-            setX(width/4);
+            setX(2*width/4);
             setY(-length);
-            setWidth(2*width/4);
+            setWidth(width/4);
             setHeight(length);
         }
         if(column==3){
