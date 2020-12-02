@@ -26,18 +26,12 @@ public class ThreadTiles implements Runnable {
 
         while(tiles.getStop()==false) {
             //handler.setMessage(tiles,1);
-
-
-            handler.setMessage(tiles,0);
-
-                try {
-
-                    Thread.sleep(15);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-
+        handler.setMessage(tiles,0);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
