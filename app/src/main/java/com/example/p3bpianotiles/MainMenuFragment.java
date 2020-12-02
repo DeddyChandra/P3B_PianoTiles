@@ -64,7 +64,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.startBtn.setOnClickListener(this);
         this.binding.settingFab.setOnClickListener(this);
         this.binding.vinylIv.setOnTouchListener(this);
-        this.mediaPlayer.setOnCompletionListener(this);
         if(backgroundId != 0) {
             this.binding.backgroundIv.setImageResource(backgroundId);
         }
@@ -175,6 +174,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        this.mediaPlayer.setOnCompletionListener(this);
         return this.mDetector.onTouchEvent(event);
     }
 
@@ -188,8 +188,13 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         mediaPlayer = MediaPlayer.create(getActivity(),musicList.get(nowPlaying).getId());
         binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+        if(presenter.isMute()){
+            this.mediaPlayer.setVolume(0,0);
+        }
+        else {
+            mediaPlayer.setVolume(volume, volume);
+        }
         mediaPlayer.start();
-        mediaPlayer.setVolume(volume,volume);
     }
 
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -213,6 +218,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
                 mediaPlayer.setVolume(volume,volume);
             }
 //            mediaPlayer.setLooping(true);
+
             return true;
         }
     }
@@ -220,6 +226,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void startRandomMusic(){
         if(musicStarted){
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
+            this.mediaPlayer.setOnCompletionListener(this);
         }
         else {
             int max = musicList.size();
@@ -228,9 +235,15 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.mediaPlayer = MediaPlayer.create(getActivity(), musicList.get(nowPlaying).getId());
             this.binding.songNameTv.setText(musicList.get(nowPlaying).getName());
             this.mediaPlayer.start();
-            this.mediaPlayer.setVolume(volume,volume);
+            if(presenter.isMute()){
+                this.mediaPlayer.setVolume(0,0);
+            }
+            else {
+                this.mediaPlayer.setVolume(volume, volume);
+            }
 //            this.mediaPlayer.setLooping(true);
             this.musicStarted = true;
+            this.mediaPlayer.setOnCompletionListener(this);
         }
     }
 
