@@ -6,7 +6,7 @@ public interface GameplayPresenterInterface {
         public void delete(Tiles tiles);
     }
     interface Presenter{
-        public void generateTiles(GameplayPresenterInterface.UI presenterUI);
+        public void generateTiles(int x,int y,int width,int height);
         public void drawRedrawTiles(Tiles tiles);
     }
 }

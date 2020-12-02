@@ -43,8 +43,11 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                 @Override
                 public void run() {
                     initCanvas();
-                    presenter = new GameplayPresenter();
-                    presenter.generateTiles(ui);
+                    presenter = new GameplayPresenter(ui);
+                    presenter.generateTiles(0,0,width/4,height/4);
+                    presenter.generateTiles(width/4,100,width/4,height/4);
+                    presenter.generateTiles(width*2/4,400,width/4,height/4);
+                    presenter.generateTiles(width*3/4,500,width/4,height/4);
                 }
             }
         );
