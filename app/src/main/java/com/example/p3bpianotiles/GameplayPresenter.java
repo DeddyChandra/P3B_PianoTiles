@@ -31,7 +31,6 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
             if (getTouchPoint()!=null&&
                 getTouchPoint().x <= tiles.x + tiles.getWidth() &&
                 getTouchPoint().x >= tiles.x &&
-                getTouchPoint().x <= tiles.x+tiles.getWidth() &&
                 getTouchPoint().y >=tiles.y &&
                 getTouchPoint().y <=tiles.getY() + tiles.getHeight())
             {
@@ -50,8 +49,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public float getAy(Tiles tiles){
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
-        tiles.setTimestamp(System.currentTimeMillis());
+        tiles.setTimestamp(curtime);
         float deltatime = (curtime-prevtime)/5.0f;
+
 
 
         return deltatime;
