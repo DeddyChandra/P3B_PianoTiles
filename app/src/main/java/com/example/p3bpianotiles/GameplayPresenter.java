@@ -1,6 +1,7 @@
 package com.example.p3bpianotiles;
 
 import android.graphics.PointF;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -32,15 +33,28 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
                     getTouchPoint().y >= tiles.y &&
                     getTouchPoint().y >= tiles.y &&
                     getTouchPoint().y <= tiles.getY() + tiles.getHeight()) {
-                tiles.setStop(true);
+                    tiles.setStop(true);
             }
         }else {
-            tiles.setY(tiles.getY() + 1);
+
+            tiles.setY(tiles.getY() + getAy(tiles));
+
             presenterUI.draw(tiles);
         }
     }
     public PointF getTouchPoint(){
         return this.point;
+    }
+
+
+    public float getAy(Tiles tiles){
+        long prevtime = tiles.getTimestamp();
+        long curtime = System.currentTimeMillis();
+
+        float deltatime = (curtime-prevtime)/100.0f;
+
+
+        return deltatime;
     }
 
 }
