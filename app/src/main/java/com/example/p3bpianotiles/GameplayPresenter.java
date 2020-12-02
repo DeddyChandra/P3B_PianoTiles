@@ -30,9 +30,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         if(getTouchPoint()!=null) {
             if (getTouchPoint().x <= tiles.x + tiles.getWidth() &&
                     getTouchPoint().x >= tiles.x &&
-                    getTouchPoint().y >= tiles.y &&
-                    getTouchPoint().y >= tiles.y &&
-                    getTouchPoint().y <= tiles.getY() + tiles.getHeight()) {
+                    getTouchPoint().x <= tiles.x+tiles.getWidth() &&
+                    getTouchPoint().y >=tiles.y &&
+                    getTouchPoint().y <=tiles.getY() + tiles.getHeight()) {
                     tiles.setStop(true);
             }
         }else {
@@ -51,7 +51,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(System.currentTimeMillis());
-        float deltatime = (curtime-prevtime)/100.0f;
+        float deltatime = (curtime-prevtime)/5.0f;
 
 
         return deltatime;
