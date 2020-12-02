@@ -61,4 +61,5 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void changeVolume(int vol){
         this.mainMenuFragment.changeVolume(vol);
     }
+
 }

@@ -2,7 +2,10 @@ package com.example.p3bpianotiles;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +20,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 
-public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI {
+import java.util.LinkedList;
+
+public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI, View.OnClickListener {
     //binding here
     private GameplayFragmentBinding binding;
     private GameplayPresenterInterface.Presenter presenter;
@@ -25,12 +30,17 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;
-    private GestureDetector detector;
     private ImageView iv_canvas;
     private int width;
     private int height;
     private int mColorBackground;
     private int mColorTiles;
+
+    private ThreadTiles threadTiles;
+    private TilesHandler tilesHandler;
+    LinkedList<ThreadTiles> threadList;
+
+    Paint transparentPaint;
     public GameplayFragment(){
 
     }
@@ -38,6 +48,8 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
         ui = this;
+
+
         this.binding.ivCanvas.post(
             new Runnable() {
                 @Override
@@ -53,6 +65,8 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         );
 
 
+        this.binding.tv.bringToFront();
+        this.binding.tv.invalidate();
         return binding.getRoot();
 
     }
@@ -63,10 +77,13 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         this.bitmap = Bitmap.createBitmap(binding.ivCanvas.getWidth(),binding.ivCanvas.getHeight(), Bitmap.Config.ARGB_8888);
         binding.ivCanvas.setImageBitmap(bitmap);
         this.canvas = new Canvas(this.bitmap);
-        mColorBackground = ResourcesCompat.getColor(getResources(),R.color.white,null);
-        canvas.drawColor(mColorBackground);
-        paint = new Paint();
+
+        this.paint = new Paint();
         mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
+
+        this.transparentPaint = new Paint();
+        this.transparentPaint.setColor(Color.TRANSPARENT);
+        this.transparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
 
     }
 
@@ -80,14 +97,26 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
         binding.ivCanvas.invalidate();
     }
+
     @Override
     public void delete(Tiles tiles) {
-        paint.setColor(mColorBackground);
+        this.transparentPaint = new Paint();
+        this.transparentPaint.setColor(Color.TRANSPARENT);
+        this.transparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
+        //paint.setColor(Color.WHITE);
         float widthTiles = tiles.getWidth();
         float heightTiles = tiles.getHeight();
         float x = tiles.getX();
         float y = tiles.getY();
-        canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
+        canvas.drawRect(x,y,x+widthTiles,y+heightTiles,transparentPaint);
         binding.ivCanvas.invalidate();
     }
+
+
+    public void onClick(View v){
+        if(v == this.binding.pauseBtn){
+
+        }
+    }
+
 }

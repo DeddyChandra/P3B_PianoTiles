@@ -121,6 +121,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.settingFab){
             this.fragmentListener.changePage(3);
+
         }
     }
 
