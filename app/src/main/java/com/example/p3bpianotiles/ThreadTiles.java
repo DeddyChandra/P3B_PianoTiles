@@ -29,7 +29,7 @@ public class ThreadTiles implements Runnable {
     @Override
     public void run() {
 
-        while(tiles.getClicked()==false) {
+        while(true) {
             //handler.setMessage(tiles,1);
             if(checkClick()){
                 tiles.setClicked(true);
@@ -40,8 +40,7 @@ public class ThreadTiles implements Runnable {
                 };
                 handler.setMessage(arr,1);
                 break;
-            }
-            if(tiles.getClicked()==false){
+            }else {
                 Object arr[]= {
                         tiles,checkClick(),getAy(),YPassThrought()
                 };
@@ -55,7 +54,6 @@ public class ThreadTiles implements Runnable {
                 }
             }
         }
-        
     }
 
     public boolean YPassThrought(){
@@ -87,7 +85,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/2f;
+        float deltatime = (curtime-prevtime)/0.5f;
         return deltatime;
     }
 }
