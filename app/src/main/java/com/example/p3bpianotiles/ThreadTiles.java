@@ -1,20 +1,14 @@
 package com.example.p3bpianotiles;
 
-import android.graphics.PointF;
-import android.util.Log;
-
-import java.util.ArrayList;
-
-import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
 public class ThreadTiles implements Runnable {
     private Thread thread;
     private TilesHandler handler;
     private Tiles tiles;
-    private GameplayPresenterInterface.Presenter presenter;
+    private GameplayContract.Presenter presenter;
 
-    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayPresenterInterface.Presenter presenter){
+    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter){
         thread = new Thread(this);
         this.tiles =tiles;
         tiles.resetTiles();
@@ -74,7 +68,7 @@ public class ThreadTiles implements Runnable {
     public boolean YPassThrought(){
         //Log.d("checks", tiles.toString());
         if(tiles.getY() >= 0 && !tiles.isPass()){
-            tiles.setPass(true);
+            handler.setMessage(new Object[]{tiles},3);
             return true;
         }
         else{
@@ -99,7 +93,7 @@ public class ThreadTiles implements Runnable {
     public float getAy(){
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
-        tiles.setTimestamp(curtime);
+        handler.setMessage(new Object[]{tiles,curtime},4);
         float deltatime = (curtime-prevtime)/2f;
         return deltatime;
     }

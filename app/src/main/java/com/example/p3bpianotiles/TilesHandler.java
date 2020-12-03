@@ -4,17 +4,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import androidx.fragment.app.FragmentActivity;
-
 public class TilesHandler extends Handler {
-    GameplayPresenterInterface.Presenter presenter;
+    GameplayContract.Presenter presenter;
     protected GameplayFragment gameplayFragment;
 
     private static int MSG_DRAW=0;
     private static int MSG_DELTE=1;
     protected final static int ADD_SCORE=0;
 
-    public TilesHandler(GameplayPresenterInterface.Presenter presenter){
+    public TilesHandler(GameplayContract.Presenter presenter){
         this.presenter= presenter;
     }
     public void handleMessage(Message msg){
@@ -29,6 +27,12 @@ public class TilesHandler extends Handler {
             Log.d("a","a");
             presenter.generate((Object[])msg.obj);
         }
+        if(msg.what == 3){
+            presenter.setPassTrue((Object[])msg.obj);
+        }
+        if(msg.what == 4){
+            presenter.setTimeStamp((Object[])msg.obj);
+        }
         /*if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();
         }*/
@@ -40,6 +44,7 @@ public class TilesHandler extends Handler {
         this.sendMessage(msg);
         //Log.d("masuk","masuk")
     }
+
     public void addScore(){
         Message msg = new Message();
         msg.what = ADD_SCORE;

@@ -6,10 +6,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
+public class GameplayPresenter implements GameplayContract.Presenter {
     ArrayList<Tiles> tilesArrayList;
     TilesHandler handler;
-    GameplayPresenterInterface.UI presenterUI;
+    GameplayContract.UI presenterUI;
     GameState gameState;
     PointF point;
     public int level;
@@ -24,7 +24,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
 
     //hapus
 
-    GameplayPresenter(GameplayPresenterInterface.UI presenterUI){
+    GameplayPresenter(GameplayContract.UI presenterUI){
         tilesArrayList = new ArrayList<>();
         this.presenterUI=presenterUI;
         index = 0;
@@ -101,5 +101,13 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public int generateRandomColumn(){
         Random rand = new Random();
         return rand.nextInt(4);
+    }
+
+    public void setPassTrue(Object[] objects){
+        ((Tiles)(objects[0])).setPass(true);
+    }
+
+    public void setTimeStamp(Object[] objects){
+        ((Tiles)(objects[0])).setTimestamp((long)objects[1]);
     }
 }

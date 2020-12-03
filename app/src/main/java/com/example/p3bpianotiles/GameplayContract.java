@@ -2,7 +2,7 @@ package com.example.p3bpianotiles;
 
 import android.graphics.PointF;
 
-public interface GameplayPresenterInterface {
+public interface GameplayContract {
     interface UI{
         public void draw(Tiles tiles);
         public void delete(Tiles tiles);
@@ -18,6 +18,8 @@ public interface GameplayPresenterInterface {
         void generate(Object[] arr);
         //hapus
         void setWH(int width, int height);
+        void setPassTrue(Object[] objects);
+        void setTimeStamp(Object[] objects);
         //hapus
     }
 }
