@@ -17,6 +17,7 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     private PauseFragmentBinding binding;
     private FragmentListener listener;
     private float volume;
+    private int backgroundId = 0;
 
     public PauseFragment(){
 
@@ -29,6 +30,9 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
         this.binding.restartBtn.setOnClickListener(this);
         this.binding.quitBtn.setOnClickListener(this);
         this.binding.seekBar.setOnSeekBarChangeListener(this);
+        if(backgroundId != 0) {
+            this.binding.backgroundIv.setImageResource(backgroundId);
+        }
         return this.binding.getRoot();
     }
 
@@ -78,5 +82,10 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
 //            volume = 1;
 //        }
 //        this.mediaPlayer.setVolume(volume, volume);
+    }
+
+    public void changeBackground(int id){
+        this.backgroundId = id;
+//        this.binding.backgroundIv.setImageResource(id);
     }
 }
