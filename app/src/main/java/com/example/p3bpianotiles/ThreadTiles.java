@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
 public class ThreadTiles implements Runnable {
@@ -15,7 +16,9 @@ public class ThreadTiles implements Runnable {
 
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayPresenterInterface.Presenter presenter){
         thread = new Thread(this);
+
         this.tiles =tiles;
+        tiles.setTimestamp(System.currentTimeMillis());
         this.handler=handler;
         this.presenter=presenter;
 
@@ -48,8 +51,9 @@ public class ThreadTiles implements Runnable {
     }
 
     public boolean YPassThrought(){
+        //Log.d("checks", tiles.toString());
         if(tiles.getY() >= 0 && !tiles.isPass()){
-            Log.d("checks", "YPassThrought: ");
+
             tiles.setPass(true);
             return true;
         }

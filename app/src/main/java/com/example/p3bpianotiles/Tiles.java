@@ -19,7 +19,7 @@ public class Tiles {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.timestamp = System.currentTimeMillis();
+
         this.pass = false;
     }
     public long getTimestamp(){
@@ -56,7 +56,7 @@ public class Tiles {
             setWidth(width/4);
             setHeight(length);
         }
-        this.timestamp = System.currentTimeMillis();
+
     }
     public void setX(float x){
         this.x=x;
@@ -102,4 +102,5 @@ public class Tiles {
     public void setPass(boolean pass) {
         this.pass = pass;
     }
+
 }

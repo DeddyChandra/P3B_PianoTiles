@@ -29,6 +29,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         index = 0;
     }
     public void generateTiles(int column,int width,int height, int index){
+        //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
         ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this);
         thread.startingthread();
