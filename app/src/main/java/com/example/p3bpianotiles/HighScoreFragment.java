@@ -13,6 +13,7 @@ import com.example.p3bpianotiles.databinding.HighscoreFragmentBinding;
 public class HighScoreFragment extends Fragment implements View.OnClickListener, HighScoreContract.ui {
     HighscoreFragmentBinding binding;
     private FragmentListener listener;
+    private int backgroundId = 0;
 
     public HighScoreFragment(){
 
@@ -21,7 +22,9 @@ public class HighScoreFragment extends Fragment implements View.OnClickListener,
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance) {
         this.binding = HighscoreFragmentBinding.inflate(inflater);
-
+        if(backgroundId != 0) {
+            this.binding.backgroundIv.setImageResource(backgroundId);
+        }
         return this.binding.getRoot();
     }
 
@@ -30,6 +33,10 @@ public class HighScoreFragment extends Fragment implements View.OnClickListener,
         if(v == this.binding.nextBtn){
             this.listener.changePage(5);
         }
+    }
+
+    public void changeBackground(int id){
+        this.backgroundId = id;
     }
 
     @Override

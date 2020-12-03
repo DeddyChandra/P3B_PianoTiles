@@ -161,10 +161,10 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         public boolean onDown(MotionEvent e) {
             if(presenter.getTouchPoint()==null){
                 presenter.setTouchPoint(new PointF(e.getX(),e.getY()));
-            }else{
+            }
+            else{
                 presenter.getTouchPoint().set(e.getX(),e.getY());
             }
-
             return true;
         }
         @Override
