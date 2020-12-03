@@ -29,7 +29,7 @@ public class ThreadTiles implements Runnable {
     @Override
     public void run() {
 
-        while(true) {
+        while(!(tiles.isPass()==true&&tiles.clicked==true)) {
             //handler.setMessage(tiles,1);
             if(checkClick()){
                 tiles.setClicked(true);
@@ -61,10 +61,7 @@ public class ThreadTiles implements Runnable {
                 };
                 handler.setMessage(arr,2);
             }
-            if(tiles.isPass()==true&&tiles.clicked==true){
 
-                break;
-            }
 
 
 
