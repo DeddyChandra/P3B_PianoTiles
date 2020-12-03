@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private GameplayFragment gameplayFragment;
     private SettingFragment settingFragment;
     private PauseFragment pauseFragment;
+    private GameOverFragment gameOverFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         gameplayFragment = new GameplayFragment();
         settingFragment = new SettingFragment();
         pauseFragment = new PauseFragment();
+        gameOverFragment = new GameOverFragment();
         fragmentManager = this.getSupportFragmentManager();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         changePage(1);
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void changeBackground(int id){
         this.mainMenuFragment.changeBackground(id);
+        this.pauseFragment.changeBackground(id);
+        this.gameOverFragment.changeBackground(id);
     }
 
     @Override

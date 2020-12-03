@@ -80,7 +80,7 @@
             android:text="@string/Restart">
         </Button>
         <Button
-            android:id="@+id/quit_btn"
+            android:id="@+id/main_menu_btn"
             android:layout_gravity="center"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
