@@ -58,8 +58,6 @@
 
                 </TextView>
                 <View
-                    android:layout_below="@+id/song_name_tv"
-                    android:id="@+id/line_view"
                     android:layout_width="300dp"
                     android:layout_height="2dp"
                     android:background="#000000" />
