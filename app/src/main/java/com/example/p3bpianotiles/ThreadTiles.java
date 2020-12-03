@@ -30,11 +30,17 @@ public class ThreadTiles implements Runnable {
 
         while(tiles.getStop()==false) {
             //handler.setMessage(tiles,1);
-
-            Object arr[]= {
-                tiles,check(),getAy(),YPassThrought()
-            };
-            handler.setMessage(arr,0);
+            if(check()){
+                Object arr[]= {
+                       tiles
+                };
+                handler.setMessage(arr,1);
+                tiles.setStop(true);
+            }else {
+                Object arr[]= {
+                        tiles,check(),getAy(),YPassThrought()
+                };
+                handler.setMessage(arr, 0);
 
                 try {
 
@@ -42,6 +48,7 @@ public class ThreadTiles implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            }
         }
     }
 
@@ -74,7 +81,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/5.0f;
+        float deltatime = (curtime-prevtime)/0.5f;
         return deltatime;
     }
 }

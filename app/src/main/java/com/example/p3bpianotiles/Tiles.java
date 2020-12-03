@@ -10,7 +10,7 @@ public class Tiles {
     int note;
     long timestamp;
     boolean pass;
-//kecepatan = jarak / waktu
+    //kecepatan = jarak / waktu
     //System.currentTimeMillis();
     //System.currentTimeMillis();
 
@@ -19,7 +19,6 @@ public class Tiles {
         this.y = y;
         this.width = width;
         this.height = height;
-
         this.pass = false;
     }
     public long getTimestamp(){

@@ -13,6 +13,7 @@ public interface GameplayPresenterInterface {
         public void drawRedrawTiles(Object[] arr);
         public void setTouchPoint(PointF pointf);
         public PointF getTouchPoint();
+        void delete(Object o[]);
         void setLevel(int level);
         void generate(Object[] arr);
         //hapus

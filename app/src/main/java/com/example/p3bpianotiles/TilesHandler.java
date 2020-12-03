@@ -10,6 +10,7 @@ public class TilesHandler extends Handler {
     protected GameplayFragment gameplayFragment;
 
     private static int MSG_DRAW=0;
+    private static int MSG_DELTE=1;
     protected final static int ADD_SCORE=0;
 
     public TilesHandler(GameplayPresenterInterface.Presenter presenter){
@@ -19,6 +20,9 @@ public class TilesHandler extends Handler {
         if(msg.what==MSG_DRAW){
             presenter.drawRedrawTiles((Object[])msg.obj);
             presenter.generate((Object[])msg.obj);
+        }
+        else if(msg.what== TilesHandler.MSG_DELTE){
+            presenter.delete((Object[])msg.obj);
         }
         else if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();
