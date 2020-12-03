@@ -79,4 +79,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void setDefault(){
         this.mainMenuFragment.setDefault();
     }
+
+    @Override
+    public void setLevel(int level){
+        this.gameplayFragment.setLevel(level);
+    }
 }

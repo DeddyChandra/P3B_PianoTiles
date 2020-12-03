@@ -10,7 +10,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     TilesHandler handler;
     GameplayPresenterInterface.UI presenterUI;
     PointF point;
-
+    public int level;
 
     GameplayPresenter(GameplayPresenterInterface.UI presenterUI){
         this.presenterUI=presenterUI;
@@ -25,6 +25,15 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public void setTouchPoint(PointF point){
         this.point = point;
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public void drawRedrawTiles(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
         if((boolean)arr[1]==true) {

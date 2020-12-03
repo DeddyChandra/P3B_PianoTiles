@@ -13,5 +13,6 @@ public interface GameplayPresenterInterface {
         public void drawRedrawTiles(Object[] arr);
         public void setTouchPoint(PointF pointf);
         public PointF getTouchPoint();
+        void setLevel(int level);
     }
 }
