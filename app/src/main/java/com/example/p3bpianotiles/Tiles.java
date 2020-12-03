@@ -10,6 +10,7 @@ public class Tiles {
     int note;
     long timestamp;
     boolean pass;
+    boolean addedScore;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
     //System.currentTimeMillis();
@@ -20,6 +21,7 @@ public class Tiles {
         this.width = width;
         this.height = height;
         this.pass = false;
+        this.addedScore = false;
     }
     public long getTimestamp(){
         return timestamp;
@@ -30,6 +32,7 @@ public class Tiles {
 
     public void resetTiles(){
         this.timestamp=System.currentTimeMillis();
+        this.setAddedScore(false);
         this.setY(-height);
         this.pass = false;
         this.clicked = false;
@@ -109,4 +112,11 @@ public class Tiles {
         this.pass = pass;
     }
 
+    public boolean isAddedScore() {
+        return addedScore;
+    }
+
+    public void setAddedScore(boolean addedScore) {
+        this.addedScore = addedScore;
+    }
 }

@@ -7,13 +7,15 @@ public class ThreadTiles implements Runnable {
     private TilesHandler handler;
     private Tiles tiles;
     private GameplayContract.Presenter presenter;
+    private GameState gameState;
 
-    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter){
+    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState){
         thread = new Thread(this);
         this.tiles =tiles;
         tiles.resetTiles();
         this.handler=handler;
         this.presenter=presenter;
+        this.gameState = gameState;
     }
     public void startingthread(){
         this.thread.start();
@@ -25,6 +27,9 @@ public class ThreadTiles implements Runnable {
         while(!(tiles.isPass()==true&&tiles.clicked==true)) {
             //handler.setMessage(tiles,1);
             checkLose();
+            if(this.presenter.getGameState() == 2){
+                break;
+            }
             if(checkClick()){
                 tiles.setClicked(true);
             }
@@ -65,7 +70,6 @@ public class ThreadTiles implements Runnable {
             return true;
         }
         else{
-
             return false;
         }
     }
@@ -77,7 +81,10 @@ public class ThreadTiles implements Runnable {
                 presenter. getTouchPoint().y >=tiles.y &&
                 presenter.getTouchPoint().y <=tiles.getY() + tiles.getHeight())
         {
-            this.handler.setMessage(new Object[]{true},3);
+            if(!this.tiles.isAddedScore()) {
+                this.handler.setMessage(new Object[]{true}, 3);
+                this.tiles.setAddedScore(true);
+            }
             return true;
         }else{
             return false;

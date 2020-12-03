@@ -42,7 +42,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     private TilesHandler tilesHandler;
     private LinkedList<ThreadTiles> threadList;
     private int level;
-    private int score = 0;
+    private int score;
     private FragmentListener listener;
 
 
@@ -54,6 +54,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
         ui = this;
+        this.score = 0;
         this.mDetector = new GestureDetector(getContext(), new GameplayFragment.MyCustomGestureListener());
         this.binding.ivCanvas.post(
             new Runnable() {
@@ -61,10 +62,9 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
                 public void run() {
                     initCanvas();
                     presenter = new GameplayPresenter(ui,width,height);
-                    //hapus
-                    //hapus
                     presenter.setLevel(level);
                     presenter.generateTiles(0,width,height/4,0);
+                    presenter.setGameState(0);
 //                    presenter.generateTiles(1,width,height/4);
 //                    presenter.generateTiles(2,width,height/4);
 //                    presenter.generateTiles(3,width,height/4);

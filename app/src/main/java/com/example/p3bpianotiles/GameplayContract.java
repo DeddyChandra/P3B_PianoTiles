@@ -8,6 +8,7 @@ public interface GameplayContract {
         void delete(Tiles tiles);
         void addScore();
         void lose();
+
     }
     interface Presenter{
         void generateTiles(int column, int width,int height, int index);
@@ -19,5 +20,7 @@ public interface GameplayContract {
         void generate(Object[] arr);
         void addScore();
         void checkLose(float lowerY);
+        void setGameState(int i);
+        int getGameState();
     }
 }

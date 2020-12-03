@@ -26,11 +26,12 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.height = height;
         index = 0;
         lose = false;
+        this.gameState = new GameState(0);
     }
     public void generateTiles(int column,int width,int height, int index){
         //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
-        ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this);
+        ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this,gameState);
         thread.startingthread();
     }
 
@@ -62,9 +63,14 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void drawRedrawTiles(Object[] arr){
-        presenterUI.delete((Tiles)arr[0]);
-        ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
-        presenterUI.draw(((Tiles) arr[0]));
+        if(gameState.getState() == 2){
+            this.presenterUI.lose();
+        }
+        else {
+            presenterUI.delete((Tiles) arr[0]);
+            ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
+            presenterUI.draw(((Tiles) arr[0]));
+        }
     }
     public void delete(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
@@ -73,7 +79,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void generateMultipleTiles(Object[] arr){
         //Log.d("masuk","masuk");
-        if(lose){
+        if(gameState.getState() == 2){
             this.presenterUI.lose();
         }
         else {
@@ -113,9 +119,18 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         Log.d("height", "checkLose: "+height);
         if(lowerY >= height){
             lose = true;
+            this.gameState.setState(2);
         }
         else{
             lose = false;
         }
+    }
+
+    public void setGameState(int i){
+        this.gameState.setState(i);
+    }
+
+    public int getGameState(){
+        return this.gameState.getState();
     }
 }
