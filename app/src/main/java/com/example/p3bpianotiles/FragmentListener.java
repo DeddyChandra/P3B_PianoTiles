@@ -6,4 +6,5 @@ public interface FragmentListener {
     void changeBackground(int id);
     void setDefault();
     void setLevel(int level);
+    void setScore(int score, int level);
 }

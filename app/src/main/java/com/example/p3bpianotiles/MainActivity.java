@@ -94,4 +94,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void setLevel(int level){
         this.gameplayFragment.setLevel(level);
     }
+
+    @Override
+    public void setScore(int score, int level){
+        this.gameOverFragment.setScore(score,level);
+    }
 }
