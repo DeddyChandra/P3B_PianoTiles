@@ -78,12 +78,12 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/reset_btn"
+            android:id="@+id/next_btn"
             android:layout_gravity="center"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#F44336"
-            android:text="RESET HIGHSCORE">
+            android:backgroundTint="#4CAF50"
+            android:text="NEXT">
         </Button>
     </LinearLayout>
 </RelativeLayout>
