@@ -17,6 +17,7 @@ public class ThreadTiles implements Runnable {
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayPresenterInterface.Presenter presenter){
         thread = new Thread(this);
         this.tiles =tiles;
+        tiles.resetTiles();
         this.handler=handler;
         this.presenter=presenter;
     }
@@ -28,17 +29,20 @@ public class ThreadTiles implements Runnable {
     @Override
     public void run() {
 
-        while(tiles.getStop()==false) {
+        while(true) {
             //handler.setMessage(tiles,1);
-            if(check()){
+            if(checkClick()){
+                tiles.setClicked(true);
+            }
+            if(tiles.getClicked()==true){
                 Object arr[]= {
                        tiles
                 };
                 handler.setMessage(arr,1);
-                tiles.setStop(true);
+                break;
             }else {
                 Object arr[]= {
-                        tiles,check(),getAy(),YPassThrought()
+                        tiles,checkClick(),getAy(),YPassThrought()
                 };
                 handler.setMessage(arr, 0);
 
@@ -64,7 +68,7 @@ public class ThreadTiles implements Runnable {
         }
     }
 
-    public boolean check(){
+    public boolean checkClick(){
         if (presenter.getTouchPoint()!=null&&
                 presenter.getTouchPoint().x <= tiles.x + tiles.getWidth() &&
                 presenter.getTouchPoint().x >= tiles.x &&

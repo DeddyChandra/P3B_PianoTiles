@@ -10,6 +10,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     ArrayList<Tiles> tilesArrayList;
     TilesHandler handler;
     GameplayPresenterInterface.UI presenterUI;
+    GameState gameState;
     PointF point;
     public int level;
     public int index;
@@ -31,7 +32,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public void generateTiles(int column,int width,int height, int index){
         //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
-        this.tilesArrayList.get(index).resetTiles();
+
         ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this);
         thread.startingthread();
     }
