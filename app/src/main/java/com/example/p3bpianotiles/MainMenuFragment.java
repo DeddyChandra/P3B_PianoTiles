@@ -132,6 +132,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.startBtn){
             this.mediaPlayer.pause();
+            Log.d("level", "onClick: "+this.presenter.getLevel());
             this.fragmentListener.setLevel(this.presenter.getLevel());
             this.fragmentListener.changePage(2);
         }
@@ -149,6 +150,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.binding.easy.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
             this.binding.normal.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
             this.binding.hard.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
+            this.presenter.setLevel(0);
         }
         else if(level == 1){
             this.binding.easy.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.round_gray_button));
@@ -158,6 +160,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.binding.easy.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
             this.binding.normal.setTextColor(ContextCompat.getColor(getContext(), R.color.yellow));
             this.binding.hard.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
+            this.presenter.setLevel(1);
         }
         else{
             this.binding.easy.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.round_gray_button));
@@ -167,6 +170,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             this.binding.easy.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
             this.binding.normal.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
             this.binding.hard.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
+            this.presenter.setLevel(2);
         }
     }
 
