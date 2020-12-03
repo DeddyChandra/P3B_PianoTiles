@@ -38,10 +38,10 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
 
         }
         else if(v == this.binding.restartBtn){
-
+            this.listener.changePage(2);
         }
         else if(v == this.binding.quitBtn){
-
+            this.listener.changePage(1);
         }
     }
 
