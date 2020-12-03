@@ -70,11 +70,14 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         presenterUI.draw(((Tiles) arr[0]));
     }
     public void delete(Object[] arr){
+
         presenterUI.delete((Tiles)arr[0]);
+        ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
     }
 
     public void generateMultipleTiles(Object[] arr){
-        if((boolean)arr[3]){
+        //Log.d("masuk","masuk");
+        if((boolean)arr[0]){
             index++;
             Log.d("index", "generateMultipleTiles:"+index);
             generateTiles(generateRandomColumn(), width, height, index);

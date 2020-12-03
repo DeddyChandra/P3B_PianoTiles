@@ -2,6 +2,7 @@ package com.example.p3bpianotiles;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -19,10 +20,14 @@ public class TilesHandler extends Handler {
     public void handleMessage(Message msg){
         if(msg.what==MSG_DRAW){
             presenter.drawRedrawTiles((Object[])msg.obj);
-            presenter.generate((Object[])msg.obj);
+
         }
         else if(msg.what== TilesHandler.MSG_DELTE){
             presenter.delete((Object[])msg.obj);
+        }
+        else if(msg.what==2){
+            Log.d("a","a");
+            presenter.generate((Object[])msg.obj);
         }
         else if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();

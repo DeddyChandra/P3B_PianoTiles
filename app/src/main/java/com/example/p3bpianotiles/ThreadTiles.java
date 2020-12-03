@@ -36,10 +36,10 @@ public class ThreadTiles implements Runnable {
             }
             if(tiles.getClicked()==true){
                 Object arr[]= {
-                       tiles
+                       tiles,getAy()
                 };
                 handler.setMessage(arr,1);
-                break;
+                Log.d("masuk",tiles.getY()+"");
             }else {
                 Object arr[]= {
                         tiles,checkClick(),getAy(),YPassThrought()
@@ -53,6 +53,17 @@ public class ThreadTiles implements Runnable {
                     e.printStackTrace();
                 }
             }
+            if(YPassThrought()==true){
+                Object arr[]= {
+                        true
+                };
+                handler.setMessage(arr,2);
+            }
+            if(tiles.isPass()==true&&tiles.clicked==true){
+
+                break;
+            }
+
         }
     }
 
@@ -85,7 +96,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/0.5f;
+        float deltatime = (curtime-prevtime)/2f;
         return deltatime;
     }
 }
