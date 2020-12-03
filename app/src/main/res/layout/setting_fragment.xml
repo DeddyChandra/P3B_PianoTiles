@@ -19,22 +19,29 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <TextView
-            android:layout_gravity="center"
-            android:id="@+id/volume_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Volume"
-            android:textColor="@color/black"
-            android:textSize="20dp">
-        </TextView>
-        <SeekBar
-            android:layout_below="@+id/volume_tv"
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:progress="100"/>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/container_background">
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/volume_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Volume"
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+                <SeekBar
+                    android:layout_below="@+id/volume_tv"
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="100"/>
+        </LinearLayout>
         <Button
             android:id="@+id/changeBg_btn"
             android:layout_gravity="center"

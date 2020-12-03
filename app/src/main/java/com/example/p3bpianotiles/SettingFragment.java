@@ -33,12 +33,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         this.binding.doneBtn.setOnClickListener(this);
         this.backgroundList = new ArrayList<>(Arrays.asList(BackgroundFiles.backgrounds));
         this.presenter = new SettingPresenter(this,backgroundList);
+        this.presenter.setBackgroundIndex(backgroundId);
         this.binding.seekBar.setOnSeekBarChangeListener(this);
         this.binding.changeBgBtn.setOnClickListener(this);
         this.binding.resetBtn.setOnClickListener(this);
-        if(backgroundId != 0) {
-            this.binding.backgroundIv.setImageResource(backgroundId);
-        }
+        this.presenter.changeBackground();
         return this.binding.getRoot();
     }
 
@@ -60,6 +59,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
             this.listener.changePage(1);
         }
         else if(v == this.binding.changeBgBtn){
+            this.backgroundId++;
+            this.presenter.setBackgroundIndex(backgroundId);
             this.presenter.changeBackground();
         }
         else if(v == this.binding.resetBtn){
@@ -86,7 +87,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void changeBackground(int id){
         this.binding.backgroundIv.setImageResource(id);
-        this.backgroundId = id;
         this.listener.changeBackground(id);
     }
 
@@ -95,5 +95,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         this.listener.setDefault();
         this.listener.changeBackground(R.drawable.background);
         this.binding.seekBar.setProgress(100);
+    }
+
+    public void setBackgroundIndex(int i){
+        this.backgroundId = 0;
     }
 }

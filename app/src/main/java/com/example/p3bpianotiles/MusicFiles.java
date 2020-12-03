@@ -11,9 +11,9 @@ public class MusicFiles {
             new Music (R.raw.hou_lai_yu_jian_ta, "后来遇见他"),
             new Music (R.raw.xiao_zhang, "嚣张"),
             new Music (R.raw.yu_wo_wu_guan, "与我无关"),
-            new Music (R.raw.cutted5s, "cutted"),
-            new Music (R.raw.cutted5s, "cutted"),
-            new Music (R.raw.cutted5s, "cutted"),
-            new Music (R.raw.cutted5s, "cutted")
+//            new Music (R.raw.cutted5s, "cutted"),
+//            new Music (R.raw.cutted5s, "cutted"),
+//            new Music (R.raw.cutted5s, "cutted"),
+//            new Music (R.raw.cutted5s, "cutted")
     };
 }
