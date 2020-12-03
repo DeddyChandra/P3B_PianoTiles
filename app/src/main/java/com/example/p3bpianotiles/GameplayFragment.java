@@ -8,8 +8,6 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -25,13 +23,12 @@ import androidx.fragment.app.Fragment;
 import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 
 import java.util.LinkedList;
-import java.util.Random;
 
-public class GameplayFragment extends Fragment implements GameplayPresenterInterface.UI, View.OnClickListener,View.OnTouchListener {
+public class GameplayFragment extends Fragment implements GameplayContract.UI, View.OnClickListener,View.OnTouchListener {
     //binding here
     private GameplayFragmentBinding binding;
-    private GameplayPresenterInterface.Presenter presenter;
-    private GameplayPresenterInterface.UI ui;
+    private GameplayContract.Presenter presenter;
+    private GameplayContract.UI ui;
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;
@@ -79,15 +76,15 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
             }
         );
         this.binding.pauseBtn.setOnClickListener(this);
-        this.binding.tv.bringToFront();
-        this.binding.tv.invalidate();
+        this.binding.scoreTv.bringToFront();
+        this.binding.scoreTv.invalidate();
         this.binding.ivCanvas.setOnTouchListener(this);
+        this.binding.scoreTv.setText(Integer.toString(this.score));
         return binding.getRoot();
 
     }
 
     public void initCanvas(){
-
         width=binding.ivCanvas.getWidth();
         height=binding.ivCanvas.getHeight();
         this.bitmap = Bitmap.createBitmap(binding.ivCanvas.getWidth(),binding.ivCanvas.getHeight(), Bitmap.Config.ARGB_8888);
@@ -148,7 +145,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
 
     public void addScore(){
         this.score += 1;
-        this.binding.tv.setText(Integer.toString(this.score));
+        this.binding.scoreTv.setText(Integer.toString(this.score));
     }
 
     @Override
@@ -174,8 +171,8 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         }
     }
 
-
     public void setLevel(int level){
         this.level = level;
     }
+
 }

@@ -1,0 +1,24 @@
+package com.example.p3bpianotiles;
+
+import android.graphics.PointF;
+
+public interface GameplayContract {
+    interface UI{
+        void draw(Tiles tiles);
+        void delete(Tiles tiles);
+        void addScore();
+    }
+    interface Presenter{
+        void generateTiles(int column, int width,int height, int index);
+        void drawRedrawTiles(Object[] arr);
+        void setTouchPoint(PointF pointf);
+        PointF getTouchPoint();
+        void delete(Object o[]);
+        void setLevel(int level);
+        void generate(Object[] arr);
+        void addScore();
+        //hapus
+        void setWH(int width, int height);
+        //hapus
+    }
+}

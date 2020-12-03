@@ -6,10 +6,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
+public class GameplayPresenter implements GameplayContract.Presenter {
     ArrayList<Tiles> tilesArrayList;
     TilesHandler handler;
-    GameplayPresenterInterface.UI presenterUI;
+    GameplayContract.UI presenterUI;
     GameState gameState;
     PointF point;
     public int level;
@@ -24,7 +24,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
 
     //hapus
 
-    GameplayPresenter(GameplayPresenterInterface.UI presenterUI){
+    GameplayPresenter(GameplayContract.UI presenterUI){
         tilesArrayList = new ArrayList<>();
         this.presenterUI=presenterUI;
         index = 0;
@@ -32,7 +32,6 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public void generateTiles(int column,int width,int height, int index){
         //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
-
         ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this);
         thread.startingthread();
     }
@@ -80,6 +79,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
         if((boolean)arr[0]){
             index++;
             Log.d("index", "generateMultipleTiles:"+index);
+
             generateTiles(generateRandomColumn(), width, height, index);
         }
         if(index >= this.tilesArrayList.size()-1){
@@ -101,5 +101,9 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public int generateRandomColumn(){
         Random rand = new Random();
         return rand.nextInt(4);
+    }
+
+    public void addScore(){
+        this.presenterUI.addScore();
     }
 }
