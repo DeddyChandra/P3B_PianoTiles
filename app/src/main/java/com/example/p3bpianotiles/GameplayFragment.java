@@ -167,7 +167,13 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
 
             return true;
         }
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            presenter.setTouchPoint(new PointF(-1,0));
+            return true;
+        }
     }
+
 
     public void setLevel(int level){
         this.level = level;

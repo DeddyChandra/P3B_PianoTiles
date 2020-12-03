@@ -6,7 +6,7 @@ public class Tiles {
     float y;
     float width;
     float height;
-    boolean stop;
+    boolean clicked;
     int note;
     long timestamp;
     boolean pass;
@@ -32,7 +32,7 @@ public class Tiles {
         this.timestamp=System.currentTimeMillis();
         this.setY(-height);
         this.pass = false;
-        this.stop = false;
+        this.clicked = false;
     }
 
     public Tiles(int column,float width,float length){
@@ -79,11 +79,11 @@ public class Tiles {
     public void setColumn(int column){
         this.column= column;
     }
-    public void setStop(boolean stop){
-        this.stop=stop;
+    public void setClicked(boolean clicked){
+        this.clicked=clicked;
     }
-    public boolean getStop(){
-        return this.stop;
+    public boolean getClicked(){
+        return this.clicked;
     }
     public float getX(){
         return this.x;
