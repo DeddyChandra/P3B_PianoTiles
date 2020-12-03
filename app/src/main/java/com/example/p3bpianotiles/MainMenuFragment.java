@@ -131,6 +131,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             mute();
         }
         else if(v == this.binding.startBtn){
+            this.mediaPlayer.pause();
             this.fragmentListener.setLevel(this.presenter.getLevel());
             this.fragmentListener.changePage(2);
         }
