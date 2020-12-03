@@ -39,25 +39,21 @@ public class ThreadTiles implements Runnable {
                        tiles,getAy()
                 };
                 handler.setMessage(arr,1);
-                try {
 
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
             }else {
                 Object arr[]= {
                         tiles,checkClick(),getAy(),YPassThrought()
                 };
                 handler.setMessage(arr, 0);
-                try {
 
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
+            }
+            try {
+
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             if(YPassThrought()==true){
                 Object arr[]= {
@@ -69,6 +65,7 @@ public class ThreadTiles implements Runnable {
 
                 break;
             }
+
 
 
         }
