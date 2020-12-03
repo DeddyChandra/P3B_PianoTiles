@@ -11,4 +11,7 @@
     <string name="Restart">Restart</string>
     <string name="Resume">Resume</string>
     <string name="Quit">Quit Game</string>
+    <string name="Main_menu">Main menu</string>
+    <string name="Score">Score</string>
+    <string name="Level">Level</string>
 </resources>
