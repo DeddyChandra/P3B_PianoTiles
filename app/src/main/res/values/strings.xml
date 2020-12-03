@@ -8,4 +8,7 @@
     <string name="Done">Done</string>
     <string name="ChangeBg">Change Background</string>
     <string name="Default">Reset to default</string>
+    <string name="Restart">Restart</string>
+    <string name="Resume">Resume</string>
+    <string name="Quit">Quit Game</string>
 </resources>

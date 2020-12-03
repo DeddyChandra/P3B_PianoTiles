@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/background_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:background="@drawable/background">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/container_background">
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/volume_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Volume"
+                android:textColor="@color/black"
+                android:textSize="20dp">
+            </TextView>
+            <SeekBar
+                android:layout_below="@+id/volume_tv"
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="100"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/resume_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Resume"
+            android:backgroundTint="#4CAF50">
+        </Button>
+        <Button
+            android:id="@+id/restart_btn"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F44336"
+            android:text="@string/Restart">
+        </Button>
+        <Button
+            android:id="@+id/quit_btn"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:text="@string/Quit">
+        </Button>
+    </LinearLayout>
+</RelativeLayout>
