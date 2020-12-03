@@ -31,6 +31,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public void generateTiles(int column,int width,int height, int index){
         //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
+        this.tilesArrayList.get(index).resetTiles();
         ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this);
         thread.startingthread();
     }
@@ -46,15 +47,19 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
 
     public void setArrayTiles(){
         if(level == 0){
-            for(int i = 0; i < 20; i++){
+            for(int i = 0; i < 5; i++){
                 this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height));
             }
         }
         else if(level == 1){
-
+            for(int i = 0; i < 5; i++){
+                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height));
+            }
         }
         else{
-
+            for(int i = 0; i < 5; i++){
+                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height));
+            }
         }
     }
 
@@ -69,13 +74,14 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     }
 
     public void generateMultipleTiles(Object[] arr){
-        if(index >= this.tilesArrayList.size()){
-            index = 0;
-        }
         if((boolean)arr[3]){
             index++;
             Log.d("index", "generateMultipleTiles:"+index);
             generateTiles(generateRandomColumn(), width, height, index);
+        }
+        if(index >= this.tilesArrayList.size()-1){
+            Log.d("index", "reset:"+index);
+            index = -1;
         }
     }
 

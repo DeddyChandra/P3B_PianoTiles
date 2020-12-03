@@ -16,12 +16,9 @@ public class ThreadTiles implements Runnable {
 
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayPresenterInterface.Presenter presenter){
         thread = new Thread(this);
-
         this.tiles =tiles;
-        tiles.setTimestamp(System.currentTimeMillis());
         this.handler=handler;
         this.presenter=presenter;
-
     }
     public void startingthread(){
         this.thread.start();
@@ -45,15 +42,12 @@ public class ThreadTiles implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
         }
     }
 
     public boolean YPassThrought(){
         //Log.d("checks", tiles.toString());
         if(tiles.getY() >= 0 && !tiles.isPass()){
-
             tiles.setPass(true);
             return true;
         }

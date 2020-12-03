@@ -29,6 +29,13 @@ public class Tiles {
         this.timestamp=timestamp;
     }
 
+    public void resetTiles(){
+        this.timestamp=System.currentTimeMillis();
+        this.setY(-height);
+        this.pass = false;
+        this.stop = false;
+    }
+
     public Tiles(int column,float width,float length){
         this.column = column;
         this.pass = false;
