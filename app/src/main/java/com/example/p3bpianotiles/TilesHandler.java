@@ -17,16 +17,16 @@ public class TilesHandler extends Handler {
     }
     public void handleMessage(Message msg){
         if(msg.what==MSG_DRAW){
-            presenter.drawRedrawTiles((Tiles)msg.obj);
+            presenter.drawRedrawTiles((Object[])msg.obj);
         }
         else if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();
         }
     }
-    public void setMessage(Tiles tiles,int i){
+    public void setMessage(Object[] arr, int i){
         Message msg= new Message();
         msg.what = i;
-        msg.obj= tiles;
+        msg.obj= arr;
         this.sendMessage(msg);
         //Log.d("masuk","masuk")
     }

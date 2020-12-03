@@ -17,7 +17,7 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     }
     public void generateTiles(int column,int width,int height){
         handler= new TilesHandler(this);
-        ThreadTiles thread = new ThreadTiles(handler,new Tiles(column,width,height));
+        ThreadTiles thread = new ThreadTiles(handler,new Tiles(column,width,height),this);
         thread.startingthread();
         this.presenterUI=presenterUI;
 
@@ -25,37 +25,18 @@ public class GameplayPresenter implements GameplayPresenterInterface.Presenter {
     public void setTouchPoint(PointF point){
         this.point = point;
     }
-    public void drawRedrawTiles(Tiles tiles){
-        presenterUI.delete(tiles);
+    public void drawRedrawTiles(Object[] arr){
+        presenterUI.delete((Tiles)arr[0]);
+        //tiles.setStop(true);
+        ((Tiles) arr[0]).setY( ((Tiles) arr[0]).getY()+(float)arr[2]);
+        presenterUI.draw(((Tiles) arr[0]));
 
-            if (getTouchPoint()!=null&&
-                getTouchPoint().x <= tiles.x + tiles.getWidth() &&
-                getTouchPoint().x >= tiles.x &&
-                getTouchPoint().y >=tiles.y &&
-                getTouchPoint().y <=tiles.getY() + tiles.getHeight())
-            {
-
-                tiles.setStop(true);
-            }
-            else {
-            tiles.setY(tiles.getY() + getAy(tiles));
-            presenterUI.draw(tiles);
-            }
     }
     public PointF getTouchPoint(){
         return this.point;
     }
 
 
-    public float getAy(Tiles tiles){
-        long prevtime = tiles.getTimestamp();
-        long curtime = System.currentTimeMillis();
-        tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/5.0f;
 
-
-
-        return deltatime;
-    }
 
 }
