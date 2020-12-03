@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         else if(page == 4){
             ft.replace(R.id.fragment_container,this.pauseFragment).addToBackStack(null);
         }
+        else if(page == 5){
+            ft.replace(R.id.fragment_container,this.gameOverFragment).addToBackStack(null);
+        }
         ft.commit();
     }
 
