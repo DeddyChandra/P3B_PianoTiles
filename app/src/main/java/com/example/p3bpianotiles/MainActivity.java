@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.example.p3bpianotiles.databinding.ActivityMainBinding;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private MainMenuFragment mainMenuFragment;
     private GameplayFragment gameplayFragment;
     private SettingFragment settingFragment;
+    private PauseFragment pauseFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         mainMenuFragment = new MainMenuFragment();
         gameplayFragment = new GameplayFragment();
         settingFragment = new SettingFragment();
+        pauseFragment = new PauseFragment();
         fragmentManager = this.getSupportFragmentManager();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         changePage(1);
     }
 
@@ -54,12 +58,16 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         else if(page == 3){
             ft.replace(R.id.fragment_container,this.settingFragment).addToBackStack(null);
         }
+        else if(page == 4){
+            ft.replace(R.id.fragment_container,this.pauseFragment).addToBackStack(null);
+        }
         ft.commit();
     }
 
     @Override
     public void changeVolume(int vol){
         this.mainMenuFragment.changeVolume(vol);
+        this.pauseFragment.changeVolume(vol);
     }
 
     @Override
@@ -70,5 +78,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setDefault(){
         this.mainMenuFragment.setDefault();
+    }
+
+    @Override
+    public void setLevel(int level){
+        this.gameplayFragment.setLevel(level);
     }
 }

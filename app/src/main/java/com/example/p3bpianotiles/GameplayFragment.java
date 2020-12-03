@@ -1,5 +1,6 @@
 package com.example.p3bpianotiles;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -43,13 +44,15 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     private ThreadTiles threadTiles;
     private TilesHandler tilesHandler;
     private LinkedList<ThreadTiles> threadList;
-
+    private int level;
     private int score = 0;
+    private FragmentListener listener;
 
 
     public GameplayFragment(){
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
         binding = GameplayFragmentBinding.inflate(inflater);
@@ -61,24 +64,28 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
                 public void run() {
                     initCanvas();
                     presenter = new GameplayPresenter(ui);
-                    presenter.generateTiles(0,width,height/4);
-                    presenter.generateTiles(1,width,height/4);
-                    presenter.generateTiles(2,width,height/4);
-                    presenter.generateTiles(3,width,height/4);
+                    //hapus
+                    presenter.setWH(width,height/4);
+                    //hapus
+                    presenter.setLevel(level);
+                    presenter.generateTiles(0,width,height/4,0);
+//                    presenter.generateTiles(1,width,height/4);
+//                    presenter.generateTiles(2,width,height/4);
+//                    presenter.generateTiles(3,width,height/4);
 //                    presenter.generateTiles(width/4,100,width,height/4);
 //                    presenter.generateTiles(width*2/4,400,width,height/4);
 //                    presenter.generateTiles(width*3/4,500,width,height/4);
                 }
             }
         );
-
-
+        this.binding.pauseBtn.setOnClickListener(this);
         this.binding.tv.bringToFront();
         this.binding.tv.invalidate();
         this.binding.ivCanvas.setOnTouchListener(this);
         return binding.getRoot();
 
     }
+
     public void initCanvas(){
 
         width=binding.ivCanvas.getWidth();
@@ -121,10 +128,21 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         binding.ivCanvas.invalidate();
     }
 
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(context instanceof FragmentListener){
+            this.listener = (FragmentListener) context;
+        }
+        else{
+            throw new ClassCastException(context.toString()+" must implement FragmentListener");
+        }
+    }
 
     public void onClick(View v){
         if(v == this.binding.pauseBtn){
-
+            this.listener.changePage(4);
+            Log.d("click", "onClick: ");
         }
     }
 
@@ -137,6 +155,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
     public boolean onTouch(View view, MotionEvent event) {
         return this.mDetector.onTouchEvent(event);
     }
+
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {
@@ -150,4 +169,7 @@ public class GameplayFragment extends Fragment implements GameplayPresenterInter
         }
     }
 
+    public void setLevel(int level){
+        this.level = level;
+    }
 }

@@ -9,6 +9,7 @@ public class Tiles {
     boolean stop;
     int note;
     long timestamp;
+    boolean pass;
 //kecepatan = jarak / waktu
     //System.currentTimeMillis();
     //System.currentTimeMillis();
@@ -19,6 +20,7 @@ public class Tiles {
         this.width = width;
         this.height = height;
         this.timestamp = System.currentTimeMillis();
+        this.pass = false;
     }
     public long getTimestamp(){
         return timestamp;
@@ -29,6 +31,7 @@ public class Tiles {
 
     public Tiles(int column,float width,float length){
         this.column = column;
+        this.pass = false;
         if(column==0){
            setX(0);
            setY(-length);
@@ -92,5 +95,11 @@ public class Tiles {
         return this.column;
     }
 
+    public boolean isPass() {
+        return pass;
+    }
 
+    public void setPass(boolean pass) {
+        this.pass = pass;
+    }
 }

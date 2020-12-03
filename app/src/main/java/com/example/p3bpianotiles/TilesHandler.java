@@ -18,6 +18,7 @@ public class TilesHandler extends Handler {
     public void handleMessage(Message msg){
         if(msg.what==MSG_DRAW){
             presenter.drawRedrawTiles((Object[])msg.obj);
+            presenter.generate((Object[])msg.obj);
         }
         else if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();

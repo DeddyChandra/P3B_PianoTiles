@@ -5,4 +5,5 @@ public interface FragmentListener {
     void changeVolume(int vol);
     void changeBackground(int id);
     void setDefault();
+    void setLevel(int level);
 }
