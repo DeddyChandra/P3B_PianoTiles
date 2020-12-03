@@ -1,7 +1,7 @@
 package com.example.p3bpianotiles;
 
 public class NoteMusicFiles {
-    public static NoteMusic[] music ={
+    public static NoteMusic[] noteMusics ={
             new NoteMusic (R.raw.do_1),
             new NoteMusic (R.raw.re_2),
             new NoteMusic (R.raw.mi_3),

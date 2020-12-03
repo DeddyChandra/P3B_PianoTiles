@@ -65,6 +65,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         }
         else if(v == this.binding.resetBtn){
             setDefault();
+            Toast.makeText(this.getContext(),"Setting Changed to Default",Toast.LENGTH_SHORT).show();
             this.listener.changePage(1);
         }
     }
