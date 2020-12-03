@@ -7,6 +7,7 @@ public interface GameplayContract {
         void draw(Tiles tiles);
         void delete(Tiles tiles);
         void addScore();
+        void lose();
     }
     interface Presenter{
         void generateTiles(int column, int width,int height, int index);
@@ -17,8 +18,6 @@ public interface GameplayContract {
         void setLevel(int level);
         void generate(Object[] arr);
         void addScore();
-        //hapus
-        void setWH(int width, int height);
-        //hapus
+        void checkLose(float lowerY);
     }
 }

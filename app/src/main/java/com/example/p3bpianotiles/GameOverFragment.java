@@ -25,6 +25,7 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
         if(backgroundId != 0) {
             this.binding.backgroundIv.setImageResource(backgroundId);
         }
+        this.binding.mainMenuBtn.setOnClickListener(this);
         return this.binding.getRoot();
     }
 

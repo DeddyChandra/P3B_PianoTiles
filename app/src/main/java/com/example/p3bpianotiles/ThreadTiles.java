@@ -22,9 +22,9 @@ public class ThreadTiles implements Runnable {
 
     @Override
     public void run() {
-
         while(!(tiles.isPass()==true&&tiles.clicked==true)) {
             //handler.setMessage(tiles,1);
+            checkLose();
             if(checkClick()){
                 tiles.setClicked(true);
             }
@@ -37,17 +37,11 @@ public class ThreadTiles implements Runnable {
 
             }else {
                 Object arr[]= {
-                        tiles,checkClick(),getAy(),YPassThrought()
+                        tiles,getAy()
                 };
                 handler.setMessage(arr, 0);
 
 
-            }
-            try {
-
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
             if(YPassThrought()==true){
                 Object arr[]= {
@@ -56,9 +50,11 @@ public class ThreadTiles implements Runnable {
                 handler.setMessage(arr,2);
             }
 
-
-
-
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -94,5 +90,9 @@ public class ThreadTiles implements Runnable {
         tiles.setTimestamp(curtime);
         float deltatime = (curtime-prevtime)/2f;
         return deltatime;
+    }
+
+    public void checkLose(){
+        this.presenter.checkLose(tiles.getY()+tiles.getHeight());
     }
 }

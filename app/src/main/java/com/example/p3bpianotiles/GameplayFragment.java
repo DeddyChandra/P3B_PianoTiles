@@ -60,9 +60,8 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
                 @Override
                 public void run() {
                     initCanvas();
-                    presenter = new GameplayPresenter(ui);
+                    presenter = new GameplayPresenter(ui,width,height);
                     //hapus
-                    presenter.setWH(width,height/4);
                     //hapus
                     presenter.setLevel(level);
                     presenter.generateTiles(0,width,height/4,0);
@@ -175,4 +174,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.level = level;
     }
 
+    public void lose(){
+        this.listener.changePage(5);
+    }
 }
