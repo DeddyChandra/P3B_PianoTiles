@@ -133,11 +133,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             else{
                 this.gameOverFragment.setScore(score,level);
                 this.changePage(5);
-
             }
         }
-
-
-
     }
 }

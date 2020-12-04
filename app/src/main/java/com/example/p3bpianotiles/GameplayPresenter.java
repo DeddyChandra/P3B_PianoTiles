@@ -107,7 +107,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
                             p.x >= tilesArrayList.get(i).x &&
                             p.y >= tilesArrayList.get(i).y &&
                             p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
-
                         idxclicked = i;
                     }
             }
@@ -126,6 +125,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(idxclicked==-1){
             Log.d("delete","mati");
         }else{
+            addScore();
             Log.d("delete","delete");
             tilesArrayList.get(idxclicked).setToBeDelete(true);
         }
