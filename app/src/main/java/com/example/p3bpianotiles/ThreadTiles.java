@@ -30,17 +30,18 @@ public class ThreadTiles implements Runnable {
             if(this.presenter.getGameState() == 2){
                 break;
             }
-            if(checkClick()){
-                tiles.setClicked(true);
-            }
-            if(tiles.getClicked()==true){
-                Object arr[]= {
-                       tiles,getAy()
-                };
-                handler.setMessage(arr,1);
-
-
-            }else {
+//            if(checkClick()){
+//                tiles.setClicked(true);
+//            }
+//            if(tiles.getClicked()==true){
+//                Object arr[]= {
+//                       tiles,getAy()
+//                };
+//                handler.setMessage(arr,1);
+//
+//
+//            }
+            else {
                 Object arr[]= {
                         tiles,getAy()
                 };
@@ -74,22 +75,7 @@ public class ThreadTiles implements Runnable {
         }
     }
 
-    public boolean checkClick(){
-        if (presenter.getTouchPoint()!=null&&
-                presenter.getTouchPoint().x <= tiles.x + tiles.getWidth() &&
-                presenter.getTouchPoint().x >= tiles.x &&
-                presenter. getTouchPoint().y >=tiles.y &&
-                presenter.getTouchPoint().y <=tiles.getY() + tiles.getHeight())
-        {
-            if(!this.tiles.isAddedScore()) {
-                this.handler.setMessage(new Object[]{true}, 3);
-                this.tiles.setAddedScore(true);
-            }
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
     public float getAy(){
         long prevtime = tiles.getTimestamp();

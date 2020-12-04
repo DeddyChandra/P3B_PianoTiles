@@ -22,5 +22,6 @@ public interface GameplayContract {
         void checkLose(float lowerY);
         void setGameState(int i);
         int getGameState();
+        void checkClick(PointF pointf);
     }
 }

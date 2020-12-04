@@ -5,6 +5,7 @@ public class GameState {
     public static final int GAME_OVER=2;
     private int state;
 
+
     public GameState(int state){
         this.state = state;
     }

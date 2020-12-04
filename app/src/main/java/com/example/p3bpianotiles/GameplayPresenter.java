@@ -14,6 +14,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     PointF point;
     public int level;
     public int index;
+    public int indexfirst;
     public boolean lose;
     //hapus
     public int width, height;
@@ -25,6 +26,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.width = width;
         this.height = height;
         index = 0;
+        indexfirst = 0;
         lose = false;
         this.gameState = new GameState(0);
     }
@@ -75,6 +77,56 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void delete(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
         ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
+        indexfirst++;
+    }
+
+    public void checkClick(PointF p){
+        if(indexfirst>tilesArrayList.size()){
+            indexfirst=0;
+
+        }
+
+        int idxclicked=-1;
+        if(indexfirst<index) {
+            for (int i = indexfirst; i < index; i++) {
+                if (getTouchPoint() != null &&
+                    p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
+                    p.x >= tilesArrayList.get(i).x &&
+                    p.y >= tilesArrayList.get(i).y &&
+                    p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
+                        idxclicked = i;
+                }
+            }
+        }else {
+            for (int i = indexfirst; i < tilesArrayList.size(); i++) {
+                    if (getTouchPoint() != null &&
+                            p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
+                            p.x >= tilesArrayList.get(i).x &&
+                            p.y >= tilesArrayList.get(i).y &&
+                            p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
+
+                        idxclicked = i;
+                    }
+            }
+
+
+            for (int i = 0; i < index; i++) {
+                if (getTouchPoint() != null &&
+                    p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
+                    p.x >= tilesArrayList.get(i).x &&
+                    p.y >= tilesArrayList.get(i).y &&
+                    p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
+                        idxclicked = i;
+                }
+            }
+        }
+        if(idxclicked==-1){
+
+        }else{
+            tilesArrayList.get(idxclicked).setToBeDelete(true);
+        }
+
+
     }
 
     public void generateMultipleTiles(Object[] arr){

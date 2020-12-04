@@ -11,6 +11,7 @@ public class Tiles {
     long timestamp;
     boolean pass;
     boolean addedScore;
+    boolean  toBeDelete;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
     //System.currentTimeMillis();
@@ -102,6 +103,14 @@ public class Tiles {
     }
     public int getColumn(){
         return this.column;
+    }
+
+    public void setToBeDelete(boolean toBeDelete) {
+        this.toBeDelete = toBeDelete;
+    }
+
+    public boolean isToBeDelete() {
+        return toBeDelete;
     }
 
     public boolean isPass() {

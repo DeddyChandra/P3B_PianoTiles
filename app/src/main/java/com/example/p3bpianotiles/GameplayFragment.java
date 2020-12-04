@@ -156,7 +156,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         @Override
         public boolean onDown(MotionEvent e) {
             if(presenter.getTouchPoint()==null){
-                presenter.setTouchPoint(new PointF(e.getX(),e.getY()));
+                presenter.checkClick(new PointF(e.getX(),e.getY()));
             }
             else{
                 presenter.getTouchPoint().set(e.getX(),e.getY());
