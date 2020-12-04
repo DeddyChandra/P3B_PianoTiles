@@ -41,7 +41,6 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
             this.listener.setLevel(level);
-//            this.listener.restart();
         }
         else if(v == this.binding.restartBtn){
             this.listener.setLevel(level);
