@@ -39,7 +39,7 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     @Override
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
-
+            this.listener.setLevel(0);
         }
         else if(v == this.binding.restartBtn){
             this.listener.changePage(2);
