@@ -31,6 +31,7 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
             this.binding.backgroundIv.setImageResource(backgroundId);
         }
         this.binding.mainMenuBtn.setOnClickListener(this);
+        this.binding.restartBtn.setOnClickListener(this);
         this.binding.scorePointTv.setText(Integer.toString(score));
         this.setLevel();
         return this.binding.getRoot();
@@ -63,6 +64,10 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View v) {
         if(v == this.binding.mainMenuBtn){
             this.listener.changePage(1);
+        }
+        else if(v == this.binding.restartBtn){
+            this.listener.setLevel(level);
+            this.listener.changePage(2);
         }
     }
 
