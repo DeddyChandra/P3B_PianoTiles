@@ -126,7 +126,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             Log.d("delete","mati");
         }else{
             addScore();
-            tilesArrayList.get(idxclicked).isAddedScore();
+            tilesArrayList.get(idxclicked).setAddedScore(false);
             Log.d("delete","delete");
             tilesArrayList.get(idxclicked).setToBeDelete(true);
         }
