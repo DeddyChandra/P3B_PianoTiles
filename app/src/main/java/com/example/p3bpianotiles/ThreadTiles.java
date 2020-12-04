@@ -46,7 +46,7 @@ public class ThreadTiles implements Runnable {
 
             }
             try {
-                Thread.sleep(10);
+                Thread.sleep(16);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -88,7 +88,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/2f;
+        float deltatime = (curtime-prevtime)/0.3f;
         return deltatime;
     }
 
