@@ -62,6 +62,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
             this.backgroundId++;
             this.presenter.setBackgroundIndex(backgroundId);
             this.presenter.changeBackground();
+            Toast.makeText(this.getContext(),"Background Changed",Toast.LENGTH_SHORT).show();
         }
         else if(v == this.binding.resetBtn){
             setDefault();
