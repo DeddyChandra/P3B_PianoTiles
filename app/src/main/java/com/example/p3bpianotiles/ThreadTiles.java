@@ -10,6 +10,7 @@ public class ThreadTiles implements Runnable {
     private Tiles tiles;
     private GameplayContract.Presenter presenter;
     private GameState gameState;
+    private boolean isgenerated;
 
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState){
         thread = new Thread(this);
@@ -18,6 +19,7 @@ public class ThreadTiles implements Runnable {
         this.handler=handler;
         this.presenter=presenter;
         this.gameState = gameState;
+        this.isgenerated=false;
     }
     public void startingthread(){
         this.thread.start();
@@ -42,33 +44,33 @@ public class ThreadTiles implements Runnable {
                 };
                 handler.setMessage(arr,1);
                 boolean masuk=false;
-                while(tiles.getY()<0){
+                while(tiles.getY()<=0){
                     handler.setMessage(arr,4);
-                    masuk=true;
                 }
-                if(masuk){
+                if(isgenerated==false){
                     Object arry[]= {
                             true
                     };
                     handler.setMessage(arry,2);
+                    isgenerated=true;
                 }
                 break;
 
             }
-            else {
-                Object arr[]= {
-                        tiles,getAy()
-                };
-                handler.setMessage(arr, 0);
 
-
-            }
-            if(YPassThrought()==true){
-                Object arr[]= {
+            Object arr[]= {
+                    tiles,getAy()
+            };
+            handler.setMessage(arr, 0);
+            if(YPassThrought()==true&&isgenerated==false) {
+                Object arry[] = {
                         true
                 };
-                handler.setMessage(arr,2);
+                handler.setMessage(arry, 2);
+                isgenerated=true;
+
             }
+
 
             try {
                 Thread.sleep(10);
