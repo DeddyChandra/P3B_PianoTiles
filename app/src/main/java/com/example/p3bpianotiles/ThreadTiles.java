@@ -28,36 +28,11 @@ public class ThreadTiles implements Runnable {
 
     @Override
     public void run() {
-        while(true) {
-            //handler.setMessage(tiles,1);
+        while(tiles.getToBeDelete()==false) {
             checkLose();
             if(this.presenter.getGameState() == 2){
                 break;
             }
-//            if(checkClick()){
-//                tiles.setClicked(true);
-//            }
-            if(tiles.getToBeDelete()==true){
-                //object bbisa beda
-                Object arr[]= {
-                       tiles,getAy()
-                };
-                handler.setMessage(arr,1);
-                boolean masuk=false;
-                while(tiles.getY()<=0){
-                    handler.setMessage(arr,4);
-                }
-                if(isgenerated==false){
-                    Object arry[]= {
-                            true
-                    };
-                    handler.setMessage(arry,2);
-                    isgenerated=true;
-                }
-                break;
-
-            }
-
             Object arr[]= {
                     tiles,getAy()
             };
@@ -70,14 +45,30 @@ public class ThreadTiles implements Runnable {
                 isgenerated=true;
 
             }
-
-
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        Object arr[]= {
+                tiles,getAy()
+        };
+        handler.setMessage(arr,1);
+        boolean masuk=false;
+        while(tiles.getY()<=0){
+            handler.setMessage(arr,4);
+        }
+        if(isgenerated==false){
+            Object arry[]= {
+                    true
+            };
+            handler.setMessage(arry,2);
+            isgenerated=true;
+        }
+
+
+
     }
 
     public boolean YPassThrought(){
