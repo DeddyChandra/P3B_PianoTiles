@@ -173,6 +173,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     public void lose(){
         this.listener.setScore(score,level);
-        this.listener.changePage(5);
+        this.listener.changePage(6);
+
     }
 }

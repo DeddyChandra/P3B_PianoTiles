@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private PauseFragment pauseFragment;
     private GameOverFragment gameOverFragment;
     private HighScoreFragment highScoreFragment;
+    private SharedPreferencesHighScore sharedPreferencesHighScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         pauseFragment = new PauseFragment();
         gameOverFragment = new GameOverFragment();
         highScoreFragment = new HighScoreFragment();
+        sharedPreferencesHighScore = new SharedPreferencesHighScore(this);
         fragmentManager = this.getSupportFragmentManager();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         changePage(1);
@@ -68,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         else if(page == 5){
             ft.replace(R.id.fragment_container,this.gameOverFragment).addToBackStack(null);
         }
+        else if(page == 6){
+            ft.replace(R.id.fragment_container,this.highScoreFragment).addToBackStack(null);
+        }
         ft.commit();
     }
 
@@ -97,6 +102,42 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     @Override
     public void setScore(int score, int level){
-        this.gameOverFragment.setScore(score,level);
+        if(level == 0){
+            if(score>sharedPreferencesHighScore.getEasy()){
+                this.sharedPreferencesHighScore.saveEasy(score);
+                this.highScoreFragment.setScore(score,level);
+                this.changePage(6);
+            }
+            else{
+                this.gameOverFragment.setScore(score,level);
+                this.changePage(5);
+            }
+        }
+        else if(level == 1){
+            if(score>sharedPreferencesHighScore.getMed()){
+                this.sharedPreferencesHighScore.saveMed(score);
+                this.highScoreFragment.setScore(score,level);
+                this.changePage(6);
+            }
+            else{
+                this.gameOverFragment.setScore(score,level);
+                this.changePage(5);
+            }
+        }
+        else if(level == 2){
+            if(score>sharedPreferencesHighScore.getHard()){
+                this.sharedPreferencesHighScore.saveHard(score);
+                this.highScoreFragment.setScore(score,level);
+                this.changePage(6);
+            }
+            else{
+                this.gameOverFragment.setScore(score,level);
+                this.changePage(5);
+
+            }
+        }
+
+
+
     }
 }

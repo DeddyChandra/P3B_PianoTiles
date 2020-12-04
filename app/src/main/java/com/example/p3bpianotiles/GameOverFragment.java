@@ -2,6 +2,7 @@ package com.example.p3bpianotiles;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
     private FragmentListener listener;
     public int score;
     public int level;
+    SharedPreferencesHighScore sharedPreferencesHighScore;
 
     public GameOverFragment(){
 
@@ -34,18 +36,26 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
         return this.binding.getRoot();
     }
 
+    public void setScore(int score, int level){
+        this.score = score;
+        this.level = level;
+    }
+
     public void setLevel(){
         if(level == 0){
             this.binding.levelTv.setText(R.string.Easy);
             this.binding.levelTv.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
+
         }
         else if(level == 1){
             this.binding.levelTv.setText(R.string.Normal);
             this.binding.levelTv.setTextColor(ContextCompat.getColor(getContext(), R.color.yellow));
+
         }
         else if(level == 2){
             this.binding.levelTv.setText(R.string.Hard);
             this.binding.levelTv.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
+
         }
     }
 
@@ -71,8 +81,4 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
         }
     }
 
-    public void setScore(int score, int level){
-        this.score = score;
-        this.level = level;
-    }
 }
