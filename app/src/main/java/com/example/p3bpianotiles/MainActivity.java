@@ -99,12 +99,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setLevel(int level){
         this.gameplayFragment.setLevel(level);
-        this.pauseFragment.setLevel(level);
-    }
-
-    @Override
-    public void setGamePlayToLoseState(){
-        this.gameplayFragment.setLose(true);
     }
 
     @Override
