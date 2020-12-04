@@ -179,4 +179,9 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
             this.lose = true;
         }
     }
+
+    public void setLose(boolean lose) {
+        this.presenter.setGameState(2);
+        this.lose = lose;
+    }
 }
