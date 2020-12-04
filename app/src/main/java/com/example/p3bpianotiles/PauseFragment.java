@@ -39,11 +39,9 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     @Override
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
-<<<<<<< HEAD
-            this.listener.setLevel(level);
-=======
 
->>>>>>> parent of 4b678e7... restart done
+            this.listener.setLevel(level);
+
         }
         else if(v == this.binding.restartBtn){
             this.listener.changePage(2);
