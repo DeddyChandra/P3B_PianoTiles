@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setScore(int score, int level){
         if(level == 0){
-            Log.d("scores", score+" "+sharedPreferencesHighScore.getEasy());
             this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getEasy()){
                 this.sharedPreferencesHighScore.saveEasy(score);
