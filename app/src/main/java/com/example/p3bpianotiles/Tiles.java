@@ -108,6 +108,9 @@ public class Tiles {
     public void setToBeDelete(boolean toBeDelete) {
         this.toBeDelete = toBeDelete;
     }
+    public boolean getToBeDelete(){
+        return toBeDelete;
+    }
 
     public boolean isToBeDelete() {
         return toBeDelete;

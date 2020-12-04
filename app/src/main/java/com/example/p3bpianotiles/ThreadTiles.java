@@ -33,14 +33,14 @@ public class ThreadTiles implements Runnable {
 //            if(checkClick()){
 //                tiles.setClicked(true);
 //            }
-//            if(tiles.getClicked()==true){
-//                Object arr[]= {
-//                       tiles,getAy()
-//                };
-//                handler.setMessage(arr,1);
-//
-//
-//            }
+            if(tiles.getToBeDelete()==true){
+                Object arr[]= {
+                       tiles,getAy()
+                };
+                handler.setMessage(arr,1);
+
+
+            }
             else {
                 Object arr[]= {
                         tiles,getAy()

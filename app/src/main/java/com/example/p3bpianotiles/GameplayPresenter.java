@@ -121,8 +121,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         if(idxclicked==-1){
-
+            Log.d("delete","mati");
         }else{
+            Log.d("delete","delete");
             tilesArrayList.get(idxclicked).setToBeDelete(true);
         }
 
@@ -151,6 +152,8 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public PointF getTouchPoint(){
         return this.point;
     }
+
+
 
     public void generate(Object[] arr){
 //        generateTiles(generateRandomColumn(), width, height, index);
