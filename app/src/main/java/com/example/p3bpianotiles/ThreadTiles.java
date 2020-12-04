@@ -1,5 +1,7 @@
 package com.example.p3bpianotiles;
 
+import android.util.Log;
+
 import static java.lang.Thread.sleep;
 
 public class ThreadTiles implements Runnable {
@@ -24,7 +26,7 @@ public class ThreadTiles implements Runnable {
 
     @Override
     public void run() {
-        while(!(tiles.isPass()==true&&tiles.clicked==true)) {
+        while(true) {
             //handler.setMessage(tiles,1);
             checkLose();
             if(this.presenter.getGameState() == 2){
@@ -34,11 +36,23 @@ public class ThreadTiles implements Runnable {
 //                tiles.setClicked(true);
 //            }
             if(tiles.getToBeDelete()==true){
+                //object bbisa beda
                 Object arr[]= {
                        tiles,getAy()
                 };
                 handler.setMessage(arr,1);
-
+                boolean masuk=false;
+                while(tiles.getY()<0){
+                    handler.setMessage(arr,4);
+                    masuk=true;
+                }
+                if(masuk){
+                    Object arry[]= {
+                            true
+                    };
+                    handler.setMessage(arry,2);
+                }
+                break;
 
             }
             else {

@@ -23,5 +23,6 @@ public interface GameplayContract {
         void setGameState(int i);
         int getGameState();
         void checkClick(PointF pointf);
+        void increaseAy(Object[] arr);
     }
 }

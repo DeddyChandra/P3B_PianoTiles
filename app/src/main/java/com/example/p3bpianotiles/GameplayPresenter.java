@@ -76,12 +76,15 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
     public void delete(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
-        ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
+
         indexfirst++;
+    }
+    public void increaseAy(Object[] arr){
+        ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
     }
 
     public void checkClick(PointF p){
-        if(indexfirst>tilesArrayList.size()){
+        if(indexfirst>=tilesArrayList.size()){
             indexfirst=0;
 
         }

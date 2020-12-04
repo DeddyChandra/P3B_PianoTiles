@@ -37,6 +37,7 @@ public class Tiles {
         this.setY(-height);
         this.pass = false;
         this.clicked = false;
+        this.toBeDelete=false;
     }
 
     public Tiles(int column,float width,float length){
