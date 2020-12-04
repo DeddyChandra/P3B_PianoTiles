@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.p3bpianotiles.databinding.ActivityMainBinding;
 
@@ -103,35 +104,36 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setScore(int score, int level){
         if(level == 0){
+            Log.d("scores", score+" "+sharedPreferencesHighScore.getEasy());
+            this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getEasy()){
                 this.sharedPreferencesHighScore.saveEasy(score);
                 this.highScoreFragment.setScore(score,level);
                 this.changePage(6);
             }
             else{
-                this.gameOverFragment.setScore(score,level);
                 this.changePage(5);
             }
         }
         else if(level == 1){
+            this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getMed()){
                 this.sharedPreferencesHighScore.saveMed(score);
                 this.highScoreFragment.setScore(score,level);
                 this.changePage(6);
             }
             else{
-                this.gameOverFragment.setScore(score,level);
                 this.changePage(5);
             }
         }
         else if(level == 2){
+            this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getHard()){
                 this.sharedPreferencesHighScore.saveHard(score);
                 this.highScoreFragment.setScore(score,level);
                 this.changePage(6);
             }
             else{
-                this.gameOverFragment.setScore(score,level);
                 this.changePage(5);
             }
         }
