@@ -18,6 +18,7 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     private FragmentListener listener;
     private float volume;
     private int backgroundId = 0;
+    int level = 0;
 
     public PauseFragment(){
 
@@ -39,16 +40,22 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     @Override
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
-
+            this.listener.setLevel(level);
         }
         else if(v == this.binding.restartBtn){
+            this.listener.setLevel(level);
+            this.listener.setGamePlayToLoseState();
             this.listener.changePage(2);
         }
         else if(v == this.binding.quitBtn){
+            this.listener.setGamePlayToLoseState();
             this.listener.changePage(1);
         }
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
