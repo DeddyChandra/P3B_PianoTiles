@@ -13,6 +13,9 @@ public class SharedPreferencesHighScore {
     private int level;
     public SharedPreferencesHighScore(Context context){
         this.sharedPreferences =  context.getSharedPreferences(SHARED_PREF_HS,Context.MODE_PRIVATE);
+        saveEasy(0);
+        saveMed(0);
+        saveHard(0);
     }
     public void saveEasy(int highscore){
         SharedPreferences.Editor editor = this.sharedPreferences.edit();

@@ -44,6 +44,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     private int level;
     private int score;
     private FragmentListener listener;
+    private boolean lose;
 
 
     public GameplayFragment(){
@@ -55,6 +56,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         binding = GameplayFragmentBinding.inflate(inflater);
         ui = this;
         this.score = 0;
+        this.lose = false;
         this.mDetector = new GestureDetector(getContext(), new GameplayFragment.MyCustomGestureListener());
         this.binding.ivCanvas.post(
             new Runnable() {
@@ -172,7 +174,9 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     }
 
     public void lose(){
-        this.listener.setScore(score,level);
-        this.listener.changePage(6);
+        if(!lose) {
+            this.listener.setScore(score, level);
+            this.lose = true;
+        }
     }
 }
