@@ -34,6 +34,7 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
         if(backgroundId != 0) {
             this.binding.backgroundIv.setImageResource(backgroundId);
         }
+        this.listener.setPause(true);
         return this.binding.getRoot();
     }
 
@@ -41,15 +42,16 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
             this.listener.setLevel(level);
+            this.listener.setPause(false);
         }
         else if(v == this.binding.restartBtn){
-            this.listener.setLevel(level);
             this.listener.setGamePlayToLoseState();
-//            this.listener.changePage(2);
+            this.listener.changePage(2);
+            this.listener.setLevel(level);
         }
         else if(v == this.binding.quitBtn){
             this.listener.setGamePlayToLoseState();
-//            this.listener.changePage(1);
+            this.listener.changePage(1);
         }
     }
 

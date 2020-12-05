@@ -28,7 +28,7 @@ public class ThreadTiles implements Runnable {
 
     @Override
     public void run() {
-        while(tiles.getToBeDelete()==false && !presenter.getLoseState()) {
+        while(tiles.getToBeDelete()==false && !presenter.getLoseState() && !presenter.isPause()) {
             checkLose();
             if(this.presenter.getGameState() == 2){
                 break;

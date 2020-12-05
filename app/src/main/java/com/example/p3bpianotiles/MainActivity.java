@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             ft.replace(R.id.fragment_container, this.mainMenuFragment).addToBackStack(null);
         } else if(page == 2){
             this.gameplayFragment = new GameplayFragment();
+
             ft.replace(R.id.fragment_container, this.gameplayFragment).addToBackStack(null);
         }
         else if(page == 3){
@@ -106,12 +107,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setGamePlayToLoseState(){
         this.gameplayFragment.setLose();
-        this.changePage(2);
     }
 
     @Override
     public void setScore(int score, int level){
-        Log.d("setscore", "setScore: ");
+        Log.d("setscore", "setScore: "+level);
         if(level == 0){
             this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getEasy()){
@@ -145,5 +145,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
                 this.changePage(5);
             }
         }
+    }
+
+    public void setPause(boolean pause){
+        this.gameplayFragment.setPause(pause);
     }
 }

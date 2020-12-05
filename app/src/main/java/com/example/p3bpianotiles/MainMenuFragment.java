@@ -57,6 +57,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.mDetector = new GestureDetector(getContext(), new MyCustomGestureListener());
         this.musicList = new ArrayList<>(Arrays.asList(MusicFiles.music));
         startRandomMusic();
+        this.mediaPlayer.start();
         this.binding.easy.setOnClickListener(this);
         this.binding.normal.setOnClickListener(this);
         this.binding.hard.setOnClickListener(this);
@@ -133,8 +134,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         else if(v == this.binding.startBtn){
             this.mediaPlayer.pause();
             Log.d("level", "onClick: "+this.presenter.getLevel());
-            this.fragmentListener.setLevel(this.presenter.getLevel());
             this.fragmentListener.changePage(2);
+            this.fragmentListener.setLevel(this.presenter.getLevel());
         }
         else if(v == this.binding.settingFab){
             this.fragmentListener.changePage(3);

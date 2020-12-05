@@ -66,8 +66,8 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
             this.listener.changePage(1);
         }
         else if(v == this.binding.restartBtn){
-            this.listener.setLevel(level);
             this.listener.changePage(2);
+            this.listener.setLevel(level);
         }
     }
 

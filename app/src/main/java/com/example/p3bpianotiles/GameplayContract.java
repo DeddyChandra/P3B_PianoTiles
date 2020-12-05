@@ -26,5 +26,7 @@ public interface GameplayContract {
         void increaseAy(Object[] arr);
         boolean getLoseState();
         void setToLoseState();
+        boolean isPause();
+        void setPause(boolean pause);
     }
 }

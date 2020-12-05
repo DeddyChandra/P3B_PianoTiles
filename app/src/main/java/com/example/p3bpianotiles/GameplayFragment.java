@@ -187,4 +187,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.presenter.setToLoseState();
     }
 
+    public void setPause(boolean pause){
+        this.presenter.setPause(pause);
+    }
 }
