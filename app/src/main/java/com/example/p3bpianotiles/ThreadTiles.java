@@ -42,38 +42,48 @@ public class ThreadTiles implements Runnable {
                 pause = true;
             }
             if(pause){
-                this.presenter.setUnPauseCount("3");
+                Object[] arr = {3};
+                handler.setMessage(arr, 5);
                 try {
                     Thread.sleep(900);
                 }
                 catch (Exception e){
 
                 }
-
-                this.presenter.setUnPauseCount("2");
+                arr = new Object[]{2};
+                handler.setMessage(arr, 5);
                 try {
                     Thread.sleep(900);
                 }
                 catch (Exception e){
 
                 }
-////                this.presenter.setUnPauseCount("1");
+                arr = new Object[]{1};
+                handler.setMessage(arr, 5);
+                try {
+                    Thread.sleep(900);
+                }
+                catch (Exception e){
+
+                }
+                arr = new Object[]{"Start!"};
+                handler.setMessage(arr, 5);
+                try {
+                    Thread.sleep(300);
+                }
+                catch (Exception e){
+
+                }
+                arr = new Object[]{""};
+                handler.setMessage(arr, 5);
 //                try {
-//                    Thread.sleep(900);
+//                    Thread.sleep(3000);
+                    long curtime = System.currentTimeMillis();
+                    tiles.setTimestamp(curtime);
 //                }
 //                catch (Exception e){
-//
+//                    System.out.println("error");
 //                }
-////                this.presenter.setUnPauseCount("Start!");
-//                try {
-//                    Thread.sleep(300);
-//                }
-//                catch (Exception e){
-//                    System.out.println("Something went wrong.");
-//                }
-//                this.presenter.setUnPauseCount("");
-                long curtime = System.currentTimeMillis();
-                tiles.setTimestamp(curtime);
                 pause = false;
             }
             if(this.presenter.getGameState() == 2){

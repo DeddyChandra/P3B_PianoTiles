@@ -32,6 +32,6 @@ public interface GameplayContract {
         boolean isPause();
         void setPause(boolean pause);
         FragmentActivity getActivity();
-        void setUnPauseCount(String s);
+        void setUnPauseCount(Object[] s);
     }
 }

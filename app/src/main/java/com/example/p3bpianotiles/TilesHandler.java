@@ -33,6 +33,9 @@ public class TilesHandler extends Handler {
         else if(msg.what==4){
             presenter.increaseAy((Object[])msg.obj);
         }
+        else if(msg.what==5){
+            presenter.setUnPauseCount((Object[])msg.obj);
+        }
         /*if(msg.what == TilesHandler.ADD_SCORE) {
             this.gameplayFragment.addScore();
         }*/
