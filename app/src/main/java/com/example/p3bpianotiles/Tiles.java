@@ -1,5 +1,5 @@
 package com.example.p3bpianotiles;
-
+import java.util.Random;
 public class Tiles {
     int column;//buat columnnya
     float x;
@@ -12,6 +12,7 @@ public class Tiles {
     boolean pass;
     boolean addedScore;
     boolean  toBeDelete;
+    Random rand;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
     //System.currentTimeMillis();
@@ -33,6 +34,7 @@ public class Tiles {
 
     public void resetTiles(){
         this.timestamp=System.currentTimeMillis();
+        this.setColumn(rand.nextInt(4));
         this.setAddedScore(false);
         this.setY(-height);
         this.pass = false;
@@ -43,6 +45,7 @@ public class Tiles {
     public Tiles(int column,float width,float length){
         this.column = column;
         this.pass = false;
+        this.rand = new Random();
         if(column==0){
            setX(0);
            setY(-length);

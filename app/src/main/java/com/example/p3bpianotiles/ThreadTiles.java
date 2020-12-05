@@ -88,7 +88,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/2f;
+        float deltatime = (curtime-prevtime)/1f;
         return deltatime;
     }
 
