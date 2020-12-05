@@ -12,8 +12,8 @@ public class SoundPoolTiles {
     private GameplayContract.Presenter presenter;
     private SoundPool soundPool;
     private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
-    private boolean loaded;
-
+    private AudioManager audioManager;
+    int streamVolume;
     public SoundPoolTiles(GameplayContract.Presenter presenter){
         this.presenter = presenter;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -30,6 +30,11 @@ public class SoundPoolTiles {
         else{
             soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC,0);
         }
+
+        this.audioManager = (AudioManager) presenter.getActivity().getSystemService(Context.AUDIO_SERVICE);
+        this.streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        this.streamVolume = streamVolume / audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
         this.do1 = soundPool.load(presenter.getActivity(),R.raw.do_1,1);
         this.re2 = soundPool.load(presenter.getActivity(),R.raw.re_2,1);
         this.mi3 = soundPool.load(presenter.getActivity(),R.raw.mi_3,1);
@@ -64,6 +69,6 @@ public class SoundPoolTiles {
         else if(note == do1_octave){
             note = do1_octave;
         }
-        soundPool.play(note, 1, 1, 1, 0, 1);
+        soundPool.play(note, streamVolume, streamVolume, 1, 0, 1);
     }
 }
