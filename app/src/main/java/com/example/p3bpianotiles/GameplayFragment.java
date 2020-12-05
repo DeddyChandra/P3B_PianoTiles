@@ -199,19 +199,10 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         }
     }
 
-    boolean pause = true;
-
     public void onClick(View v){
         if(v == this.binding.pauseBtn){
+            this.listener.setLevel(level);
             this.listener.changePage(4);
-//            if(pause == true){
-//                this.listener.setPause(true);
-//                this.pause = false;
-//            }
-//            else{
-//                this.listener.setPause(false);
-//                this.pause = true;
-//            }
             Log.d("click", "onClick: ");
         }
     }
@@ -244,6 +235,10 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     public void setLevel(int level){
         this.level = level;
+    }
+
+    public int getLevel(){
+        return this.level;
     }
 
     public void lose(){

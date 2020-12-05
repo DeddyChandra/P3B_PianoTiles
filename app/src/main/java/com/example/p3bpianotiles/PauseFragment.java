@@ -16,10 +16,8 @@ import java.net.PasswordAuthentication;
 public class PauseFragment extends Fragment implements View.OnClickListener, PauseContract.ui{
     private PauseFragmentBinding binding;
     private FragmentListener listener;
-    private float volume;
     private int backgroundId = 0;
-    int level = 0;
-
+    int level;
     public PauseFragment(){
 
     }
@@ -40,7 +38,6 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
     @Override
     public void onClick(View v) {
         if(v == this.binding.resumeBtn){
-            this.listener.setLevel(level);
             this.listener.setPause(false);
             this.listener.resume();
         }

@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
-        this.mainMenuFragment = new MainMenuFragment();
         this.gameplayFragment = new GameplayFragment();
         this.settingFragment = new SettingFragment();
         this.pauseFragment = new PauseFragment();
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page == 1){
+            this.mainMenuFragment = new MainMenuFragment();
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         }
         else if(page == 4){
             this.pauseFragment = new PauseFragment();
+            this.pauseFragment.setLevel(this.gameplayFragment.getLevel());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void setLevel(int level){
         this.gameplayFragment.setLevel(level);
         this.pauseFragment.setLevel(level);
+        Log.d("levell", "setLevel: "+level);
     }
 
     @Override
