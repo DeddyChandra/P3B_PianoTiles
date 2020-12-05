@@ -158,4 +158,5 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void resume(){
         this.changePage(7);
     }
+
 }

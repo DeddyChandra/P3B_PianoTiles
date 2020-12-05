@@ -2,6 +2,8 @@ package com.example.p3bpianotiles;
 
 import android.graphics.PointF;
 
+import androidx.fragment.app.FragmentActivity;
+
 public interface GameplayContract {
     interface UI{
         void draw(Tiles tiles);
@@ -28,5 +30,6 @@ public interface GameplayContract {
         void setToLoseState();
         boolean isPause();
         void setPause(boolean pause);
+        FragmentActivity getActivity();
     }
 }
