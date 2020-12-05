@@ -142,6 +142,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(gameState.getState() == 2){
             this.presenterUI.lose();
         }
+        else if(gameState.getState() == 1){
+            Log.d("pause", "pause");
+        }
         else {
             if ((boolean) arr[0]) {
                 index++;
@@ -210,5 +213,11 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void setPause(boolean pause) {
         this.pause = pause;
+        if(pause){
+            gameState.setState(1);
+        }
+        else{
+
+        }
     }
 }

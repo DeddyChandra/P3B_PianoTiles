@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         else if(page == 6){
             ft.replace(R.id.fragment_container,this.highScoreFragment).addToBackStack(null);
         }
+        else if(page == 7){
+            ft.hide(this.pauseFragment);
+            this.gameplayFragment.setPause(false);
+        }
         ft.commit();
     }
 
@@ -149,5 +153,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     public void setPause(boolean pause){
         this.gameplayFragment.setPause(pause);
+    }
+
+    public void resume(){
+        this.changePage(7);
     }
 }

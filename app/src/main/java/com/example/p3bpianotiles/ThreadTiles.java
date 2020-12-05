@@ -28,8 +28,11 @@ public class ThreadTiles implements Runnable {
 
     @Override
     public void run() {
-        while(tiles.getToBeDelete()==false && !presenter.getLoseState() && !presenter.isPause()) {
+        while(tiles.getToBeDelete()==false && !presenter.getLoseState()) {
             checkLose();
+            while(presenter.isPause()){
+
+            }
             if(this.presenter.getGameState() == 2){
                 break;
             }
@@ -56,7 +59,7 @@ public class ThreadTiles implements Runnable {
         };
         handler.setMessage(arr,1);
         boolean masuk=false;
-        while(tiles.getY()<=0){
+        while(tiles.getY()<=0 && !presenter.isPause()){
             handler.setMessage(arr,4);
         }
         if(isgenerated==false){

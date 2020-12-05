@@ -9,4 +9,5 @@ public interface FragmentListener {
     void setScore(int score, int level);
     void setGamePlayToLoseState();
     void setPause(boolean pause);
+    void resume();
 }
