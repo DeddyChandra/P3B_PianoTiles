@@ -143,7 +143,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         float roll = orientationAngles[2];
 
 
-            presenter.checkSensor(roll);
+        presenter.checkSensor(roll);
 
 
 
