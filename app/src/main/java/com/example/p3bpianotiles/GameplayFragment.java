@@ -99,6 +99,21 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         return binding.getRoot();
 
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(accelerometer != null){
+            sensorManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        if(magnetometer != null){
+            sensorManager.registerListener(this,magnetometer,SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
 
     private void showAllSensor() {
         List<Sensor> sensorList = this.sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -127,15 +142,12 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         float pitch = orientationAngles[1];
         float roll = orientationAngles[2];
 
-        if(Math.abs(azimuth)< VALUE_DRIFT){
-            azimuth = 0;
-        }
-        if(Math.abs(pitch)< VALUE_DRIFT){
-            pitch = 0;
-        }
-        if(Math.abs(roll)< VALUE_DRIFT){
-            roll = 0;
-        }
+
+        presenter.checkSensor(roll);
+
+
+
+        Log.d("roll",roll+"");
 
     }
 
@@ -153,7 +165,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.canvas = new Canvas(this.bitmap);
 
         this.paint = new Paint();
-        mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
+
 
         this.transparentPaint = new Paint();
         this.transparentPaint.setColor(Color.TRANSPARENT);
@@ -163,6 +175,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     @Override
     public void draw(Tiles tiles) {
+        mColorTiles = ResourcesCompat.getColor(getResources(),tiles.getColor(),null);
         paint.setColor(mColorTiles);
         float widthTiles = tiles.getWidth();
         float heightTiles = tiles.getHeight();

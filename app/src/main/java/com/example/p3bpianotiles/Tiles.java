@@ -12,6 +12,7 @@ public class Tiles {
     boolean pass;
     boolean addedScore;
     boolean  toBeDelete;
+    int color;
     Random rand;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
@@ -34,10 +35,19 @@ public class Tiles {
         this.timestamp=timestamp;
     }
 
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
     public void resetTiles(){
         this.timestamp=System.currentTimeMillis();
 
-        //this.setColumn(rand.nextInt(4));
+        this.setColumn(rand.nextInt(4));
         this.setAddedScore(false);
         this.setY(-height);
         this.pass = false;
@@ -74,7 +84,38 @@ public class Tiles {
             setWidth(width/4);
             setHeight(length);
         }
-
+        setColor(R.color.black);
+    }
+    public Tiles(int column,float width,float length,int note ,int color){
+        this.note = note;
+        this.column = column;
+        this.pass = false;
+        this.rand = new Random();
+        if(column==0){
+            setX(0);
+            setY(-length);
+            setWidth(width/4);
+            setHeight(length);
+        }
+        if(column==1){
+            setX(width/4);
+            setY(-length);
+            setWidth(width/4);
+            setHeight(length);
+        }
+        if(column==2){
+            setX(2*width/4);
+            setY(-length);
+            setWidth(width/4);
+            setHeight(length);
+        }
+        if(column==3){
+            setX(3*width/4);
+            setY(-length);
+            setWidth(width/4);
+            setHeight(length);
+        }
+        setColor(color);
     }
     public void setX(float x){
         this.x=x;
@@ -117,10 +158,6 @@ public class Tiles {
         this.toBeDelete = toBeDelete;
     }
     public boolean getToBeDelete(){
-        return toBeDelete;
-    }
-
-    public boolean isToBeDelete() {
         return toBeDelete;
     }
 

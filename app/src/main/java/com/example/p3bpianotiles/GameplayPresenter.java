@@ -101,8 +101,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
 
         int idxclicked=-1;
-        Log.d("exsfirst",indexfirst+"");
-        Log.d("exs",index+"");
         if(indexfirst<=index) {
             for (int i = indexfirst; i <= index; i++) {
                 if (getTouchPoint() != null &&
@@ -138,19 +136,47 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(idxclicked==-1){
             Log.d("delete","mati");
             gameState.setState(GameState.GAME_OVER);
-        }else if(idxclicked==indexfirst){
+        }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
             }
-            indexfirst++;
+
 
             tilesArrayList.get(idxclicked).setToBeDelete(true);
+            indexfirst++;
         }
 
-        Log.d("exsclicked",idxclicked+"");
 
 
+    }
+
+    public void checkSensor(float roll){
+        if(indexfirst>=tilesArrayList.size()){
+            indexfirst=0;
+        }
+        if(tilesArrayList.get(indexfirst).getColor()==R.color.red){
+            if(roll<-0.5){
+                if(!tilesArrayList.get(indexfirst).isAddedScore()) {
+                    addScore();
+                    tilesArrayList.get(indexfirst).setAddedScore(true);
+                }
+
+                tilesArrayList.get(indexfirst).setToBeDelete(true);
+                indexfirst++;
+            }
+
+        }else if(tilesArrayList.get(indexfirst).getColor()==R.color.green){
+            if(roll>0.5) {
+                if (!tilesArrayList.get(indexfirst).isAddedScore()) {
+                    addScore();
+                    tilesArrayList.get(indexfirst).setAddedScore(true);
+                }
+
+                tilesArrayList.get(indexfirst).setToBeDelete(true);
+                indexfirst++;
+            }
+        }
     }
 
     public void generateMultipleTiles(Object[] arr){

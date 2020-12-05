@@ -33,5 +33,6 @@ public interface GameplayContract {
         void setPause(boolean pause);
         FragmentActivity getActivity();
         void setUnPauseCount(Object[] s);
+        void checkSensor(float roll);
     }
 }
