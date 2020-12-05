@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         if(page == 1){
             ft.replace(R.id.fragment_container, this.mainMenuFragment).addToBackStack(null);
         } else if(page == 2){
+            this.gameplayFragment = new GameplayFragment();
             ft.replace(R.id.fragment_container, this.gameplayFragment).addToBackStack(null);
         }
         else if(page == 3){
@@ -99,10 +100,18 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void setLevel(int level){
         this.gameplayFragment.setLevel(level);
+        this.pauseFragment.setLevel(level);
+    }
+
+    @Override
+    public void setGamePlayToLoseState(){
+        this.gameplayFragment.setLose();
+        this.changePage(2);
     }
 
     @Override
     public void setScore(int score, int level){
+        Log.d("setscore", "setScore: ");
         if(level == 0){
             this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getEasy()){

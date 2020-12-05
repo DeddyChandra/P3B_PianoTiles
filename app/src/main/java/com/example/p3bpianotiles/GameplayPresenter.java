@@ -194,4 +194,12 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public int getGameState(){
         return this.gameState.getState();
     }
+
+    public void setToLoseState(){
+        this.lose = true;
+    }
+
+    public boolean getLoseState(){
+        return this.lose;
+    }
 }

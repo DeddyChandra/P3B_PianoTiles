@@ -24,5 +24,7 @@ public interface GameplayContract {
         int getGameState();
         void checkClick(PointF pointf);
         void increaseAy(Object[] arr);
+        boolean getLoseState();
+        void setToLoseState();
     }
 }
