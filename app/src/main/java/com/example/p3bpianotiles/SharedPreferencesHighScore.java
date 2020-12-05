@@ -9,8 +9,7 @@ public class SharedPreferencesHighScore {
     protected final static String EASY = "easy";
     protected final static String MED = "med";
     protected final static String HARD = "hard";
-    private int score;
-    private int level;
+
     public SharedPreferencesHighScore(Context context){
         this.sharedPreferences =  context.getSharedPreferences(SHARED_PREF_HS,Context.MODE_PRIVATE);
         saveEasy(0);
@@ -41,5 +40,4 @@ public class SharedPreferencesHighScore {
     public int getHard(){
         return sharedPreferences.getInt(HARD,-1);
     }
-
 }
