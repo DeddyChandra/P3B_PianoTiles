@@ -72,7 +72,7 @@ public class ThreadTiles implements Runnable {
                 e.printStackTrace();
             }
         }
-        soundPoolTiles.play(1);
+        soundPoolTiles.play(tiles.getNote());
         Object arr[]= {
                 tiles,getAy()
         };
