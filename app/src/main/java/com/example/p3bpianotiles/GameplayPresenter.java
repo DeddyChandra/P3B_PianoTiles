@@ -69,48 +69,11 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             this.tilesArrayList = mf.getLittleStart();
         }
         else{
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+
         }
     }
 
@@ -126,7 +89,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
     public void delete(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
-        indexfirst++;
+
     }
     public void increaseAy(Object[] arr){
         ((Tiles) arr[0]).setY(((Tiles) arr[0]).getY() + (float) arr[1]);
@@ -138,8 +101,10 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
 
         int idxclicked=-1;
-        if(indexfirst<index) {
-            for (int i = indexfirst; i < index; i++) {
+        Log.d("exsfirst",indexfirst+"");
+        Log.d("exs",index+"");
+        if(indexfirst<=index) {
+            for (int i = indexfirst; i <= index; i++) {
                 if (getTouchPoint() != null &&
                     p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
                     p.x >= tilesArrayList.get(i).x &&
@@ -160,7 +125,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
 
 
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i <= index; i++) {
                 if (getTouchPoint() != null &&
                     p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
                     p.x >= tilesArrayList.get(i).x &&
@@ -178,9 +143,12 @@ public class GameplayPresenter implements GameplayContract.Presenter {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
             }
-            Log.d("delete","delete");
+            indexfirst++;
+
             tilesArrayList.get(idxclicked).setToBeDelete(true);
         }
+
+        Log.d("exsclicked",idxclicked+"");
 
 
     }
@@ -195,7 +163,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
         else {
             if ((boolean) arr[0]) {
-                index++;
+
                 Log.d("index", "generateMultipleTiles:" + index);
                 generateTiles(generateRandomColumn(), width, height/4, index);
             }
@@ -213,6 +181,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void generate(Object[] arr){
 //        generateTiles(generateRandomColumn(), width, height, index);
+        index++;
         generateMultipleTiles(arr);
     }
 
@@ -267,5 +236,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             Log.d("pause", "setPause: unpause");
             gameState.setState(0);
         }
+    }
+
+    public void setUnPauseCount(String s){
+        this.presenterUI.setUnPauseCount(s);
     }
 }

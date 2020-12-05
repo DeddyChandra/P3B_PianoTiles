@@ -14,4 +14,7 @@
     <string name="Main_menu">Main menu</string>
     <string name="Score">Score</string>
     <string name="Level">Level</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
 </resources>

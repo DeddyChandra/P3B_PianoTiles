@@ -10,6 +10,7 @@ public interface GameplayContract {
         void delete(Tiles tiles);
         void addScore();
         void lose();
+        void setUnPauseCount(String s);
 
     }
     interface Presenter{
@@ -31,5 +32,6 @@ public interface GameplayContract {
         boolean isPause();
         void setPause(boolean pause);
         FragmentActivity getActivity();
+        void setUnPauseCount(String s);
     }
 }
