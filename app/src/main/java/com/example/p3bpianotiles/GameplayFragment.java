@@ -153,7 +153,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.canvas = new Canvas(this.bitmap);
 
         this.paint = new Paint();
-        mColorTiles = ResourcesCompat.getColor(getResources(),R.color.black,null);
+
 
         this.transparentPaint = new Paint();
         this.transparentPaint.setColor(Color.TRANSPARENT);
@@ -163,6 +163,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     @Override
     public void draw(Tiles tiles) {
+        mColorTiles = ResourcesCompat.getColor(getResources(),tiles.getColor(),null);
         paint.setColor(mColorTiles);
         float widthTiles = tiles.getWidth();
         float heightTiles = tiles.getHeight();
