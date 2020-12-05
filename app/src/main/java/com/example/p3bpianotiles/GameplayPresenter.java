@@ -155,7 +155,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(indexfirst>=tilesArrayList.size()){
             indexfirst=0;
         }
-        if(tilesArrayList.get(indexfirst).getColor()==R.color.red){
+        if(tilesArrayList.get(indexfirst).getColor()==R.color.yellow){
             if(roll<-0.5){
                 if(!tilesArrayList.get(indexfirst).isAddedScore()) {
                     addScore();
