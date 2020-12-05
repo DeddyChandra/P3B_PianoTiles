@@ -7,13 +7,15 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.util.Log;
 
-public class SoundPoolTiles {
+public class SoundPoolTiles{
     private int note;
     private GameplayContract.Presenter presenter;
     private SoundPool soundPool;
     private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
     private AudioManager audioManager;
-    int streamVolume;
+    float volume,cur,max;
+
+    private FragmentListener fragmentListener;
     public SoundPoolTiles(GameplayContract.Presenter presenter){
         this.presenter = presenter;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -30,10 +32,12 @@ public class SoundPoolTiles {
         else{
             soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC,0);
         }
-
         this.audioManager = (AudioManager) presenter.getActivity().getSystemService(Context.AUDIO_SERVICE);
-        this.streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        this.streamVolume = streamVolume / audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        this.cur = this.audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        this.max = this.audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        this.volume = this.cur/this.max;
+//        this.volume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+//        this.streamVolume = streamVolume / audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
         this.do1 = soundPool.load(presenter.getActivity(),R.raw.do_1,1);
         this.re2 = soundPool.load(presenter.getActivity(),R.raw.re_2,1);
@@ -69,6 +73,15 @@ public class SoundPoolTiles {
         else if(note == do1_octave){
             note = do1_octave;
         }
-        soundPool.play(note, streamVolume, streamVolume, 1, 0, 1);
+        soundPool.play(note, volume, volume, 1, 0, 1);
     }
+
+//    public void changeVolume(int vol){
+//        this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
+//        Log.d("soundpool"," "+volume+"");
+//        if(Double.isInfinite(volume)){
+//            volume = 1;
+//        }
+//    }
+
 }
