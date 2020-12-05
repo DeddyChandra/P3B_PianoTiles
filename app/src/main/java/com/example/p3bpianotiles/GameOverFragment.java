@@ -32,6 +32,7 @@ public class GameOverFragment extends Fragment implements View.OnClickListener, 
         }
         this.binding.mainMenuBtn.setOnClickListener(this);
         this.binding.restartBtn.setOnClickListener(this);
+        Log.d("setscore", "gamefrag: "+score);
         this.binding.scorePointTv.setText(Integer.toString(score));
         this.setLevel();
         return this.binding.getRoot();

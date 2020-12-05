@@ -126,7 +126,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
     public void delete(Object[] arr){
         presenterUI.delete((Tiles)arr[0]);
-
         indexfirst++;
     }
     public void increaseAy(Object[] arr){
@@ -136,7 +135,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void checkClick(PointF p){
         if(indexfirst>=tilesArrayList.size()){
             indexfirst=0;
-
         }
 
         int idxclicked=-1;
@@ -213,8 +211,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         return this.point;
     }
 
-
-
     public void generate(Object[] arr){
 //        generateTiles(generateRandomColumn(), width, height, index);
         generateMultipleTiles(arr);
@@ -272,5 +268,4 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             gameState.setState(0);
         }
     }
-
 }

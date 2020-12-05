@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     protected void onResume(){
         super.onResume();
-        this.mainMenuFragment.resumeSound();
+        if(fcurrent == mainMenuFragment || fcurrent == settingFragment) {
+            this.mainMenuFragment.resumeSound();
+        }
     }
 
     @Override
@@ -158,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void changeVolume(int vol){
         this.mainMenuFragment.changeVolume(vol);
-        this.pauseFragment.changeVolume(vol);
     }
 
     @Override
@@ -187,7 +188,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     @Override
     public void setScore(int score, int level){
-        Log.d("setscore", "setScore: "+level);
+        this.gameOverFragment = new GameOverFragment();
+        this.highScoreFragment = new HighScoreFragment();
         if(level == 0){
             this.gameOverFragment.setScore(score,level);
             if(score>sharedPreferencesHighScore.getEasy()){
