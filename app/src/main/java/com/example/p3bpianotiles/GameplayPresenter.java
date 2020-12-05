@@ -141,13 +141,39 @@ public class GameplayPresenter implements GameplayContract.Presenter {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
             }
-            indexfirst++;
+
 
             tilesArrayList.get(idxclicked).setToBeDelete(true);
+            indexfirst++;
         }
 
 
 
+    }
+
+    public void checkSensor(float roll){
+        if(tilesArrayList.get(indexfirst).getColor()==R.color.red){
+            if(roll<-0.5){
+                if(!tilesArrayList.get(indexfirst).isAddedScore()) {
+                    addScore();
+                    tilesArrayList.get(indexfirst).setAddedScore(true);
+                }
+
+                tilesArrayList.get(indexfirst).setToBeDelete(true);
+                indexfirst++;
+            }
+
+        }else if(tilesArrayList.get(indexfirst).getColor()==R.color.green){
+            if(roll>0.5) {
+                if (!tilesArrayList.get(indexfirst).isAddedScore()) {
+                    addScore();
+                    tilesArrayList.get(indexfirst).setAddedScore(true);
+                }
+
+                tilesArrayList.get(indexfirst).setToBeDelete(true);
+                indexfirst++;
+            }
+        }
     }
 
     public void generateMultipleTiles(Object[] arr){
