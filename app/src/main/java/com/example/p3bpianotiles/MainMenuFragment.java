@@ -50,6 +50,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
+        Log.d("OncreateMain", "onCreateView: ");
         this.binding = MainMenuFragmentBinding.inflate(inflater);
         this.rotateVinyl();
         this.presenter = new MainMenuPresenter();
@@ -273,7 +274,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     public void changeBackground(int id){
         this.backgroundId = id;
-//        this.binding.backgroundIv.setImageResource(id);
+        this.binding.backgroundIv.setImageResource(id);
     }
 
     public void setDefault(){
@@ -281,6 +282,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.mute = false;
         this.mute();
         this.mediaPlayer.setVolume(100,100);
+    }
 
+    public void play(){
+        this.mediaPlayer.start();
     }
 }

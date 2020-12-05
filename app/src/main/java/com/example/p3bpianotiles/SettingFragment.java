@@ -97,17 +97,27 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void changeBackground(int id){
         this.binding.backgroundIv.setImageResource(id);
-        this.listener.changeBackground(id);
+        this.listener.changeBackground(this.presenter.getBackgroundId());
     }
 
     public void setDefault(){
-        this.changeBackground(R.drawable.background);
+        this.presenter.setBackgroundIndex(0);
+        this.presenter.changeBackground();
+        this.backgroundId = 0;
+        this.changeBackground(this.presenter.getBackgroundId());
         this.listener.setDefault();
-        this.listener.changeBackground(R.drawable.background);
         this.binding.seekBar.setProgress(100);
     }
 
     public void setBackgroundIndex(int i){
         this.backgroundId = 0;
+    }
+
+    public int getBackgroundId() {
+        if (presenter == null) {
+            return R.drawable.background;
+        } else {
+            return presenter.getBackgroundId();
+        }
     }
 }
