@@ -268,4 +268,8 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             gameState.setState(0);
         }
     }
+
+    public void setUnPauseCount(String s){
+        this.presenterUI.setUnPauseCount(s);
+    }
 }
