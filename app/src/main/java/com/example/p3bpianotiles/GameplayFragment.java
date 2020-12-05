@@ -63,7 +63,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
                 @Override
                 public void run() {
                     initCanvas();
-                    presenter = new GameplayPresenter(ui,width,height);
+                    presenter = new GameplayPresenter(ui,width,height,getActivity());
                     presenter.setLevel(level);
                     presenter.generateTiles(0,width,height/4,0);
                     presenter.setGameState(0);

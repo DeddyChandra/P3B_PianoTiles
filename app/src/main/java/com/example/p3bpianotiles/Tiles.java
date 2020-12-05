@@ -24,6 +24,7 @@ public class Tiles {
         this.height = height;
         this.pass = false;
         this.addedScore = false;
+        this.note = note;
     }
     public long getTimestamp(){
         return timestamp;
@@ -42,7 +43,8 @@ public class Tiles {
         this.toBeDelete=false;
     }
 
-    public Tiles(int column,float width,float length){
+    public Tiles(int column,float width,float length,int note){
+        this.note = note;
         this.column = column;
         this.pass = false;
         this.rand = new Random();
@@ -134,5 +136,9 @@ public class Tiles {
 
     public void setAddedScore(boolean addedScore) {
         this.addedScore = addedScore;
+    }
+
+    public int getNote() {
+        return note;
     }
 }
