@@ -17,16 +17,16 @@ public class Tiles {
     //System.currentTimeMillis();
     //System.currentTimeMillis();
 
-    public Tiles(float x,float y,float width,float height){
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.pass = false;
-        this.addedScore = false;
-        this.note = note;
-        this.rand = new Random();
-    }
+//    public Tiles(float x,float y,float width,float height){
+//        this.x = x;
+//        this.y = y;
+//        this.width = width;
+//        this.height = height;
+//        this.pass = false;
+//        this.addedScore = false;
+//        this.note = note;
+//        this.rand = new Random();
+//    }
     public long getTimestamp(){
         return timestamp;
     }

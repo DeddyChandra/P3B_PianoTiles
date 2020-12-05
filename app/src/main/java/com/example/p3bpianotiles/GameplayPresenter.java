@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class GameplayPresenter implements GameplayContract.Presenter {
@@ -22,6 +23,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public int width, height;
     public boolean pause;
     public FragmentActivity fragmentActivity;
+    public MusicFiles mf;
 
     GameplayPresenter(GameplayContract.UI presenterUI, int width, int height, FragmentActivity fragmentActivity){
         this.tilesArrayList = new ArrayList<>();
@@ -34,6 +36,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
         this.soundPoolTiles = new SoundPoolTiles(this);
+        this.mf = new MusicFiles(width, height);
     }
 
     public FragmentActivity getActivity(){
@@ -63,14 +66,51 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         else if(level == 1){
-            for(int i = 0; i < MusicFiles.LittleStar.length; i++){
-                this.tilesArrayList.add(MusicFiles.LittleStar[i]);
-            }
+            this.tilesArrayList = mf.getLittleStart();
         }
         else{
-            for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            }
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
         }
     }
 

@@ -1,10 +1,25 @@
 package com.example.p3bpianotiles;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MusicFiles {
-    static int width;
-    static int height;
+    public int width;
+    public int height;
+    public ArrayList<Tiles> littleStar;
+
+    public MusicFiles(int width, int height){
+        this.littleStar = new ArrayList<>();
+        this.width = width;
+        this.height = height;
+        this.addLittleStar();
+    }
+
+
+    public ArrayList<Tiles> getLittleStart(){
+        return littleStar;
+    }
+
     public static Music[] music ={
             new Music (R.raw.jingle_bells, "Jingle Bell"),
             new Music (R.raw.silent_night, "Silent Night"),
@@ -27,53 +42,53 @@ public class MusicFiles {
 //            new Music (R.raw.cutted5s, "cutted"),
 //            new Music (R.raw.cutted5s, "cutted")
     };
-    public static Tiles[] LittleStar={
 
-            new Tiles(generateRandomColumn(),width,height/4,1),
-            new Tiles(generateRandomColumn(),width,height/4,1),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,6),
-            new Tiles(generateRandomColumn(),width,height/4,6),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,1),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,1),
-            new Tiles(generateRandomColumn(),width,height/4,1),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,6),
-            new Tiles(generateRandomColumn(),width,height/4,6),
-            new Tiles(generateRandomColumn(),width,height/4,5),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,4),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,3),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,2),
-            new Tiles(generateRandomColumn(),width,height/4,1),
+    public void addLittleStar(){
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
     };
 
-    private static float generateRandomColumn() {
+    public int generateRandomColumn() {
         Random rand = new Random();
         return rand.nextInt(4);
 
