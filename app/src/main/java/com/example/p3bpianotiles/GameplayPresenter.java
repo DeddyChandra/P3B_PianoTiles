@@ -63,8 +63,8 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         else if(level == 1){
-            for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            for(int i = 0; i < MusicFiles.LittleStar.length; i++){
+                this.tilesArrayList.add(MusicFiles.LittleStar[i]);
             }
         }
         else{
@@ -232,4 +232,5 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             gameState.setState(0);
         }
     }
+
 }

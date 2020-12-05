@@ -25,6 +25,7 @@ public class Tiles {
         this.pass = false;
         this.addedScore = false;
         this.note = note;
+        this.rand = new Random();
     }
     public long getTimestamp(){
         return timestamp;
@@ -35,7 +36,8 @@ public class Tiles {
 
     public void resetTiles(){
         this.timestamp=System.currentTimeMillis();
-        this.setColumn(rand.nextInt(4));
+
+        //this.setColumn(rand.nextInt(4));
         this.setAddedScore(false);
         this.setY(-height);
         this.pass = false;
