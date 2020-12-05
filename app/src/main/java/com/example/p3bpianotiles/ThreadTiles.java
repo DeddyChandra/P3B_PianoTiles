@@ -22,7 +22,7 @@ public class ThreadTiles implements Runnable {
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState,SoundPoolTiles soundPoolTiles ){
         thread = new Thread(this);
         this.tiles =tiles;
-        tiles.resetTiles();
+        this.tiles.resetTiles();
         this.handler=handler;
         this.presenter=presenter;
         this.gameState = gameState;

@@ -101,8 +101,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
 
         int idxclicked=-1;
-        Log.d("exsfirst",indexfirst+"");
-        Log.d("exs",index+"");
         if(indexfirst<=index) {
             for (int i = indexfirst; i <= index; i++) {
                 if (getTouchPoint() != null &&
@@ -138,7 +136,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(idxclicked==-1){
             Log.d("delete","mati");
             gameState.setState(GameState.GAME_OVER);
-        }else if(idxclicked==indexfirst){
+        }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
@@ -148,7 +146,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             tilesArrayList.get(idxclicked).setToBeDelete(true);
         }
 
-        Log.d("exsclicked",idxclicked+"");
 
 
     }

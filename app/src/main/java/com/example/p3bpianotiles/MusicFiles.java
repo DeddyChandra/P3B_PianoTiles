@@ -50,28 +50,28 @@ public class MusicFiles {
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,6));
-            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5,R.color.red));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.red));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2,R.color.red));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,4));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
-            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2,R.color.green));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,5));
@@ -85,7 +85,7 @@ public class MusicFiles {
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,3));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
     };
 
     public int generateRandomColumn() {
