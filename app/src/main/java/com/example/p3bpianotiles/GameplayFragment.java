@@ -174,9 +174,20 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     }
 
     public void lose(){
+        Log.d("loses", ""+lose);
         if(!lose) {
             this.listener.setScore(score, level);
             this.lose = true;
         }
+    }
+
+    public void setLose() {
+        this.lose = true;
+        this.presenter.setGameState(2);
+        this.presenter.setToLoseState();
+    }
+
+    public void setPause(boolean pause){
+        this.presenter.setPause(pause);
     }
 }

@@ -16,18 +16,18 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public int index;
     public int indexfirst;
     public boolean lose;
-    //hapus
     public int width, height;
-    //hapus
+    public boolean pause;
 
     GameplayPresenter(GameplayContract.UI presenterUI, int width, int height){
-        tilesArrayList = new ArrayList<>();
+        this.tilesArrayList = new ArrayList<>();
         this.presenterUI=presenterUI;
         this.width = width;
         this.height = height;
-        index = 0;
-        indexfirst = 0;
-        lose = false;
+        this.index = 0;
+        this.indexfirst = 0;
+        this.lose = false;
+        this.pause = false;
         this.gameState = new GameState(0);
     }
     public void generateTiles(int column,int width,int height, int index){
@@ -124,7 +124,8 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
         if(idxclicked==-1){
             Log.d("delete","mati");
-        }else{
+            gameState.setState(GameState.GAME_OVER);
+        }else if(idxclicked==indexfirst){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
@@ -193,5 +194,21 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public int getGameState(){
         return this.gameState.getState();
+    }
+
+    public void setToLoseState(){
+        this.lose = true;
+    }
+
+    public boolean getLoseState(){
+        return this.lose;
+    }
+
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 }
