@@ -17,4 +17,8 @@
     <string name="three">3</string>
     <string name="two">2</string>
     <string name="one">1</string>
+    <string name="Created">Created By:</string>
+    <string name="D">Deddy Chandra</string>
+    <string name="B">Bryan Heryanto</string>
+    <string name="M">Michael Alvino</string>
 </resources>
