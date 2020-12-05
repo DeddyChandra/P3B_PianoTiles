@@ -142,9 +142,9 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         float pitch = orientationAngles[1];
         float roll = orientationAngles[2];
 
-
-        presenter.checkSensor(roll);
-
+        if(Math.abs(roll)>0) {
+            presenter.checkSensor(roll);
+        }
 
 
         Log.d("roll",roll+"");

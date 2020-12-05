@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
+        this.mainMenuFragment = new MainMenuFragment();
         this.gameplayFragment = new GameplayFragment();
         this.settingFragment = new SettingFragment();
         this.pauseFragment = new PauseFragment();
@@ -69,11 +70,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page == 1){
-            this.mainMenuFragment = new MainMenuFragment();
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
             if(this.mainMenuFragment.isAdded()){
+                this.mainMenuFragment.play();
                 ft.show(this.mainMenuFragment);
                 fcurrent=this.mainMenuFragment;
             }
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         }
         else if(page == 4){
             this.pauseFragment = new PauseFragment();
+            this.pauseFragment.changeBackground(settingFragment.getBackgroundId());
             this.pauseFragment.setLevel(this.gameplayFragment.getLevel());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             }
         }
         else if(page == 5){
+            this.gameOverFragment.changeBackground(settingFragment.getBackgroundId());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             }
         }
         else if(page == 6){
+            this.highScoreFragment.changeBackground(settingFragment.getBackgroundId());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
@@ -166,10 +170,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     @Override
     public void changeBackground(int id){
+        Log.d("bacground", "changeBackground: "+this.settingFragment.getBackgroundId());
         this.mainMenuFragment.changeBackground(id);
-        this.pauseFragment.changeBackground(id);
-        this.gameOverFragment.changeBackground(id);
-        this.highScoreFragment.changeBackground(id);
     }
 
     @Override

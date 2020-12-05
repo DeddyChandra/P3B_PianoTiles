@@ -10,6 +10,7 @@ public class SettingPresenter implements SettingContract.presenter {
     private List<Background> backgroundList;
     private SettingContract.ui ui;
     int backgroundIndex;
+    int backgroundId;
 
     public SettingPresenter(SettingContract.ui ui,List<Background> backgroundList ){
         this.ui = ui;
@@ -25,13 +26,19 @@ public class SettingPresenter implements SettingContract.presenter {
         if(backgroundIndex+1 > backgroundList.size()){
             backgroundIndex = 0;
             this.ui.setBackgroundIndex(0);
-            this.ui.changeBackground(backgroundList.get(backgroundIndex).getId());
+            this.backgroundId = backgroundList.get(backgroundIndex).getId();
+            this.ui.changeBackground(backgroundId);
         }
         else{
-            this.ui.changeBackground(backgroundList.get(backgroundIndex).getId());
+            this.backgroundId = backgroundList.get(backgroundIndex).getId();
+            this.ui.changeBackground(backgroundId);
             backgroundIndex++;
         }
-        Log.d("change", "changeBackground: "+backgroundIndex);
 
+        Log.d("change", "changeBackground: "+backgroundIndex);
+    }
+
+    public int getBackgroundId() {
+        return backgroundId;
     }
 }
