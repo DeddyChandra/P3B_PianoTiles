@@ -31,7 +31,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.index = 0;
         this.indexfirst = 0;
         this.lose = false;
-        this.pause = false;
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
         this.soundPoolTiles = new SoundPoolTiles(this);
@@ -225,10 +224,12 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void setPause(boolean pause) {
         this.pause = pause;
         if(pause){
+            Log.d("pause", "setPause: pause");
             gameState.setState(1);
         }
         else{
-
+            Log.d("pause", "setPause: unpause");
+            gameState.setState(0);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.p3bpianotiles;
 
 public class GameState {
+    public static final int PLAY = 0;
     public static final int RESUME = 1;
     public static final int GAME_OVER=2;
     private int state;

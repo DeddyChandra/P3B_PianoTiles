@@ -1,6 +1,7 @@
 package com.example.p3bpianotiles;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,21 +25,29 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private GameOverFragment gameOverFragment;
     private HighScoreFragment highScoreFragment;
     private SharedPreferencesHighScore sharedPreferencesHighScore;
+    private Fragment fcurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
-        mainMenuFragment = new MainMenuFragment();
-        gameplayFragment = new GameplayFragment();
-        settingFragment = new SettingFragment();
-        pauseFragment = new PauseFragment();
-        gameOverFragment = new GameOverFragment();
-        highScoreFragment = new HighScoreFragment();
-        sharedPreferencesHighScore = new SharedPreferencesHighScore(this);
-        fragmentManager = this.getSupportFragmentManager();
+        this.mainMenuFragment = new MainMenuFragment();
+        this.gameplayFragment = new GameplayFragment();
+        this.settingFragment = new SettingFragment();
+        this.pauseFragment = new PauseFragment();
+        this.gameOverFragment = new GameOverFragment();
+        this.highScoreFragment = new HighScoreFragment();
+        this.sharedPreferencesHighScore = new SharedPreferencesHighScore(this);
+        this.fragmentManager = this.getSupportFragmentManager();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        this.fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                fcurrent = fragmentManager.findFragmentById(R.id.fragment_container);
+            }
+        });
         changePage(1);
     }
 
@@ -58,26 +67,88 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page == 1){
-            ft.replace(R.id.fragment_container, this.mainMenuFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.mainMenuFragment.isAdded()){
+                ft.show(this.mainMenuFragment);
+                fcurrent=this.mainMenuFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.mainMenuFragment);
+                fcurrent=this.mainMenuFragment;
+            }
         } else if(page == 2){
             this.gameplayFragment = new GameplayFragment();
-
-            ft.replace(R.id.fragment_container, this.gameplayFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.gameplayFragment.isAdded()){
+                ft.show(this.gameplayFragment);
+                fcurrent=this.gameplayFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.gameplayFragment);
+                fcurrent=this.gameplayFragment;
+            }
         }
         else if(page == 3){
-            ft.replace(R.id.fragment_container,this.settingFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.settingFragment.isAdded()){
+                ft.show(this.settingFragment);
+                fcurrent=this.settingFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.settingFragment);
+                fcurrent=this.settingFragment;
+            }
         }
         else if(page == 4){
-            ft.replace(R.id.fragment_container,this.pauseFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.pauseFragment.isAdded()){
+                ft.show(this.pauseFragment);
+                fcurrent=this.pauseFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.pauseFragment);
+                fcurrent=this.pauseFragment;
+            }
         }
         else if(page == 5){
-            ft.replace(R.id.fragment_container,this.gameOverFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.gameOverFragment.isAdded()){
+                ft.show(this.gameOverFragment);
+                fcurrent=this.gameOverFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.gameOverFragment);
+                fcurrent=this.gameOverFragment;
+            }
         }
         else if(page == 6){
-            ft.replace(R.id.fragment_container,this.highScoreFragment).addToBackStack(null);
+            if(fcurrent!=null) {
+                ft.hide(fcurrent);
+            }
+            if(this.highScoreFragment.isAdded()){
+                ft.show(this.highScoreFragment);
+                fcurrent=this.highScoreFragment;
+            }
+            else{
+                ft.add(R.id.fragment_container,this.highScoreFragment);
+                fcurrent=this.highScoreFragment;
+            }
         }
         else if(page == 7){
-            ft.hide(this.pauseFragment);
+            ft.hide(this.fcurrent);
+            Log.d("page", "changePage: resume");
+            ft.show(this.gameplayFragment);
+            fcurrent=this.gameplayFragment;
             this.gameplayFragment.setPause(false);
         }
         ft.commit();
@@ -156,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     }
 
     public void resume(){
+        Log.d("page", "changePage: resume");
         this.changePage(7);
     }
 
