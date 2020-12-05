@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     private SharedPreferencesHighScore sharedPreferencesHighScore;
     private Fragment fcurrent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
