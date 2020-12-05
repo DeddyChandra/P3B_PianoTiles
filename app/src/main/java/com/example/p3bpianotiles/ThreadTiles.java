@@ -15,9 +15,10 @@ public class ThreadTiles implements Runnable {
     private GameplayContract.Presenter presenter;
     private GameState gameState;
     private boolean isgenerated;
+    private SoundPoolTiles soundPoolTiles;
 
 
-    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState){
+    ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState,SoundPoolTiles soundPoolTiles ){
         thread = new Thread(this);
         this.tiles =tiles;
         tiles.resetTiles();
@@ -25,6 +26,7 @@ public class ThreadTiles implements Runnable {
         this.presenter=presenter;
         this.gameState = gameState;
         this.isgenerated=false;
+        this.soundPoolTiles=soundPoolTiles;
     }
     public void startingthread(){
         this.thread.start();
@@ -49,6 +51,7 @@ public class ThreadTiles implements Runnable {
                 Object arry[] = {
                         true
                 };
+
                 handler.setMessage(arry, 2);
                 isgenerated=true;
 
@@ -59,6 +62,7 @@ public class ThreadTiles implements Runnable {
                 e.printStackTrace();
             }
         }
+        soundPoolTiles.play(1);
         Object arr[]= {
                 tiles,getAy()
         };
@@ -92,7 +96,7 @@ public class ThreadTiles implements Runnable {
 
 
 
-    public float getAy(){
+    public synchronized float getAy(){
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);

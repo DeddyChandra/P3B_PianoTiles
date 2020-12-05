@@ -13,6 +13,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     TilesHandler handler;
     GameplayContract.UI presenterUI;
     GameState gameState;
+    SoundPoolTiles soundPoolTiles;
     PointF point;
     public int level;
     public int index;
@@ -33,6 +34,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.pause = false;
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
+        this.soundPoolTiles = new SoundPoolTiles(this);
     }
 
     public FragmentActivity getActivity(){
@@ -42,7 +44,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void generateTiles(int column,int width,int height, int index){
         //Log.d("generate:",tilesArrayList.get(index).getY()+"");
         handler= new TilesHandler(this);
-        ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this,gameState);
+        ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this,gameState,soundPoolTiles);
         thread.startingthread();
     }
 
@@ -58,17 +60,17 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void setArrayTiles(){
         if(level == 0){
             for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4));
+                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
             }
         }
         else if(level == 1){
             for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4));
+                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
             }
         }
         else{
             for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4));
+                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
             }
         }
     }

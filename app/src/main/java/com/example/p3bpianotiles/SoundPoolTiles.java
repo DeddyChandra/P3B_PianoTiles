@@ -5,6 +5,7 @@ import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
+import android.util.Log;
 
 public class SoundPoolTiles {
     private int note;
@@ -12,7 +13,8 @@ public class SoundPoolTiles {
     private SoundPool soundPool;
     private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
 
-    public SoundPoolTiles(){
+    public SoundPoolTiles(GameplayContract.Presenter presenter){
+        this.presenter = presenter;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
@@ -61,5 +63,7 @@ public class SoundPoolTiles {
         else if(note == do1_octave){
             note = do1_octave;
         }
+        Log.d("masuk","masuk");
+        soundPool.play(note, 1, 1, 1, 0, 1);
     }
 }
