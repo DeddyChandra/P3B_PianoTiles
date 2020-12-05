@@ -1,7 +1,11 @@
 package com.example.p3bpianotiles;
 
 import android.content.Context;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +14,8 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.p3bpianotiles.databinding.SettingFragmentBinding;
 
 import java.util.ArrayList;
@@ -23,6 +29,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     private SettingPresenter presenter;
     private List<Background> backgroundList;
     private int backgroundId = 0;
+
     public SettingFragment(){
 
     }
@@ -38,6 +45,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         this.binding.changeBgBtn.setOnClickListener(this);
         this.binding.resetBtn.setOnClickListener(this);
         this.presenter.changeBackground();
+
         return this.binding.getRoot();
     }
 

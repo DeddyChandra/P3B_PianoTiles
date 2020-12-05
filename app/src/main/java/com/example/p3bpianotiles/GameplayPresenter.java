@@ -38,7 +38,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public FragmentActivity getActivity(){
-        return fragmentActivity;
+        return this.fragmentActivity;
     }
 
     public void generateTiles(int column,int width,int height, int index){

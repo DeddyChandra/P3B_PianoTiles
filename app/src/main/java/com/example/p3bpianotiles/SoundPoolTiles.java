@@ -12,16 +12,18 @@ public class SoundPoolTiles {
     private GameplayContract.Presenter presenter;
     private SoundPool soundPool;
     private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
+    private boolean loaded;
 
     public SoundPoolTiles(GameplayContract.Presenter presenter){
         this.presenter = presenter;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .build();
             soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
+                    .setMaxStreams(100)
                     .setAudioAttributes(audioAttributes)
                     .build();
         }
@@ -35,7 +37,6 @@ public class SoundPoolTiles {
         this.so5 = soundPool.load(presenter.getActivity(),R.raw.so_5,1);
         this.la6 = soundPool.load(presenter.getActivity(),R.raw.la_6,1);
         this.si7 = soundPool.load(presenter.getActivity(),R.raw.si_7,1);
-        this.do1_octave = soundPool.load(presenter.getActivity(),R.raw.do_1_octave,1);
 
     }
     public void play(int note){
@@ -63,7 +64,6 @@ public class SoundPoolTiles {
         else if(note == do1_octave){
             note = do1_octave;
         }
-        Log.d("masuk","masuk");
         soundPool.play(note, 1, 1, 1, 0, 1);
     }
 }
