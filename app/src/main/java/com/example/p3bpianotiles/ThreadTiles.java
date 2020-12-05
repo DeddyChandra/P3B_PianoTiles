@@ -16,6 +16,7 @@ public class ThreadTiles implements Runnable {
     private GameState gameState;
     private boolean isgenerated;
     private SoundPoolTiles soundPoolTiles;
+    private boolean pause;
 
 
     ThreadTiles(TilesHandler handler, Tiles tiles,  GameplayContract.Presenter presenter, GameState gameState,SoundPoolTiles soundPoolTiles ){
@@ -26,11 +27,11 @@ public class ThreadTiles implements Runnable {
         this.presenter=presenter;
         this.gameState = gameState;
         this.isgenerated=false;
+        this.pause = false;
         this.soundPoolTiles=soundPoolTiles;
     }
     public void startingthread(){
         this.thread.start();
-
     }
 
     @Override
@@ -38,7 +39,18 @@ public class ThreadTiles implements Runnable {
         while(tiles.getToBeDelete()==false && !presenter.getLoseState()) {
             checkLose();
             while(presenter.isPause()){
+                pause = true;
+            }
+            if(pause){
+                try {
+                    Thread.sleep(3000);
+                    long curtime = System.currentTimeMillis();
+                    tiles.setTimestamp(curtime);
+                }
+                catch (Exception e){
 
+                }
+                pause = false;
             }
             if(this.presenter.getGameState() == 2){
                 break;
@@ -51,10 +63,8 @@ public class ThreadTiles implements Runnable {
                 Object arry[] = {
                         true
                 };
-
                 handler.setMessage(arry, 2);
                 isgenerated=true;
-
             }
             try {
                 Thread.sleep(10);
@@ -78,9 +88,6 @@ public class ThreadTiles implements Runnable {
             handler.setMessage(arry,2);
             isgenerated=true;
         }
-
-
-
     }
 
     public boolean YPassThrought(){
@@ -93,8 +100,6 @@ public class ThreadTiles implements Runnable {
             return false;
         }
     }
-
-
 
     public synchronized float getAy(){
         long prevtime = tiles.getTimestamp();

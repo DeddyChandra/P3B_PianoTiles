@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             }
         }
         else if(page == 4){
+            this.pauseFragment = new PauseFragment();
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
