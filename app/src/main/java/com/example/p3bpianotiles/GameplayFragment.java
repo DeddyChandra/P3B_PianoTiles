@@ -8,6 +8,10 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -23,8 +27,9 @@ import androidx.fragment.app.Fragment;
 import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 
 import java.util.LinkedList;
+import java.util.List;
 
-public class GameplayFragment extends Fragment implements GameplayContract.UI, View.OnClickListener,View.OnTouchListener {
+public class GameplayFragment extends Fragment implements GameplayContract.UI, View.OnClickListener,View.OnTouchListener, SensorEventListener {
     //binding here
     private GameplayFragmentBinding binding;
     private GameplayContract.Presenter presenter;
@@ -38,13 +43,15 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     private int mColorTiles;
     private GestureDetector mDetector;
     private Paint transparentPaint;
-    private ThreadTiles threadTiles;
-    private TilesHandler tilesHandler;
-    private LinkedList<ThreadTiles> threadList;
     private int level;
     private int score;
     private FragmentListener listener;
     private boolean lose;
+
+    private Sensor accelerometer, magnetometer;
+    private SensorManager sensorManager;
+    private float[] accelerometerReading, magnetometerReading;
+    public float VALUE_DRIFT = 0.05f;
 
 
     public GameplayFragment(){
@@ -81,9 +88,62 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.binding.scoreTv.invalidate();
         this.binding.ivCanvas.setOnTouchListener(this);
         this.binding.scoreTv.setText(Integer.toString(this.score));
+
+        this.sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        this.accelerometer = this.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        this.magnetometer = this.sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        this.showAllSensor();
+        this.accelerometerReading = new float[3];
+        this.magnetometerReading = new float[3];
+
         return binding.getRoot();
 
     }
+
+    private void showAllSensor() {
+        List<Sensor> sensorList = this.sensorManager.getSensorList(Sensor.TYPE_ALL);
+        for (Sensor currentSensor : sensorList){
+            Log.d("sensor", currentSensor.getName());
+        }
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        int sensorType = event.sensor.getType();
+        switch (sensorType){
+            case Sensor.TYPE_ACCELEROMETER:
+                this.accelerometerReading = event.values.clone();
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD:
+                this.magnetometerReading = event.values.clone();
+                break;
+        }
+        final float[] rotationMatrix = new float[9];
+        sensorManager.getRotationMatrix(rotationMatrix,null, accelerometerReading, magnetometerReading);
+
+        final float[] orientationAngles = new float[3];
+        sensorManager.getOrientation(rotationMatrix,orientationAngles);
+
+        float azimuth = orientationAngles[0];
+        float pitch = orientationAngles[1];
+        float roll = orientationAngles[2];
+
+        if(Math.abs(azimuth)< VALUE_DRIFT){
+            azimuth = 0;
+        }
+        if(Math.abs(pitch)< VALUE_DRIFT){
+            pitch = 0;
+        }
+        if(Math.abs(roll)< VALUE_DRIFT){
+            roll = 0;
+        }
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
 
     public void initCanvas(){
         width=binding.ivCanvas.getWidth();
@@ -126,6 +186,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         binding.ivCanvas.invalidate();
     }
 
+
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -163,6 +224,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     public boolean onTouch(View view, MotionEvent event) {
         return this.mDetector.onTouchEvent(event);
     }
+
 
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
