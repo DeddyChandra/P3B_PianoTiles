@@ -67,7 +67,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void setArrayTiles(){
         if(level == 0){
             gameState.setSpeed(0.5f);
-            this.tilesArrayList = mf.getMinuet();
+            this.tilesArrayList = mf.getKartini();
         }
         else if(level == 1){
             gameState.setSpeed(0.6f);

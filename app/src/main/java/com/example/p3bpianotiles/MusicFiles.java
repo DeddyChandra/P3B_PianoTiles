@@ -8,14 +8,17 @@ public class MusicFiles {
     public int height;
     public ArrayList<Tiles> littleStar;
     public ArrayList<Tiles> minuet;
+    public ArrayList<Tiles> kartini;
 
     public MusicFiles(int width, int height){
         this.littleStar = new ArrayList<>();
         this.minuet= new ArrayList<>();
+        this.kartini= new ArrayList<>();
         this.width = width;
         this.height = height;
         this.addLittleStar();
         this.addMinuet();
+        this.addKartini();
     }
 
 
@@ -128,6 +131,68 @@ public class MusicFiles {
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
     }
 
+
+    public void addKartini(){
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,8));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,7));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,8));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,7));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+
+    }
+
+    public ArrayList<Tiles> getKartini() {
+        return kartini;
+    }
 
     public int generateRandomColumn() {
         Random rand = new Random();
