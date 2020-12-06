@@ -35,5 +35,6 @@ public interface GameplayContract {
         void setUnPauseCount(Object[] s);
         void checkSensor(float roll);
         void changeVolume(int vol);
+        float getHeight();
     }
 }

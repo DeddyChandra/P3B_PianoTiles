@@ -55,6 +55,10 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.point = point;
     }
 
+    public float getHeight() {
+        return height;
+    }
+
     public void setLevel(int level) {
         this.level = level;
         this.setArrayTiles();
@@ -62,16 +66,16 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void setArrayTiles(){
         if(level == 0){
+            gameState.setSpeed(0.5f);
             this.tilesArrayList = mf.getMinuet();
         }
         else if(level == 1){
+            gameState.setSpeed(0.6f);
             this.tilesArrayList = mf.getLittleStart();
         }
         else{
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
-            tilesArrayList.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+            gameState.setSpeed(0.8f);
+            this.tilesArrayList = mf.getMinuet();
 
         }
     }
