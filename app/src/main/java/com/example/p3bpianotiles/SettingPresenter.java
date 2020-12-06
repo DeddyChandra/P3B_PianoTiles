@@ -22,7 +22,6 @@ public class SettingPresenter implements SettingContract.presenter {
     }
 
     public void changeBackground(){
-        Log.d("change", "changeBackgroundBefore: "+backgroundIndex);
         if(backgroundIndex+1 > backgroundList.size()){
             backgroundIndex = 0;
             this.ui.setBackgroundIndex(0);
@@ -34,8 +33,6 @@ public class SettingPresenter implements SettingContract.presenter {
             this.ui.changeBackground(backgroundId);
             backgroundIndex++;
         }
-
-        Log.d("change", "changeBackground: "+backgroundIndex);
     }
 
     public int getBackgroundId() {

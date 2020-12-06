@@ -13,7 +13,7 @@ import com.example.p3bpianotiles.databinding.PauseFragmentBinding;
 
 import java.net.PasswordAuthentication;
 
-public class PauseFragment extends Fragment implements View.OnClickListener, PauseContract.ui{
+public class PauseFragment extends Fragment implements View.OnClickListener{
     private PauseFragmentBinding binding;
     private FragmentListener listener;
     private int backgroundId = 0;
@@ -69,6 +69,5 @@ public class PauseFragment extends Fragment implements View.OnClickListener, Pau
 
     public void changeBackground(int id){
         this.backgroundId = id;
-//        this.binding.backgroundIv.setImageResource(id);
     }
 }

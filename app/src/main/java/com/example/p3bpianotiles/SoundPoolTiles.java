@@ -8,14 +8,12 @@ import android.os.Build;
 import android.util.Log;
 
 public class SoundPoolTiles{
-    private int note;
     private GameplayContract.Presenter presenter;
     private SoundPool soundPool;
     private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
     private AudioManager audioManager;
     float volume,cur,max;
 
-    private FragmentListener fragmentListener;
     public SoundPoolTiles(GameplayContract.Presenter presenter){
         this.presenter = presenter;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -36,9 +34,6 @@ public class SoundPoolTiles{
         this.cur = this.audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         this.max = this.audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         this.volume = this.cur/this.max;
-//        this.volume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-//        this.streamVolume = streamVolume / audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-
         this.do1 = soundPool.load(presenter.getActivity(),R.raw.do_1,1);
         this.re2 = soundPool.load(presenter.getActivity(),R.raw.re_2,1);
         this.mi3 = soundPool.load(presenter.getActivity(),R.raw.mi_3,1);
@@ -47,8 +42,6 @@ public class SoundPoolTiles{
         this.la6 = soundPool.load(presenter.getActivity(),R.raw.la_6,1);
         this.si7 = soundPool.load(presenter.getActivity(),R.raw.si_7,1);
         this.do1_octave = soundPool.load(presenter.getActivity(),R.raw.do_1_octave,1);
-        //Log.d("soundpool","load");
-
     }
 
     public void setVolume(float volume){
@@ -86,20 +79,9 @@ public class SoundPoolTiles{
     }
 
     public void setRelease(){
-        //Log.d("soundpool","release");
         this.soundPool.release();
         if(soundPool!=null) {
             this.soundPool = null;
         }
     }
-
-
-//    public void changeVolume(int vol){
-//        this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
-//        Log.d("soundpool"," "+volume+"");
-//        if(Double.isInfinite(volume)){
-//            volume = 1;
-//        }
-//    }
-
 }

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.GameOverFragmentBinding;
 
-public class GameOverFragment extends Fragment implements View.OnClickListener, GameOverContract.ui {
+public class GameOverFragment extends Fragment implements View.OnClickListener {
     private GameOverFragmentBinding binding;
     private int backgroundId = 0;
     private FragmentListener listener;

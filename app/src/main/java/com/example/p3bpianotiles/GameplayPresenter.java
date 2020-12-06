@@ -10,12 +10,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class GameplayPresenter implements GameplayContract.Presenter {
-    ArrayList<Tiles> tilesArrayList;
-    TilesHandler handler;
-    GameplayContract.UI presenterUI;
-    GameState gameState;
-    SoundPoolTiles soundPoolTiles;
-    PointF point;
+    public ArrayList<Tiles> tilesArrayList;
+    public TilesHandler handler;
+    public GameplayContract.UI presenterUI;
+    public GameState gameState;
+    public SoundPoolTiles soundPoolTiles;
+    public PointF point;
     public int level;
     public int index;
     public int indexfirst;
@@ -37,7 +37,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
         this.soundPoolTiles = new SoundPoolTiles(this);
-//        this.soundPoolTiles.setRelease();
         this.mf = new MusicFiles(width, height);
     }
 
@@ -46,8 +45,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void generateTiles(int column,int width,int height, int index){
-        //Log.d("generate:",tilesArrayList.get(index).getY()+"");
-        handler= new TilesHandler(this);
+        this.handler= new TilesHandler(this);
         ThreadTiles thread = new ThreadTiles(handler,tilesArrayList.get(index),this,gameState,soundPoolTiles);
         thread.startingthread();
     }
@@ -117,16 +115,14 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }else {
             for (int i = indexfirst; i < tilesArrayList.size(); i++) {
-                    if (getTouchPoint() != null &&
-                            p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
-                            p.x >= tilesArrayList.get(i).x &&
-                            p.y >= tilesArrayList.get(i).y &&
-                            p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
-                        idxclicked = i;
-                    }
+                if (getTouchPoint() != null &&
+                        p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
+                        p.x >= tilesArrayList.get(i).x &&
+                        p.y >= tilesArrayList.get(i).y &&
+                        p.y <= tilesArrayList.get(i).getY() + tilesArrayList.get(i).getHeight()) {
+                    idxclicked = i;
+                }
             }
-
-
             for (int i = 0; i <= index; i++) {
                 if (getTouchPoint() != null &&
                     p.x <= tilesArrayList.get(i).x + tilesArrayList.get(i).getWidth() &&
@@ -138,21 +134,15 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         if(idxclicked==-1){
-
             gameOver();
         }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
                 tilesArrayList.get(idxclicked).setAddedScore(true);
             }
-
-
             tilesArrayList.get(idxclicked).setToBeDelete(true);
             indexfirst++;
         }
-
-
-
     }
 
     public void checkSensor(float roll){
@@ -165,7 +155,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
                     addScore();
                     tilesArrayList.get(indexfirst).setAddedScore(true);
                 }
-
                 tilesArrayList.get(indexfirst).setToBeDelete(true);
                 indexfirst++;
             }
@@ -176,7 +165,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
                     addScore();
                     tilesArrayList.get(indexfirst).setAddedScore(true);
                 }
-
                 tilesArrayList.get(indexfirst).setToBeDelete(true);
                 indexfirst++;
             }
@@ -184,21 +172,17 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void generateMultipleTiles(Object[] arr){
-        //Log.d("masuk","masuk");
         if(gameState.getState() == 2){
             this.presenterUI.lose();
         }
         else if(gameState.getState() == 1){
-            Log.d("pause", "pause");
+//            Log.d("pause", "pause");
         }
         else {
             if ((boolean) arr[0]) {
-
-                Log.d("index", "generateMultipleTiles:" + index);
                 generateTiles(generateRandomColumn(), width, height/4, index);
             }
             if (index >= this.tilesArrayList.size() - 1) {
-                Log.d("index", "reset:" + index);
                 index = -1;
             }
         }
@@ -210,7 +194,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void generate(Object[] arr){
-//        generateTiles(generateRandomColumn(), width, height, index);
         index++;
         generateMultipleTiles(arr);
     }
@@ -225,8 +208,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void checkLose(float lowerY){
-        Log.d("height", "checkLose: "+lowerY);
-        Log.d("height", "checkLose: "+height);
         if(lowerY >= height){
             lose = true;
             gameOver();
@@ -264,11 +245,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public void setPause(boolean pause) {
         this.pause = pause;
         if(pause){
-            Log.d("pause", "setPause: pause");
             gameState.setState(1);
         }
         else{
-            Log.d("pause", "setPause: unpause");
             gameState.setState(0);
         }
     }

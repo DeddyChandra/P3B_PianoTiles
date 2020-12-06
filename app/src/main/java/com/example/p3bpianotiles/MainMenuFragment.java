@@ -1,11 +1,7 @@
 package com.example.p3bpianotiles;
 
 import android.content.Context;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -17,13 +13,9 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Toast;
-
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
-
 import com.example.p3bpianotiles.databinding.MainMenuFragmentBinding;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +42,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstance){
-        Log.d("OncreateMain", "onCreateView: ");
         this.binding = MainMenuFragmentBinding.inflate(inflater);
         this.rotateVinyl();
         this.presenter = new MainMenuPresenter();
@@ -124,12 +115,10 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.volumeFab){
             if(this.presenter.isMute()){
-                Log.d("volume", "muted");
                 this.presenter.setMute(false);
                 mute = false;
             }
             else{
-                Log.d("volume", "unmuted");
                 this.presenter.setMute(true);
                 mute = true;
             }
@@ -138,7 +127,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else if(v == this.binding.startBtn){
             this.mediaPlayer.pause();
-            Log.d("level", "onClick: "+this.presenter.getLevel());
             Toast.makeText(this.getContext(),"Click Black, Roll left Yellow, Roll right green",Toast.LENGTH_SHORT).show();
             this.fragmentListener.changePage(2);
             this.fragmentListener.setLevel(this.presenter.getLevel());
@@ -188,7 +176,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         }
         else{
             this.binding.volumeFab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.music_on));
-            Log.d("vol", "changeVolume: "+volume);
             this.mediaPlayer.setVolume(volume,volume);
         }
     }
@@ -223,7 +210,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         @Override
         public boolean onDown(MotionEvent e) {
             mediaPlayer.stop();
-//            Log.d("index", nowPlaying+" " +musicList.size());
             if(nowPlaying+1 > musicList.size()-1){
                 nowPlaying = 0;
             }
@@ -239,7 +225,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             else{
                 mediaPlayer.setVolume(volume,volume);
             }
-//            mediaPlayer.setLooping(true);
             return true;
         }
     }
@@ -247,7 +232,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     public void startRandomMusic(){
         if(musicStarted){
             binding.songNameTv.setText(musicList.get(nowPlaying).getName());
-            Log.d("music", "musicstarted ");
         }
         else {
             int max = musicList.size();
@@ -262,9 +246,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
             else {
                 this.mediaPlayer.setVolume(volume, volume);
             }
-//            this.mediaPlayer.setLooping(true);
             this.musicStarted = true;
-            Log.d("music", "musicrandom ");
         }
         this.mediaPlayer.setOnCompletionListener(this);
     }

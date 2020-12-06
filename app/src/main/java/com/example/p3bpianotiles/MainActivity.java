@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.sharedPreferencesHighScore = new SharedPreferencesHighScore(this);
         this.fragmentManager = this.getSupportFragmentManager();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         this.fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -88,8 +87,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
                 ft.hide(fcurrent);
             }
             if(this.gameplayFragment.isAdded()){
-                Log.d("volume", "setting"+this.settingFragment.getVolume());
-
                 ft.show(this.gameplayFragment);
                 fcurrent=this.gameplayFragment;
             }
@@ -158,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         }
         else if(page == 7){
             ft.hide(this.fcurrent);
-            Log.d("page", "changePage: resume");
             ft.show(this.gameplayFragment);
             fcurrent=this.gameplayFragment;
             this.gameplayFragment.setPause(false);
@@ -173,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     @Override
     public void changeBackground(int id){
-        Log.d("bacground", "changeBackground: "+this.settingFragment.getBackgroundId());
         this.mainMenuFragment.changeBackground(id);
     }
 
@@ -186,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void setLevel(int level){
         this.gameplayFragment.setLevel(level);
         this.pauseFragment.setLevel(level);
-        Log.d("levell", "setLevel: "+level);
     }
 
     @Override
@@ -238,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     }
 
     public void resume(){
-        Log.d("page", "changePage: resume");
         this.changePage(7);
     }
 

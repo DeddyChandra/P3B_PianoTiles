@@ -30,14 +30,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GameplayFragment extends Fragment implements GameplayContract.UI, View.OnClickListener,View.OnTouchListener, SensorEventListener {
-    //binding here
     private GameplayFragmentBinding binding;
     private GameplayContract.Presenter presenter;
     private GameplayContract.UI ui;
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;
-    private ImageView iv_canvas;
     private int width;
     private int height;
     private int mColorTiles;
@@ -51,7 +49,6 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     private Sensor accelerometer, magnetometer;
     private SensorManager sensorManager;
     private float[] accelerometerReading, magnetometerReading;
-    public float VALUE_DRIFT = 0.05f;
 
 
     public GameplayFragment(){
@@ -94,7 +91,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         this.accelerometer = this.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         this.magnetometer = this.sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        this.showAllSensor();
+//        this.showAllSensor();
         this.accelerometerReading = new float[3];
         this.magnetometerReading = new float[3];
         return binding.getRoot();
@@ -157,17 +154,13 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     }
 
-
     public void initCanvas(){
-        width=binding.ivCanvas.getWidth();
-        height=binding.ivCanvas.getHeight();
+        this.width = binding.ivCanvas.getWidth();
+        this.height = binding.ivCanvas.getHeight();
         this.bitmap = Bitmap.createBitmap(binding.ivCanvas.getWidth(),binding.ivCanvas.getHeight(), Bitmap.Config.ARGB_8888);
-        binding.ivCanvas.setImageBitmap(bitmap);
+        this.binding.ivCanvas.setImageBitmap(bitmap);
         this.canvas = new Canvas(this.bitmap);
-
         this.paint = new Paint();
-
-
         this.transparentPaint = new Paint();
         this.transparentPaint.setColor(Color.TRANSPARENT);
         this.transparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
@@ -176,14 +169,14 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     @Override
     public void draw(Tiles tiles) {
-        mColorTiles = ResourcesCompat.getColor(getResources(),tiles.getColor(),null);
-        paint.setColor(mColorTiles);
+        this.mColorTiles = ResourcesCompat.getColor(getResources(),tiles.getColor(),null);
+        this.paint.setColor(mColorTiles);
         float widthTiles = tiles.getWidth();
         float heightTiles = tiles.getHeight();
         float x = tiles.getX();
         float y = tiles.getY();
-        canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
-        binding.ivCanvas.invalidate();
+        this.canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
+        this.binding.ivCanvas.invalidate();
     }
 
     @Override
@@ -196,8 +189,8 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         float heightTiles = tiles.getHeight();
         float x = tiles.getX();
         float y = tiles.getY();
-        canvas.drawRect(x,y,x+widthTiles,y+heightTiles,transparentPaint);
-        binding.ivCanvas.invalidate();
+        this.canvas.drawRect(x,y,x+widthTiles,y+heightTiles,transparentPaint);
+        this.binding.ivCanvas.invalidate();
     }
 
 
@@ -216,7 +209,6 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         if(v == this.binding.pauseBtn){
             this.listener.setLevel(level);
             this.listener.changePage(4);
-            Log.d("click", "onClick: ");
         }
     }
 
@@ -255,7 +247,6 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     }
 
     public void lose(){
-        Log.d("loses", ""+lose);
         if(!lose) {
             this.listener.setScore(score, level);
             this.lose = true;
@@ -277,7 +268,6 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     }
 
     public void getVolume(){
-        Log.d("volumes", "getVolume: "+this.listener.getVolume());
         this.presenter.changeVolume(this.listener.getVolume());
     }
 

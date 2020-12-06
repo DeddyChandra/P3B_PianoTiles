@@ -76,14 +76,8 @@ public class ThreadTiles implements Runnable {
                 }
                 arr = new Object[]{""};
                 handler.setMessage(arr, 5);
-//                try {
-//                    Thread.sleep(3000);
-                    long curtime = System.currentTimeMillis();
-                    tiles.setTimestamp(curtime);
-//                }
-//                catch (Exception e){
-//                    System.out.println("error");
-//                }
+                long curtime = System.currentTimeMillis();
+                tiles.setTimestamp(curtime);
                 pause = false;
             }
             if(this.presenter.getGameState() == 2){
@@ -111,7 +105,6 @@ public class ThreadTiles implements Runnable {
                 tiles,getAy()
         };
         handler.setMessage(arr,1);
-        boolean masuk=false;
         while(tiles.getY()<=0 && !presenter.isPause()){
             handler.setMessage(arr,4);
         }
@@ -125,7 +118,6 @@ public class ThreadTiles implements Runnable {
     }
 
     public boolean YPassThrought(){
-        //Log.d("checks", tiles.toString());
         if(tiles.getY() >= 0 && !tiles.isPass()){
             tiles.setPass(true);
             return true;
@@ -138,7 +130,7 @@ public class ThreadTiles implements Runnable {
     public synchronized float getAy(){
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
-        tiles.setTimestamp(curtime);
+        this.tiles.setTimestamp(curtime);
         float deltatime = gameState.getSpeed()*presenter.getHeight()*(curtime-prevtime)/1000f;
         return deltatime;
     }
