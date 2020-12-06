@@ -13,6 +13,7 @@ public class Tiles {
     boolean addedScore;
     boolean  toBeDelete;
     int color;
+    int speed;
     Random rand;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
@@ -179,5 +180,13 @@ public class Tiles {
 
     public int getNote() {
         return note;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }
