@@ -289,6 +289,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
     }
 
     public void play(){
+        this.mute();
         this.mediaPlayer.start();
     }
 }

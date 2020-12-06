@@ -37,6 +37,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
         this.soundPoolTiles = new SoundPoolTiles(this);
+//        this.soundPoolTiles.setRelease();
         this.mf = new MusicFiles(width, height);
     }
 
@@ -70,7 +71,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             this.tilesArrayList = mf.getKartini();
         }
         else if(level == 1){
-            gameState.setSpeed(0.6f);
+            gameState.setSpeed(0.5f);
             this.tilesArrayList = mf.getLittleStart();
         }
         else{
@@ -229,6 +230,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         if(lowerY >= height){
             lose = true;
             this.gameState.setState(2);
+            this.releaseSoundPool();
         }
         else{
             lose = false;
@@ -277,5 +279,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             volume = 1;
         }
         this.soundPoolTiles.setVolume(volume);
+    }
+
+    public void releaseSoundPool(){
+        this.soundPoolTiles.setRelease();
     }
 }
