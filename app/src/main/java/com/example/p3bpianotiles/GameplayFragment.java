@@ -217,6 +217,7 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         }
     }
 
+
     public void addScore(){
         this.score += 1;
         this.binding.scoreTv.setText(Integer.toString(this.score));
@@ -227,7 +228,11 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         return this.mDetector.onTouchEvent(event);
     }
 
+    public void onDestroy(){
+        super.onDestroy();
+        presenter.releaseSoundPool();
 
+    }
     private class MyCustomGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {

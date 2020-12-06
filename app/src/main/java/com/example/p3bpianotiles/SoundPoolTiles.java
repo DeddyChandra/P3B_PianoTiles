@@ -84,8 +84,9 @@ public class SoundPoolTiles{
 
     public void setRelease(){
         //Log.d("release","release");
-        this.soundPool.release();
+
         if(soundPool!=null) {
+            this.soundPool.release();
             this.soundPool = null;
         }
     }

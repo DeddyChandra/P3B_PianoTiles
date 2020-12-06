@@ -211,8 +211,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void checkLose(float lowerY){
         if(lowerY >= height){
-            lose = true;
             gameOver();
+            lose = true;
+
         }
         else{
             lose = false;
@@ -222,13 +223,11 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     private void gameOver(){
         gameState.setState(GameState.GAME_OVER);
         soundPoolTiles.play(9);
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
 
         }
-
         this.releaseSoundPool();
     }
 
