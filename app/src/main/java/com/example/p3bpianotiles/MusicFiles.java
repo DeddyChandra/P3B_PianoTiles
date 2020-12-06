@@ -39,7 +39,8 @@ public class MusicFiles {
             new Music (R.raw.hou_lai_yu_jian_ta, "后来遇见他"),
             new Music (R.raw.xiao_zhang, "嚣张"),
             new Music (R.raw.yu_wo_wu_guan, "与我无关"),
-            new Music (R.raw.fei_niao_he_chan, "飞鸟和蝉")
+            new Music (R.raw.fei_niao_he_chan, "飞鸟和蝉"),
+            new Music (R.raw.all_i_want_for_christmas_is_you, "Christmas")
 //            new Music (R.raw.do_1, "do"),
 //            new Music (R.raw.re_2, "re"),
 //            new Music (R.raw.mi_3, "mi"),
