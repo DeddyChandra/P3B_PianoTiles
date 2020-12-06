@@ -13,7 +13,7 @@ public class Tiles {
     boolean addedScore;
     boolean  toBeDelete;
     int color;
-    int speed;
+    float speed;
     Random rand;
     //kecepatan = jarak / waktu
     //System.currentTimeMillis();
@@ -61,6 +61,7 @@ public class Tiles {
         this.column = column;
         this.pass = false;
         this.rand = new Random();
+        this.speed=speed;
         if(column==0){
            setX(0);
            setY(-length);
@@ -182,11 +183,11 @@ public class Tiles {
         return note;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
 
-    public int getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 }

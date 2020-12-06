@@ -139,7 +139,7 @@ public class ThreadTiles implements Runnable {
         long prevtime = tiles.getTimestamp();
         long curtime = System.currentTimeMillis();
         tiles.setTimestamp(curtime);
-        float deltatime = (curtime-prevtime)/1f;
+        float deltatime = gameState.getSpeed()*presenter.getHeight()*(curtime-prevtime)/1000f;
         return deltatime;
     }
 
