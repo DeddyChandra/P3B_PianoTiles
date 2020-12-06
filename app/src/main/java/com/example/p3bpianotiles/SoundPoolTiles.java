@@ -5,6 +5,7 @@ import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
+import android.util.Log;
 
 public class SoundPoolTiles{
     private GameplayContract.Presenter presenter;
@@ -27,7 +28,7 @@ public class SoundPoolTiles{
                     .build();
         }
         else{
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC,0);
+            soundPool = new SoundPool(9, AudioManager.STREAM_MUSIC,0);
         }
         this.audioManager = (AudioManager) presenter.getActivity().getSystemService(Context.AUDIO_SERVICE);
         this.cur = this.audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -82,6 +83,7 @@ public class SoundPoolTiles{
     }
 
     public void setRelease(){
+        //Log.d("release","release");
         this.soundPool.release();
         if(soundPool!=null) {
             this.soundPool = null;
