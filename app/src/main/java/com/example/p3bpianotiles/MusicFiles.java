@@ -133,46 +133,30 @@ public class MusicFiles {
 
 
     public void addKartini(){
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,5));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,6));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,8));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,7));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,8));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,7));
+        kartini.add(new Tiles(generateRandomColumn(),width,4*height/4,5,R.color.green));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,4));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,2));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,4*height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,4));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
@@ -183,10 +167,25 @@ public class MusicFiles {
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,4*height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,2*height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,6));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,5));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
+        kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,4));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,3));
         kartini.add(new Tiles(generateRandomColumn(),width,height/4,2));
-        kartini.add(new Tiles(generateRandomColumn(),width,height/4,1));
+        kartini.add(new Tiles(generateRandomColumn(),width,4*height/4,1,R.color.yellow));
 
     }
 
