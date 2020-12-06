@@ -36,6 +36,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.lose = false;
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
+        this.soundPoolTiles = new SoundPoolTiles(this);
         this.mf = new MusicFiles(width, height);
     }
 
@@ -267,7 +268,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     }
 
     public void changeVolume(int vol){
-        this.soundPoolTiles = new SoundPoolTiles(this);
         this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
         if(Double.isInfinite(volume)){
             volume = 1;

@@ -84,11 +84,12 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             }
         } else if(page == 2){
             this.gameplayFragment = new GameplayFragment();
-            this.gameplayFragment.setVolume(this.settingFragment.getVolume());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
             if(this.gameplayFragment.isAdded()){
+                Log.d("volume", "setting"+this.settingFragment.getVolume());
+
                 ft.show(this.gameplayFragment);
                 fcurrent=this.gameplayFragment;
             }
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
                 ft.add(R.id.fragment_container,this.gameplayFragment);
                 fcurrent=this.gameplayFragment;
             }
+
         }
         else if(page == 3){
             if(fcurrent!=null) {
@@ -240,4 +242,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.changePage(7);
     }
 
+    public int getVolume(){
+        return this.settingFragment.getVolume();
+    }
+
+    public boolean muteSoundPool(){
+        return this.mainMenuFragment.isMute();
+    }
 }

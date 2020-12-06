@@ -10,4 +10,6 @@ public interface FragmentListener {
     void setGamePlayToLoseState();
     void setPause(boolean pause);
     void resume();
+    int getVolume();
+    boolean muteSoundPool();
 }
