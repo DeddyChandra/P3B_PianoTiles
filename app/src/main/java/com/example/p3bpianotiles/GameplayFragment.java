@@ -74,6 +74,8 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
                     presenter.setLevel(level);
                     presenter.generateTiles(0,width,height/4,0);
                     presenter.setGameState(0);
+                    getVolume();
+                    isMute();
 //                    presenter.generateTiles(1,width,height/4);
 //                    presenter.generateTiles(2,width,height/4);
 //                    presenter.generateTiles(3,width,height/4);
@@ -95,7 +97,6 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         this.showAllSensor();
         this.accelerometerReading = new float[3];
         this.magnetometerReading = new float[3];
-
         return binding.getRoot();
 
     }
@@ -273,5 +274,16 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
 
     public void setUnPauseCount(String s){
         this.binding.count.setText(s);
+    }
+
+    public void getVolume(){
+        Log.d("volumes", "getVolume: "+this.listener.getVolume());
+        this.presenter.changeVolume(this.listener.getVolume());
+    }
+
+    public void isMute(){
+        if(this.listener.muteSoundPool()){
+            this.presenter.changeVolume(0);
+        }
     }
 }

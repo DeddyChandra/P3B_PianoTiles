@@ -46,8 +46,14 @@ public class SoundPoolTiles{
         this.so5 = soundPool.load(presenter.getActivity(),R.raw.so_5,1);
         this.la6 = soundPool.load(presenter.getActivity(),R.raw.la_6,1);
         this.si7 = soundPool.load(presenter.getActivity(),R.raw.si_7,1);
+        this.do1_octave = soundPool.load(presenter.getActivity(),R.raw.do_1_octave,1);
 
     }
+
+    public void setVolume(float volume){
+        this.volume = volume;
+    }
+
     public void play(int note){
         if(note == do1){
             note = do1;

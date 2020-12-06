@@ -87,6 +87,10 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         this.binding.vinylIv.startAnimation(rotateAnimation);
     }
 
+    public boolean isMute() {
+        return mute;
+    }
+
     public void pauseSound(){
         this.mediaPlayer.pause();
     }
