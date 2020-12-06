@@ -25,7 +25,7 @@ public class SoundPoolTiles{
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .build();
             soundPool = new SoundPool.Builder()
-                    .setMaxStreams(100)
+                    .setMaxStreams(8)
                     .setAudioAttributes(audioAttributes)
                     .build();
         }
@@ -47,6 +47,7 @@ public class SoundPoolTiles{
         this.la6 = soundPool.load(presenter.getActivity(),R.raw.la_6,1);
         this.si7 = soundPool.load(presenter.getActivity(),R.raw.si_7,1);
         this.do1_octave = soundPool.load(presenter.getActivity(),R.raw.do_1_octave,1);
+        //Log.d("soundpool","load");
 
     }
 
@@ -79,13 +80,17 @@ public class SoundPoolTiles{
         else if(note == do1_octave){
             note = do1_octave;
         }
-        soundPool.play(note, volume, volume, 1, 0, 1);
-
+        if(soundPool!=null) {
+            soundPool.play(note, volume, volume, 1, 0, 1);
+        }
     }
 
     public void setRelease(){
+        //Log.d("soundpool","release");
         this.soundPool.release();
-        this.soundPool=null;
+        if(soundPool!=null) {
+            this.soundPool = null;
+        }
     }
 
 

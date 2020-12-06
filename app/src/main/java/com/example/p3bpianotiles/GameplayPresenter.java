@@ -138,8 +138,9 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         if(idxclicked==-1){
-            Log.d("delete","mati");
+
             gameState.setState(GameState.GAME_OVER);
+            this.releaseSoundPool();
         }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
