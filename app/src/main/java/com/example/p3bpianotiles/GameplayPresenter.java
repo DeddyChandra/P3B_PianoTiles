@@ -24,6 +24,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     public boolean pause;
     public FragmentActivity fragmentActivity;
     public MusicFiles mf;
+    private float volume;
 
     GameplayPresenter(GameplayContract.UI presenterUI, int width, int height, FragmentActivity fragmentActivity){
         this.tilesArrayList = new ArrayList<>();
@@ -35,7 +36,6 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         this.lose = false;
         this.gameState = new GameState(0);
         this.fragmentActivity = fragmentActivity;
-        this.soundPoolTiles = new SoundPoolTiles(this);
         this.mf = new MusicFiles(width, height);
     }
 
@@ -264,5 +264,14 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void setUnPauseCount(Object[] s){
         this.presenterUI.setUnPauseCount(s[0].toString());
+    }
+
+    public void changeVolume(int vol){
+        this.soundPoolTiles = new SoundPoolTiles(this);
+        this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
+        if(Double.isInfinite(volume)){
+            volume = 1;
+        }
+        this.soundPoolTiles.setVolume(volume);
     }
 }

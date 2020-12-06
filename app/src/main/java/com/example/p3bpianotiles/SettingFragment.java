@@ -29,6 +29,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     private SettingPresenter presenter;
     private List<Background> backgroundList;
     private int backgroundId = 0;
+    int volume;
 
     public SettingFragment(){
 
@@ -82,6 +83,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         this.listener.changeVolume(progress);
+    }
+
+    public int getVolume() {
+        return volume;
     }
 
     @Override

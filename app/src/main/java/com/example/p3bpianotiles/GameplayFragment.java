@@ -274,4 +274,8 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
     public void setUnPauseCount(String s){
         this.binding.count.setText(s);
     }
+
+    public void setVolume(int vol){
+        this.presenter.changeVolume(vol);
+    }
 }

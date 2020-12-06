@@ -34,5 +34,6 @@ public interface GameplayContract {
         FragmentActivity getActivity();
         void setUnPauseCount(Object[] s);
         void checkSensor(float roll);
+        void changeVolume(int vol);
     }
 }

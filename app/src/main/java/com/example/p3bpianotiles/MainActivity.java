@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
             }
         } else if(page == 2){
             this.gameplayFragment = new GameplayFragment();
+            this.gameplayFragment.setVolume(this.settingFragment.getVolume());
             if(fcurrent!=null) {
                 ft.hide(fcurrent);
             }
