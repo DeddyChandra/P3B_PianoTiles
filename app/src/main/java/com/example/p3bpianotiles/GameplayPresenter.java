@@ -150,7 +150,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             indexfirst=0;
         }
         if(tilesArrayList.get(indexfirst).getColor()==R.color.yellow){
-            if(roll<-0.5){
+            if(roll<-0.3){
                 if(!tilesArrayList.get(indexfirst).isAddedScore()) {
                     addScore();
                     tilesArrayList.get(indexfirst).setAddedScore(true);
@@ -160,7 +160,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
 
         }else if(tilesArrayList.get(indexfirst).getColor()==R.color.green){
-            if(roll>0.5) {
+            if(roll>0.3) {
                 if (!tilesArrayList.get(indexfirst).isAddedScore()) {
                     addScore();
                     tilesArrayList.get(indexfirst).setAddedScore(true);
