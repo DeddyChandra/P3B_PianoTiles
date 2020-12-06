@@ -7,17 +7,23 @@ public class MusicFiles {
     public int width;
     public int height;
     public ArrayList<Tiles> littleStar;
+    public ArrayList<Tiles> minuet;
 
     public MusicFiles(int width, int height){
         this.littleStar = new ArrayList<>();
+        this.minuet= new ArrayList<>();
         this.width = width;
         this.height = height;
         this.addLittleStar();
+        this.addMinuet();
     }
 
 
     public ArrayList<Tiles> getLittleStart(){
         return littleStar;
+    }
+    public ArrayList<Tiles> getMinuet(){
+        return minuet;
     }
 
     public static Music[] music ={
@@ -87,6 +93,41 @@ public class MusicFiles {
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,2));
             littleStar.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
     };
+    public void addMinuet(){
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,6));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,7));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,8));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+    }
+
 
     public int generateRandomColumn() {
         Random rand = new Random();

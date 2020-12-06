@@ -61,9 +61,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
 
     public void setArrayTiles(){
         if(level == 0){
-            for(int i = 0; i < 5; i++){
-                this.tilesArrayList.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            }
+            this.tilesArrayList = mf.getMinuet();
         }
         else if(level == 1){
             this.tilesArrayList = mf.getLittleStart();
