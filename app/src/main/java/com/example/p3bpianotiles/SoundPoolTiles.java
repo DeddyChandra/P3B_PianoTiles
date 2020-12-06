@@ -80,11 +80,14 @@ public class SoundPoolTiles{
             note = do1_octave;
         }
         soundPool.play(note, volume, volume, 1, 0, 1);
+
     }
 
     public void setRelease(){
         this.soundPool.release();
+        this.soundPool=null;
     }
+
 
 //    public void changeVolume(int vol){
 //        this.volume =(float)(1-Math.log(100-vol)/Math.log(100));
