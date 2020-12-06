@@ -100,32 +100,32 @@ public class MusicFiles {
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.yellow));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,6));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,6));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,7));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,8));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.yellow));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,5));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,3,R.color.green));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,4));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,2,R.color.yellow));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,3));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
             minuet.add(new Tiles(generateRandomColumn(),width,height/4,2));
-            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1));
+            minuet.add(new Tiles(generateRandomColumn(),width,height/4,1,R.color.green));
     }
 
 
