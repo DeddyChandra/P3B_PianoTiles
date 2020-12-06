@@ -5,9 +5,7 @@ import android.os.Message;
 import android.util.Log;
 
 public class TilesHandler extends Handler {
-    GameplayContract.Presenter presenter;
-    protected GameplayFragment gameplayFragment;
-
+    public GameplayContract.Presenter presenter;
     private static int MSG_DRAW=0;
     private static int MSG_DELTE=1;
     protected final static int ADD_SCORE=0;
@@ -15,10 +13,10 @@ public class TilesHandler extends Handler {
     public TilesHandler(GameplayContract.Presenter presenter){
         this.presenter= presenter;
     }
+
     public void handleMessage(Message msg){
         if(msg.what == MSG_DRAW){
             presenter.drawRedrawTiles((Object[])msg.obj);
-
         }
         else if(msg.what == TilesHandler.MSG_DELTE){
             presenter.delete((Object[])msg.obj);
@@ -36,20 +34,11 @@ public class TilesHandler extends Handler {
         else if(msg.what==5){
             presenter.setUnPauseCount((Object[])msg.obj);
         }
-        /*if(msg.what == TilesHandler.ADD_SCORE) {
-            this.gameplayFragment.addScore();
-        }*/
     }
     public void setMessage(Object[] arr, int i){
         Message msg= new Message();
         msg.what = i;
         msg.obj= arr;
-        this.sendMessage(msg);
-        //Log.d("masuk","masuk")
-    }
-    public void addScore(){
-        Message msg = new Message();
-        msg.what = ADD_SCORE;
         this.sendMessage(msg);
     }
 }
