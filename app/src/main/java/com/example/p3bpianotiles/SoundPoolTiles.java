@@ -10,7 +10,7 @@ import android.util.Log;
 public class SoundPoolTiles{
     private GameplayContract.Presenter presenter;
     private SoundPool soundPool;
-    private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave;
+    private int do1, re2, mi3, fa4, so5, la6, si7, do1_octave, setengah;
     private AudioManager audioManager;
     float volume,cur,max;
 
@@ -42,6 +42,7 @@ public class SoundPoolTiles{
         this.la6 = soundPool.load(presenter.getActivity(),R.raw.la_6,1);
         this.si7 = soundPool.load(presenter.getActivity(),R.raw.si_7,1);
         this.do1_octave = soundPool.load(presenter.getActivity(),R.raw.do_1_octave,1);
+        this.setengah = soundPool.load(presenter.getActivity(),R.raw.setengah,1);
     }
 
     public void setVolume(float volume){
@@ -72,6 +73,9 @@ public class SoundPoolTiles{
         }
         else if(note == do1_octave){
             note = do1_octave;
+        }
+        else if(note == setengah){
+            note = setengah;
         }
         if(soundPool!=null) {
             soundPool.play(note, volume, volume, 1, 0, 1);
