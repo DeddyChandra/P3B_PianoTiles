@@ -139,8 +139,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         }
         if(idxclicked==-1){
 
-            gameState.setState(GameState.GAME_OVER);
-            this.releaseSoundPool();
+            gameOver();
         }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
@@ -230,12 +229,16 @@ public class GameplayPresenter implements GameplayContract.Presenter {
         Log.d("height", "checkLose: "+height);
         if(lowerY >= height){
             lose = true;
-            this.gameState.setState(2);
-            this.releaseSoundPool();
+            gameOver();
         }
         else{
             lose = false;
         }
+    }
+
+    private void gameOver(){
+        gameState.setState(GameState.GAME_OVER);
+        this.releaseSoundPool();
     }
 
     public void setGameState(int i){
