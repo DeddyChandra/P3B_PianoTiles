@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 public interface GameplayContract {
     interface UI{
         void draw(Tiles tiles);
+        void draw(float x, float y, float width, float height);
         void delete(Tiles tiles);
         void addScore();
         void lose();
@@ -36,5 +37,6 @@ public interface GameplayContract {
         void checkSensor(float roll);
         void changeVolume(int vol);
         float getHeight();
+
     }
 }

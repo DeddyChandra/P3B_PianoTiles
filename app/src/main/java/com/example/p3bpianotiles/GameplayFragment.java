@@ -19,14 +19,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.p3bpianotiles.databinding.GameplayFragmentBinding;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class GameplayFragment extends Fragment implements GameplayContract.UI, View.OnClickListener,View.OnTouchListener, SensorEventListener {
@@ -176,6 +174,13 @@ public class GameplayFragment extends Fragment implements GameplayContract.UI, V
         float x = tiles.getX();
         float y = tiles.getY();
         this.canvas.drawRect(x,y,x+widthTiles,y+heightTiles,paint);
+        this.binding.ivCanvas.invalidate();
+    }
+    @Override
+    public void draw(float x, float y, float width, float height) {
+        this.mColorTiles = ResourcesCompat.getColor(getResources(),R.color.red,null);
+        this.paint.setColor(mColorTiles);
+        this.canvas.drawRect(x,y,x+width,y+height,paint);
         this.binding.ivCanvas.invalidate();
     }
 

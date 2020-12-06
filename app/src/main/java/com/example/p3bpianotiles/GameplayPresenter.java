@@ -1,6 +1,7 @@
 package com.example.p3bpianotiles;
 
 import android.graphics.PointF;
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
@@ -134,7 +135,8 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             }
         }
         if(idxclicked==-1){
-            gameOver();
+
+            gameOver(p);
         }else if(idxclicked==indexfirst&&tilesArrayList.get(idxclicked).getColor()==R.color.black){
             if(!tilesArrayList.get(idxclicked).isAddedScore()) {
                 addScore();
@@ -220,11 +222,13 @@ public class GameplayPresenter implements GameplayContract.Presenter {
     private void gameOver(){
         gameState.setState(GameState.GAME_OVER);
         soundPoolTiles.play(9);
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
 
         }
+
         this.releaseSoundPool();
     }
 
@@ -268,6 +272,23 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             volume = 1;
         }
         this.soundPoolTiles.setVolume(volume);
+    }
+
+    public void gameOver(final PointF touchPoint){
+
+        if(point.x<width/4) {
+            presenterUI.draw(0, touchPoint.y, width / 4, height / 4);
+        }else if(point.x<2*width/4){
+            presenterUI.draw(width/4, touchPoint.y, width / 4, height / 4);
+        }
+        else if(point.x<3*width/4){
+            presenterUI.draw(2*width/4, touchPoint.y, width / 4, height / 4);
+        }
+        else{
+            presenterUI.draw(3*width/4, touchPoint.y, width / 4, height / 4);
+        }
+        this.gameOver();
+
     }
 
     public void releaseSoundPool(){
