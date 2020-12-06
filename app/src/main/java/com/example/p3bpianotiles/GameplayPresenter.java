@@ -71,7 +71,7 @@ public class GameplayPresenter implements GameplayContract.Presenter {
             this.tilesArrayList = mf.getKartini();
         }
         else if(level == 1){
-            gameState.setSpeed(0.5f);
+            gameState.setSpeed(0.6f);
             this.tilesArrayList = mf.getLittleStart();
         }
         else{
