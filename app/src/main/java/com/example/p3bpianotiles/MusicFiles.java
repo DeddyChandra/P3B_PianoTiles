@@ -188,7 +188,6 @@ public class MusicFiles {
     public int generateRandomColumn() {
         Random rand = new Random();
         return rand.nextInt(4);
-
     }
 
 }
