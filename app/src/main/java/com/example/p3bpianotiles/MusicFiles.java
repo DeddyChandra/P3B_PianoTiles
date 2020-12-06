@@ -42,16 +42,6 @@ public class MusicFiles {
             new Music (R.raw.fei_niao_he_chan, "飞鸟和蝉"),
             new Music (R.raw.all_i_want_for_christmas_is_you, "Christmas"),
             new Music (R.raw.we_wish_you_merry_christmas, "Merry Christmas")
-//            new Music (R.raw.do_1, "do"),
-//            new Music (R.raw.re_2, "re"),
-//            new Music (R.raw.mi_3, "mi"),
-//            new Music (R.raw.fa_4, "fa"),
-//            new Music (R.raw.so_5, "so"),
-//            new Music (R.raw.la_6, "la"),
-//            new Music (R.raw.si_7, "si"),
-//            new Music (R.raw.do_1_octave, "do_octave")
-//            new Music (R.raw.cutted5s, "cutted"),
-//            new Music (R.raw.cutted5s, "cutted")
     };
 
     public void addLittleStar(){

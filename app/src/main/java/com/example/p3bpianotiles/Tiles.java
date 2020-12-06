@@ -1,7 +1,7 @@
 package com.example.p3bpianotiles;
 import java.util.Random;
 public class Tiles {
-    public int column;//buat columnnya
+    public int column;
     public float x;
     public float y;
     public float width;
@@ -13,9 +13,7 @@ public class Tiles {
     public boolean addedScore;
     public boolean  toBeDelete;
     public int color;
-    public float speed;
     public Random rand;
-    //kecepatan = jarak / waktu
 
     public long getTimestamp(){
         return timestamp;
