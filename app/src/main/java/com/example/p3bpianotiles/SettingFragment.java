@@ -63,14 +63,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onClick(View v){
         if(v == this.binding.doneBtn){
-            Toast.makeText(this.getContext(),"Setting Changed",Toast.LENGTH_SHORT).show();
             this.listener.changePage(1);
+            Toast.makeText(this.getContext(),"Setting Changed",Toast.LENGTH_SHORT).show();
         }
         else if(v == this.binding.changeBgBtn){
             this.backgroundId++;
             this.presenter.setBackgroundIndex(backgroundId);
             this.presenter.changeBackground();
-            Toast.makeText(this.getContext(),"Background Changed",Toast.LENGTH_SHORT).show();
         }
         else if(v == this.binding.resetBtn){
             setDefault();

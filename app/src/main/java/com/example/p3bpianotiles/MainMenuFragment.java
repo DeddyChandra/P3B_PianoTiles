@@ -139,6 +139,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener, 
         else if(v == this.binding.startBtn){
             this.mediaPlayer.pause();
             Log.d("level", "onClick: "+this.presenter.getLevel());
+            Toast.makeText(this.getContext(),"Click Black, Roll left Yellow, Roll right green",Toast.LENGTH_SHORT).show();
             this.fragmentListener.changePage(2);
             this.fragmentListener.setLevel(this.presenter.getLevel());
         }
